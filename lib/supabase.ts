@@ -105,11 +105,11 @@ export async function ensureProfile(userId: string, userData?: { full_name?: str
     // Create profile if it doesn't exist
     const { data: newProfile, error } = await supabase
       .from('profiles')
-      .insert({
+      .insert([{
         user_id: userId,
         full_name: userData?.full_name || null,
         metadata: userData?.metadata || {},
-      })
+      }])
       .select()
       .single();
 
