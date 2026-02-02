@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import type { Database } from './database.types';
 
 /**
  * Validates that all required environment variables are present
@@ -30,7 +31,7 @@ export function validateEnvironmentVariables(): void {
 // validateEnvironmentVariables();
 
 // Lazy initialization to ensure env vars are loaded
-let _supabase: ReturnType<typeof createClient> | null = null;
+let _supabase: ReturnType<typeof createClient<Database>> | null = null;
 
 function getSupabaseClient() {
   if (!_supabase) {
@@ -41,12 +42,12 @@ function getSupabaseClient() {
       throw new Error('Missing Supabase environment variables');
     }
     
-    _supabase = createClient(supabaseUrl, supabaseAnonKey);
+    _supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);
   }
   return _supabase;
 }
 
-export const supabase = new Proxy({} as ReturnType<typeof createClient>, {
+export const supabase = new Proxy({} as ReturnType<typeof createClient<Database>>, {
   get(target, prop) {
     const client = getSupabaseClient();
     return (client as any)[prop];
