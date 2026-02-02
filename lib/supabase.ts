@@ -26,13 +26,32 @@ export function validateEnvironmentVariables(): void {
   }
 }
 
-// Validate environment variables on module load
-validateEnvironmentVariables();
+// Don't validate on module load - let Next.js load env vars first
+// validateEnvironmentVariables();
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+// Lazy initialization to ensure env vars are loaded
+let _supabase: ReturnType<typeof createClient> | null = null;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+function getSupabaseClient() {
+  if (!_supabase) {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    
+    if (!supabaseUrl || !supabaseAnonKey) {
+      throw new Error('Missing Supabase environment variables');
+    }
+    
+    _supabase = createClient(supabaseUrl, supabaseAnonKey);
+  }
+  return _supabase;
+}
+
+export const supabase = new Proxy({} as ReturnType<typeof createClient>, {
+  get(target, prop) {
+    const client = getSupabaseClient();
+    return (client as any)[prop];
+  }
+});
 
 /**
  * Gets the current authenticated user session
