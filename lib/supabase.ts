@@ -90,7 +90,7 @@ export async function getSession() {
  * @param userData - Optional user data to populate the profile
  * @returns The profile record or null on error
  */
-export async function ensureProfile(userId: string, userData?: { full_name?: string; metadata?: any }) {
+export async function ensureProfile(userId: string, userData?: { full_name?: string; metadata?: Database['public']['Tables']['profiles']['Insert']['metadata'] }) {
   try {
     // Check if profile exists
     const { data: existingProfile } = await supabase
@@ -106,11 +106,11 @@ export async function ensureProfile(userId: string, userData?: { full_name?: str
     // Create profile if it doesn't exist
     const { data: newProfile, error } = await supabase
       .from('profiles')
-      .insert([{
+      .insert({
         user_id: userId,
         full_name: userData?.full_name || null,
         metadata: userData?.metadata || {},
-      }])
+      })
       .select()
       .single();
 
