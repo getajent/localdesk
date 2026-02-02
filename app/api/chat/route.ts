@@ -1,6 +1,5 @@
-import 'openai/shims/node';
-import { OpenAIStream, StreamingTextResponse } from 'ai';
-import OpenAI from 'openai';
+import { openai } from '@ai-sdk/openai';
+import { streamText } from 'ai';
 import { saveMessage } from '@/lib/supabase';
 
 /**
@@ -67,36 +66,23 @@ export async function POST(req: Request) {
     const { messages, userId } = body;
     const userMessage = messages[messages.length - 1]?.content || '';
 
-    // Initialize OpenAI client
-    const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-    });
-
-    // Inject system prompt into messages
+    // Build system prompt
     const systemPrompt = buildSystemPrompt();
-    const messagesWithSystem = [
-      { role: 'system' as const, content: systemPrompt },
-      ...messages
-    ];
 
-    // Call OpenAI with streaming
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      stream: true,
-      messages: messagesWithSystem,
-    });
-
-    // Create streaming response with onCompletion callback
-    const stream = OpenAIStream(response, {
-      onCompletion: async (completion: string) => {
+    // Call OpenAI with streaming using AI SDK v4
+    const result = streamText({
+      model: openai('gpt-4o-mini'),
+      system: systemPrompt,
+      messages,
+      onFinish: async ({ text }) => {
         // Persist messages for authenticated users only
         if (userId && typeof userId === 'string' && userId.trim() !== '') {
-          await saveMessage(userId, userMessage, completion);
+          await saveMessage(userId, userMessage, text);
         }
       }
     });
 
-    return new StreamingTextResponse(stream);
+    return result.toTextStreamResponse();
 
   } catch (error) {
     console.error('API error:', error);

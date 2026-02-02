@@ -1,6 +1,7 @@
 'use client';
 
-import { useChat } from 'ai/react';
+import { useChat } from '@ai-sdk/react';
+import { DefaultChatTransport } from 'ai';
 import { useEffect, useRef, useState } from 'react';
 import { ChatMessage } from '@/components/ChatMessage';
 import { SuggestedQuestions } from '@/components/SuggestedQuestions';
@@ -16,13 +17,16 @@ export interface ChatInterfaceProps {
 export function ChatInterface({ userId }: ChatInterfaceProps) {
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [isLoadingHistory, setIsLoadingHistory] = useState(false);
+  const [input, setInput] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  const { messages, input, handleInputChange, handleSubmit, isLoading, error, setMessages } = useChat({
-    api: '/api/chat',
-    body: {
-      userId: userId || undefined,
-    },
+  const { messages, sendMessage, status, error, setMessages } = useChat({
+    transport: new DefaultChatTransport({
+      api: '/api/chat',
+      body: {
+        userId: userId || undefined,
+      },
+    }),
     onFinish: () => {
       // Hide suggestions after first message
       if (showSuggestions) {
@@ -30,6 +34,8 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
       }
     },
   });
+
+  const isLoading = status === 'streaming' || status === 'submitted';
 
   // Load chat history for authenticated users on mount
   useEffect(() => {
@@ -46,12 +52,11 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
           // Fetch messages from the most recent chat
           const historicalMessages = await getMessages(mostRecentChat.id);
           
-          // Convert to the format expected by useChat
+          // Convert to the format expected by useChat (v6 uses parts)
           const formattedMessages = historicalMessages.map((msg: any) => ({
             id: msg.id,
             role: msg.role,
-            content: msg.content,
-            createdAt: msg.created_at,
+            parts: [{ type: 'text' as const, text: msg.content }],
           }));
           
           // Set the messages in the chat interface
@@ -80,18 +85,18 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
   }, [messages.length, showSuggestions]);
 
   const handleQuestionClick = (question: string) => {
-    // Create a synthetic event to populate the input
-    const syntheticEvent = {
-      target: { value: question },
-    } as React.ChangeEvent<HTMLInputElement>;
-    
-    handleInputChange(syntheticEvent);
+    setInput(question);
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input.trim()) {
-      handleSubmit(e);
+      await sendMessage({ text: input });
+      setInput('');
     }
   };
 
@@ -112,14 +117,22 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
           </div>
         ) : (
           <>
-            {messages.map((message) => (
-              <ChatMessage
-                key={message.id}
-                role={message.role as 'user' | 'assistant'}
-                content={message.content}
-                timestamp={new Date(message.createdAt || Date.now())}
-              />
-            ))}
+            {messages.map((message) => {
+              // Extract text content from message parts
+              const content = message.parts
+                .filter((part: any) => part.type === 'text')
+                .map((part: any) => part.text)
+                .join('');
+              
+              return (
+                <ChatMessage
+                  key={message.id}
+                  role={message.role as 'user' | 'assistant'}
+                  content={content}
+                  timestamp={new Date()}
+                />
+              );
+            })}
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-slate-100 rounded-lg px-4 py-3">
