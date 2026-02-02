@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
-import type { Database } from './database.types';
 
 /**
  * Validates that all required environment variables are present
@@ -30,29 +29,15 @@ export function validateEnvironmentVariables(): void {
 // Don't validate on module load - let Next.js load env vars first
 // validateEnvironmentVariables();
 
-// Lazy initialization to ensure env vars are loaded
-let _supabase: ReturnType<typeof createClient<Database>> | null = null;
+// Simple direct initialization - env vars should be available in Next.js
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
-function getSupabaseClient() {
-  if (!_supabase) {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    
-    if (!supabaseUrl || !supabaseAnonKey) {
-      throw new Error('Missing Supabase environment variables');
-    }
-    
-    _supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);
-  }
-  return _supabase;
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing Supabase environment variables');
 }
 
-export const supabase = new Proxy({} as ReturnType<typeof createClient<Database>>, {
-  get(target, prop) {
-    const client = getSupabaseClient();
-    return (client as any)[prop];
-  }
-});
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 /**
  * Gets the current authenticated user session
@@ -90,7 +75,7 @@ export async function getSession() {
  * @param userData - Optional user data to populate the profile
  * @returns The profile record or null on error
  */
-export async function ensureProfile(userId: string, userData?: { full_name?: string; metadata?: Database['public']['Tables']['profiles']['Insert']['metadata'] }) {
+export async function ensureProfile(userId: string, userData?: { full_name?: string; metadata?: any }) {
   try {
     // Check if profile exists
     const { data: existingProfile } = await supabase
