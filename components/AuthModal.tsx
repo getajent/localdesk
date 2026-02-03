@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { X } from 'lucide-react';
 
 export interface AuthModalProps {
@@ -90,37 +90,42 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
 
   return (
     <div
-      className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 bg-background/90 backdrop-blur-sm flex items-center justify-center z-50 p-4 motion-safe:animate-fade-in"
       onClick={handleClose}
     >
       <Card
-        className="w-full max-w-md relative rounded-[2rem] border border-border shadow-soft-xl overflow-hidden bg-card"
+        className="w-full max-w-md relative rounded-none border border-border bg-card shadow-xl motion-safe:animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={handleClose}
-          className="absolute right-6 top-6 text-muted-foreground hover:text-danish-red transition-colors p-2 rounded-full hover:bg-danish-red/10"
+          className="absolute right-4 top-4 text-muted-foreground hover:text-danish-red transition-colors p-2"
           aria-label="Close"
         >
           <X className="h-5 w-5" />
         </button>
 
-        <CardHeader className="bg-muted/30 border-b border-border p-8 space-y-4 text-center">
-          <CardTitle className="text-3xl font-serif font-medium tracking-tight text-foreground">
-            {isSignUp ? 'Create account' : 'Welcome back'}
-          </CardTitle>
-          <CardDescription className="text-muted-foreground text-sm font-normal">
+        <CardHeader className="p-10 pb-2 space-y-6 text-center border-b border-transparent">
+          <div className="flex flex-col items-center justify-center space-y-4">
+            <span className="text-[10px] font-black tracking-[0.4em] text-danish-red uppercase">
+              {isSignUp ? 'New Member' : 'Welcome Back'}
+            </span>
+            <CardTitle className="text-4xl font-serif font-light text-foreground">
+              {isSignUp ? 'Join the Club' : 'Sign In'}
+            </CardTitle>
+          </div>
+          <p className="text-muted-foreground font-sans font-light leading-relaxed max-w-xs mx-auto">
             {isSignUp
-              ? 'Join to save your chat history and preferences.'
-              : 'Enter your details to access your dashboard.'}
-          </CardDescription>
+              ? 'Create an account to save your conversations and preferences.'
+              : 'Enter your credentials to access your personal dashboard.'}
+          </p>
         </CardHeader>
 
-        <CardContent className="p-8 space-y-6">
-          <form onSubmit={handleSubmit} className="space-y-5">
+        <CardContent className="p-10 pt-6 space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-foreground">
-                Email address
+              <label htmlFor="email" className="block text-[10px] font-black tracking-[0.2em] text-muted-foreground uppercase">
+                Email Address
               </label>
               <Input
                 id="email"
@@ -129,13 +134,13 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
                 disabled={isLoading}
-                className="h-12 rounded-xl border-border focus:border-primary focus:ring-1 focus:ring-primary/20 text-base font-normal placeholder:text-muted-foreground/50 shadow-sm"
+                className="h-12 rounded-none border-border bg-transparent focus:border-danish-red focus:ring-0 text-base font-normal placeholder:text-muted-foreground/30 transition-colors"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="password" className="text-sm font-medium text-foreground">
+              <label htmlFor="password" className="block text-[10px] font-black tracking-[0.2em] text-muted-foreground uppercase">
                 Password
               </label>
               <Input
@@ -145,36 +150,38 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 disabled={isLoading}
-                className="h-12 rounded-xl border-border focus:border-primary focus:ring-1 focus:ring-primary/20 text-base font-normal placeholder:text-muted-foreground/50 shadow-sm"
+                className="h-12 rounded-none border-border bg-transparent focus:border-danish-red focus:ring-0 text-base font-normal placeholder:text-muted-foreground/30 transition-colors"
                 required
               />
             </div>
 
             {error && (
-              <div className="p-3 bg-destructive/10 text-destructive text-sm font-medium rounded-lg text-center border border-destructive/20">
+              <div className="p-3 bg-destructive/5 text-destructive text-xs font-medium tracking-wide uppercase text-center border border-destructive/20">
                 {error}
               </div>
             )}
 
             <Button
               type="submit"
-              className="w-full bg-danish-red hover:bg-danish-red/90 text-white rounded-full h-12 text-sm font-bold uppercase tracking-wide shadow-md transition-all active:scale-[0.98]"
+              className="w-full bg-foreground text-background btn-trend rounded-none h-14 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 active:scale-[0.99]"
               disabled={isLoading}
             >
-              {isLoading ? 'Processing...' : isSignUp ? 'Create Account' : 'Sign In'}
+              <span className="relative z-10">
+                {isLoading ? 'Processing...' : isSignUp ? 'Create Account' : 'Sign In'}
+              </span>
             </Button>
 
-            <div className="text-center pt-2">
+            <div className="text-center pt-4 border-t border-border/40">
               <button
                 type="button"
                 onClick={() => {
                   setIsSignUp(!isSignUp);
                   setError(null);
                 }}
-                className="text-sm font-medium text-muted-foreground hover:text-danish-red transition-colors hover:underline underline-offset-4"
+                className="text-[10px] font-bold tracking-[0.2em] uppercase text-muted-foreground hover:text-danish-red transition-colors"
                 disabled={isLoading}
               >
-                {isSignUp ? 'Already have an account? Sign in' : 'Don\'t have an account? Sign up'}
+                {isSignUp ? 'Already a member? Sign in' : 'New here? Create account'}
               </button>
             </div>
           </form>

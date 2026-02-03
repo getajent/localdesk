@@ -55,21 +55,21 @@ function PageContent() {
         <section
           id="chat-section"
           ref={chatSectionRef}
-          className={`w-full bg-background py-24 sm:py-32 border-t border-border transition-all duration-1000 ${isChatVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
+          className={`w-full bg-background py-24 sm:py-32 border-t border-border/40 transition-all duration-1000 ${isChatVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-start space-y-12 sm:space-y-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+            <div className="max-w-7xl mx-auto flex flex-col items-start space-y-12 sm:space-y-16">
               <div className="space-y-6 max-w-4xl">
                 <span className="px-3 py-1 rounded-full bg-secondary text-primary text-[10px] font-bold tracking-widest uppercase border border-primary/5">
-                  Interactive
+                  Your Assistant
                 </span>
                 <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl font-medium text-foreground tracking-tight leading-tight">
-                  Consult the system,<br />
-                  <span className="text-muted-foreground/60 italic">on your terms.</span>
+                  Let’s talk,<br />
+                  <span className="text-muted-foreground/60 italic">we’re here to help.</span>
                 </h2>
                 <p className="text-muted-foreground text-xl sm:text-2xl leading-relaxed font-sans font-light max-w-2xl">
-                  Get instant clarification on Danish legal frameworks, tax rules, and housing regulations in plain English.
+                  Clear, simple answers about taxes, visas, and housing — in the language that feels like home.
                 </p>
               </div>
               <div className="w-full">

@@ -6,7 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 
 interface LogoProps {
     className?: string;
-    light?: boolean; // For use on dark backgrounds
+    light?: boolean;
 }
 
 export function Logo({ className, light = false }: LogoProps) {
@@ -23,25 +23,29 @@ export function Logo({ className, light = false }: LogoProps) {
 
     return (
         <div
-            className={cn("flex items-center gap-3 group cursor-pointer select-none", className)}
+            className={cn("flex items-center gap-0 group cursor-pointer select-none", className)}
             onClick={handleClick}
         >
-            {/* Architectural Anchor */}
-            <div className="w-3.5 h-3.5 bg-danish-red transform rotate-45 group-hover:rotate-0 transition-transform duration-300 shadow-sm translate-y-[1px]" />
-
             <div className={cn(
-                "text-2xl tracking-tighter uppercase leading-none flex items-baseline",
-                light ? "text-white" : "text-slate-950"
+                "flex flex-col items-start transition-all duration-300",
+                light ? "text-white" : "text-foreground"
             )}>
-                <span className="font-black">Local</span>
-                <span className="font-medium opacity-80">Desk</span>
-                <span className="text-danish-red font-black mx-1.5 mb-[1px]">/</span>
-                <span className="font-black relative">
-                    DK
-                    <span className={cn(
-                        "absolute -bottom-1 left-0 w-full h-[3px] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left bg-danish-red"
-                    )}></span>
-                </span>
+                <div className="flex items-baseline gap-1.5 overflow-hidden">
+                    <span className="font-serif italic text-2xl lg:text-3xl tracking-tighter leading-none motion-safe:group-hover:-translate-y-[2px] transition-transform duration-500">
+                        Local
+                    </span>
+                    <span className="font-sans font-black text-xl lg:text-2xl tracking-[0.2em] uppercase leading-none opacity-90">
+                        Desk
+                    </span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-danish-red mb-1 scale-0 group-hover:scale-100 transition-transform duration-500 delay-100" />
+                </div>
+
+                <div className="flex items-center gap-2 mt-1 w-full">
+                    <div className="h-[1px] flex-1 bg-border/60 group-hover:bg-danish-red/40 transition-colors duration-500" />
+                    <span className="font-sans text-[8px] font-bold tracking-[0.8em] uppercase text-muted-foreground/60 group-hover:text-danish-red transition-colors duration-500">
+                        Denmark
+                    </span>
+                </div>
             </div>
         </div>
     );

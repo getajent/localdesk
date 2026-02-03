@@ -87,3 +87,39 @@
     color: inherit;
   }
 }
+
+@layer utilities {
+  /* Trendy 2026 Interaction Styles */
+
+  /* Primary Button: Swipe Wipe Effect */
+  .btn-trend {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-trend::before {
+    content: '';
+    @apply absolute inset-0 bg-danish-red z-0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .btn-trend:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .btn-trend>* {
+    @apply relative z-10;
+  }
+
+  /* Secondary/Outline Button: Tactile Lift Effect */
+  .btn-trend-outline {
+    @apply transition-all duration-300;
+  }
+
+  .btn-trend-outline:hover {
+    @apply -translate-y-[2px] -translate-x-[2px] border-danish-red text-danish-red bg-secondary/50;
+    box-shadow: 4px 4px 0 0 #C8102E;
+  }
+}
