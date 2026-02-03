@@ -13,14 +13,14 @@ export const SUGGESTED_QUESTIONS = [
 export function SuggestedQuestions({ onQuestionClick }: SuggestedQuestionsProps) {
   return (
     <div className="flex flex-col gap-3 w-full max-w-2xl mx-auto px-2 sm:px-0">
-      <p className="text-sm text-slate-700 text-center mb-2 leading-[1.5] font-normal">
-        Try asking about:
+      <p className="text-sm text-muted-foreground text-center mb-4 leading-relaxed font-medium">
+        Suggested Inquiries
       </p>
       {SUGGESTED_QUESTIONS.map((question, index) => (
         <Button
           key={index}
           variant="outline"
-          className="w-full text-left justify-start h-auto min-h-[44px] py-3 px-4 hover:border-danish-red hover:text-danish-red hover:bg-red-50 transition-all focus:border-danish-red focus:ring-2 focus:ring-danish-red focus:ring-offset-2 focus:outline-none text-sm sm:text-base leading-[1.5] font-normal"
+          className="w-full text-left justify-start h-auto min-h-[52px] py-4 px-6 rounded-xl border-border/60 hover:border-danish-red/30 hover:bg-danish-red/5 text-foreground transition-all duration-200 text-sm sm:text-base font-normal shadow-sm hover:shadow-md"
           onClick={() => onQuestionClick(question)}
           aria-label={`Ask: ${question}`}
         >

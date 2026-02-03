@@ -52,24 +52,29 @@ function PageContent() {
         <Features />
 
         {/* Chat Interface Section */}
-        <section 
-          id="chat-interface" 
+        <section
+          id="chat-section"
           ref={chatSectionRef}
-          className={`w-full bg-gradient-to-b from-neutral-50 to-white py-12 sm:py-16 md:py-24 transition-opacity duration-300 ${
-            isChatVisible ? 'motion-safe:animate-fade-in' : 'opacity-0'
-          }`}
+          className={`w-full bg-background py-24 sm:py-32 border-t border-border transition-all duration-1000 ${isChatVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
+            }`}
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center space-y-6 sm:space-y-8">
-              <div className="text-center space-y-3 max-w-2xl">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.2]">
-                  Start Your Conversation
+            <div className="flex flex-col items-start space-y-12 sm:space-y-16">
+              <div className="space-y-6 max-w-4xl">
+                <span className="px-3 py-1 rounded-full bg-secondary text-primary text-[10px] font-bold tracking-widest uppercase border border-primary/5">
+                  Interactive
+                </span>
+                <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl font-medium text-foreground tracking-tight leading-tight">
+                  Consult the system,<br />
+                  <span className="text-muted-foreground/60 italic">on your terms.</span>
                 </h2>
-                <p className="text-slate-700 text-lg sm:text-xl leading-[1.6] font-normal max-w-[65ch] mx-auto">
-                  Ask anything about Danish bureaucracy
+                <p className="text-muted-foreground text-xl sm:text-2xl leading-relaxed font-sans font-light max-w-2xl">
+                  Get instant clarification on Danish legal frameworks, tax rules, and housing regulations in plain English.
                 </p>
               </div>
-              <ChatInterface userId={user?.id} />
+              <div className="w-full">
+                <ChatInterface userId={user?.id} />
+              </div>
             </div>
           </div>
         </section>

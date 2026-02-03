@@ -1,79 +1,64 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 export function Hero() {
   const handleStartChatting = () => {
-    // Scroll to chat interface
-    const chatElement = document.getElementById('chat-interface');
+    const chatElement = document.getElementById('chat-section');
     if (chatElement) {
       chatElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-white via-cool-50 to-neutral-100 py-12 sm:py-16 md:py-24 lg:py-32 overflow-hidden motion-safe:animate-fade-in">
-      {/* Decorative SVG shapes with absolute positioning */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {/* Top-right decorative circle */}
-        <svg
-          className="absolute top-0 right-0 transform translate-x-1/3 -translate-y-1/3 opacity-[0.08]"
-          width="600"
-          height="600"
-          viewBox="0 0 600 600"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="300" cy="300" r="300" fill="#C8102E" />
-        </svg>
-
-        {/* Bottom-left decorative shape */}
-        <svg
-          className="absolute bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4 opacity-[0.06]"
-          width="500"
-          height="500"
-          viewBox="0 0 500 500"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect x="100" y="100" width="300" height="300" rx="60" fill="#64748b" />
-        </svg>
-
-        {/* Center decorative accent */}
-        <svg
-          className="absolute top-1/2 left-1/4 transform -translate-y-1/2 opacity-[0.05]"
-          width="400"
-          height="400"
-          viewBox="0 0 400 400"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="200" cy="200" r="150" fill="#f4994f" />
-        </svg>
-      </div>
-
+    <section className="relative w-full py-24 lg:py-40 bg-background overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6 md:space-y-8 motion-safe:animate-slide-up">
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.1] tracking-[-0.02em]">
-            Navigate Danish Bureaucracy with Confidence
+        <div className="max-w-7xl mx-auto">
+          {/* Top Detail */}
+          <div className="flex items-center space-x-3 mb-16 motion-safe:animate-fade-in">
+            <span className="px-4 py-1.5 rounded-full border border-border bg-white/50 text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase backdrop-blur-sm">
+              Navigating Denmark
+            </span>
+          </div>
+
+          {/* Statement Headline */}
+          <h1 className="font-serif text-[12vw] lg:text-[8rem] font-medium leading-[1] lg:leading-[0.95] tracking-tight text-foreground mb-20 motion-safe:animate-slide-up">
+            Danish life,<br />
+            <span className="text-muted-foreground/60 italic">simplified.</span>
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-xl sm:text-xl md:text-2xl lg:text-2xl text-slate-700 max-w-[65ch] leading-[1.6] tracking-[-0.01em] font-normal">
-            Get instant answers about SKAT, visas, and housing from your AI-powered Danish consultant
-          </p>
+          {/* Bottom Grid */}
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-end border-t border-border/60 pt-16">
+            <div className="lg:col-span-7">
+              <p className="text-2xl sm:text-3xl text-muted-foreground font-sans font-extralight leading-relaxed max-w-2xl motion-safe:animate-fade-in delay-100">
+                The premier digital consultancy designed specifically for the nuanced challenges of building a life in Denmark.
+              </p>
+            </div>
 
-          {/* CTA Button */}
-          <Button
-            onClick={handleStartChatting}
-            className="bg-danish-red hover:bg-[#A00A28] text-white text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-6 sm:py-7 mt-4 shadow-soft-lg hover:shadow-hover-lg hover:-translate-y-0.5 transition-all duration-200 focus:ring-2 focus:ring-danish-red focus:ring-offset-2 focus:outline-none min-h-[44px]"
-            size="lg"
-            aria-label="Start chatting with the AI assistant"
-          >
-            Start Chatting
-          </Button>
+            <div className="lg:col-span-5 flex flex-col space-y-12 items-start lg:items-end w-full">
+              <Button
+                onClick={handleStartChatting}
+                className="w-full sm:w-auto bg-danish-red hover:bg-danish-red/90 text-white rounded-full h-18 px-12 text-lg font-medium transition-all duration-300 transform hover:-translate-y-1 shadow-layered hover:shadow-layered-lg group"
+              >
+                Access System
+                <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+
+              <div className="flex flex-wrap gap-x-8 gap-y-3 text-[10px] font-bold tracking-[0.2em] text-muted-foreground/40 uppercase">
+                <span className="hover:text-danish-red transition-colors cursor-default">Skat</span>
+                <span className="hover:text-danish-red transition-colors cursor-default">Visas</span>
+                <span className="hover:text-danish-red transition-colors cursor-default">Housing</span>
+                <span className="hover:text-danish-red transition-colors cursor-default">NemID</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* Subtle Background Mark */}
+      <div className="absolute -bottom-32 -right-32 pointer-events-none select-none opacity-[0.04] -z-0">
+        <span className="font-serif text-[45rem] leading-none text-foreground select-none">dk</span>
       </div>
     </section>
   );

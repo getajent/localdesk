@@ -9,10 +9,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        serif: ['var(--font-serif)'],
+        sans: ['var(--font-sans)'],
+      },
       colors: {
         'danish-red': '#C8102E',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        // fontFamily was here, moved out
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'

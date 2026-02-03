@@ -39,41 +39,37 @@ export async function POST(req: Request) {
 
     // Parse and validate request body
     const body = await req.json();
-    
-    if (!body.messages || !Array.isArray(body.messages)) {
+
+    // Handle both old format (messages array) and new format (from @ai-sdk/react)
+    let messages = body.messages || [];
+    const userId = body.userId;
+
+    // If no messages array, this might be from the new SDK format
+    if (messages.length === 0 && body.message) {
+      // New SDK sends a single message object
+      messages = [{ role: 'user', content: body.message.text || body.message.content }];
+    }
+
+    if (!Array.isArray(messages) || messages.length === 0) {
       return new Response(
-        JSON.stringify({ error: 'Invalid request format: messages array required' }),
+        JSON.stringify({ error: 'Invalid request format: messages required' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
-    // Validate messages array format
-    const isValidMessages = body.messages.every(
-      (msg: any) => 
-        msg && 
-        typeof msg === 'object' && 
-        typeof msg.content === 'string' &&
-        (msg.role === 'user' || msg.role === 'assistant')
-    );
-
-    if (!isValidMessages) {
-      return new Response(
-        JSON.stringify({ error: 'Invalid message format' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
-
-    const { messages, userId } = body;
-    const userMessage = messages[messages.length - 1]?.content || '';
+    const userMessage = messages[messages.length - 1]?.content || messages[messages.length - 1]?.text || '';
 
     // Build system prompt
     const systemPrompt = buildSystemPrompt();
 
-    // Call OpenAI with streaming using AI SDK v4
+    // Call OpenAI with streaming using AI SDK
     const result = streamText({
       model: openai('gpt-4o-mini'),
       system: systemPrompt,
-      messages,
+      messages: messages.map(m => ({
+        role: m.role,
+        content: m.content || m.text || ''
+      })),
       onFinish: async ({ text }) => {
         // Persist messages for authenticated users only
         if (userId && typeof userId === 'string' && userId.trim() !== '') {
@@ -86,7 +82,7 @@ export async function POST(req: Request) {
 
   } catch (error) {
     console.error('API error:', error);
-    
+
     // Handle specific error types
     if (error instanceof SyntaxError) {
       return new Response(

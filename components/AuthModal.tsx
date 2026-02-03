@@ -89,45 +89,53 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <Card className="w-full max-w-md relative">
+    <div
+      className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+      onClick={handleClose}
+    >
+      <Card
+        className="w-full max-w-md relative rounded-[2rem] border border-border shadow-soft-xl overflow-hidden bg-card"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           onClick={handleClose}
-          className="absolute right-4 top-4 text-slate-400 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-danish-red focus:ring-offset-2 rounded-sm transition-colors"
+          className="absolute right-6 top-6 text-muted-foreground hover:text-danish-red transition-colors p-2 rounded-full hover:bg-danish-red/10"
           aria-label="Close"
         >
           <X className="h-5 w-5" />
         </button>
 
-        <CardHeader>
-          <CardTitle>{isSignUp ? 'Create Account' : 'Log In'}</CardTitle>
-          <CardDescription>
+        <CardHeader className="bg-muted/30 border-b border-border p-8 space-y-4 text-center">
+          <CardTitle className="text-3xl font-serif font-medium tracking-tight text-foreground">
+            {isSignUp ? 'Create account' : 'Welcome back'}
+          </CardTitle>
+          <CardDescription className="text-muted-foreground text-sm font-normal">
             {isSignUp
-              ? 'Sign up to save your chat history'
-              : 'Sign in to access your saved chats'}
+              ? 'Join to save your chat history and preferences.'
+              : 'Enter your details to access your dashboard.'}
           </CardDescription>
         </CardHeader>
 
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <CardContent className="p-8 space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-slate-700">
-                Email
+              <label htmlFor="email" className="text-sm font-medium text-foreground">
+                Email address
               </label>
               <Input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
+                placeholder="name@example.com"
                 disabled={isLoading}
-                className="focus:ring-2 focus:ring-danish-red focus:border-danish-red focus:outline-none"
+                className="h-12 rounded-xl border-border focus:border-primary focus:ring-1 focus:ring-primary/20 text-base font-normal placeholder:text-muted-foreground/50 shadow-sm"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="password" className="text-sm font-medium text-slate-700">
+              <label htmlFor="password" className="text-sm font-medium text-foreground">
                 Password
               </label>
               <Input
@@ -137,37 +145,36 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 disabled={isLoading}
-                className="focus:ring-2 focus:ring-danish-red focus:border-danish-red focus:outline-none"
+                className="h-12 rounded-xl border-border focus:border-primary focus:ring-1 focus:ring-primary/20 text-base font-normal placeholder:text-muted-foreground/50 shadow-sm"
                 required
               />
             </div>
 
             {error && (
-              <div className="text-sm text-red-600 bg-red-50 p-3 rounded-md">
+              <div className="p-3 bg-destructive/10 text-destructive text-sm font-medium rounded-lg text-center border border-destructive/20">
                 {error}
               </div>
             )}
 
             <Button
               type="submit"
-              className="w-full bg-[#C60C30] hover:bg-[#A00A28] text-white focus:ring-2 focus:ring-danish-red focus:ring-offset-2 focus:outline-none"
+              className="w-full bg-danish-red hover:bg-danish-red/90 text-white rounded-full h-12 text-sm font-bold uppercase tracking-wide shadow-md transition-all active:scale-[0.98]"
               disabled={isLoading}
             >
-              {isLoading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Log In'}
+              {isLoading ? 'Processing...' : isSignUp ? 'Create Account' : 'Sign In'}
             </Button>
 
-            <div className="text-center text-sm text-slate-700">
-              {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
+            <div className="text-center pt-2">
               <button
                 type="button"
                 onClick={() => {
                   setIsSignUp(!isSignUp);
                   setError(null);
                 }}
-                className="text-[#C60C30] hover:underline font-medium focus:outline-none focus:ring-2 focus:ring-danish-red focus:ring-offset-2 rounded-sm px-1"
+                className="text-sm font-medium text-muted-foreground hover:text-danish-red transition-colors hover:underline underline-offset-4"
                 disabled={isLoading}
               >
-                {isSignUp ? 'Log In' : 'Sign Up'}
+                {isSignUp ? 'Already have an account? Sign in' : 'Don\'t have an account? Sign up'}
               </button>
             </div>
           </form>
