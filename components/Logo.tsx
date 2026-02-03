@@ -28,7 +28,7 @@ export function Logo({ className, light = false }: LogoProps) {
         >
             <div className={cn(
                 "flex flex-col items-start transition-all duration-300",
-                light ? "text-white" : "text-foreground"
+                light ? "text-background dark:text-foreground" : "text-foreground"
             )}>
                 <div className="flex items-baseline gap-1.5 overflow-hidden">
                     <span className="font-serif italic text-2xl lg:text-3xl tracking-tighter leading-none motion-safe:group-hover:-translate-y-[2px] transition-transform duration-500">

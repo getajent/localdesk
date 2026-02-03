@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { User } from '@supabase/supabase-js';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/lib/supabase';
 import { AuthModal } from '@/components/AuthModal';
 import { Logo } from '@/components/Logo';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export interface HeaderProps {
   user: User | null;
@@ -14,6 +15,36 @@ export interface HeaderProps {
 
 export function Header({ user, onAuthChange }: HeaderProps) {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== 'undefined') {
+        const currentScrollY = window.scrollY;
+
+        // Always show at the very top
+        if (currentScrollY < 100) {
+          setIsVisible(true);
+        } else {
+          // If scrolling down, hide; if scrolling up, show
+          if (currentScrollY > lastScrollY.current) {
+            setIsVisible(false);
+          } else {
+            setIsVisible(true);
+          }
+        }
+
+        lastScrollY.current = currentScrollY;
+      }
+    };
+
+    window.addEventListener('scroll', controlNavbar);
+
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, []);
 
   const handleLogin = () => {
     setIsAuthModalOpen(true);
@@ -34,7 +65,10 @@ export function Header({ user, onAuthChange }: HeaderProps) {
 
   return (
     <>
-      <header className="w-full bg-background/90 backdrop-blur-xl sticky top-0 z-50 transition-all border-b border-border/40">
+      <header
+        className={`w-full bg-background/90 backdrop-blur-xl sticky top-0 z-50 border-b border-border/40 transition-transform ${isVisible ? 'translate-y-0' : '-translate-y-full'
+          }`}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-6">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center">
@@ -54,6 +88,8 @@ export function Header({ user, onAuthChange }: HeaderProps) {
                 ))}
               </nav>
               <div className="h-6 w-[1px] bg-border/60" />
+              {/* Theme Toggle */}
+              <ThemeToggle />
               {/* Authentication Section */}
               <div className="flex items-center gap-4">
                 {user ? (
@@ -85,8 +121,9 @@ export function Header({ user, onAuthChange }: HeaderProps) {
               </div>
             </div>
 
-            {/* Mobile Auth (simplified) */}
-            <div className="lg:hidden">
+            {/* Mobile Auth & Theme (simplified) */}
+            <div className="lg:hidden flex items-center gap-2">
+              <ThemeToggle />
               <Button
                 onClick={user ? handleLogout : handleLogin}
                 variant="ghost"

@@ -39,7 +39,7 @@ function PageContent() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <Header user={user} onAuthChange={refreshUser} />
 

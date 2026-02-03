@@ -143,7 +143,7 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
   };
 
   return (
-    <div id="chat-section" className="w-full max-w-5xl mx-auto flex flex-col h-[850px] border border-border/40 bg-white/70 backdrop-blur-2xl rounded-none shadow-soft-xl overflow-hidden mt-20 mb-32 transition-all duration-500 hover:shadow-hover-lg border-b-[6px] border-b-danish-red/10">
+    <div id="chat-section" className="w-full max-w-5xl mx-auto flex flex-col h-[850px] border border-border/40 bg-card/70 backdrop-blur-2xl rounded-none shadow-soft-xl overflow-hidden mt-20 mb-32 transition-all duration-500 hover:shadow-hover-lg border-b-[6px] border-b-danish-red/10">
       {/* Header Info */}
       <div className="border-b border-border/40 px-10 py-6 flex justify-between items-center bg-background/50 backdrop-blur-md">
         <div className="flex items-center gap-4">
@@ -227,7 +227,7 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
             onChange={handleInputChange}
             placeholder="Ask a question..."
             disabled={isLoading}
-            className="flex-1 h-20 pl-10 pr-40 rounded-none border border-border/60 bg-white/80 hover:border-danish-red/30 focus:border-danish-red/50 focus:ring-4 focus:ring-danish-red/5 text-lg font-light placeholder:text-muted-foreground/40 shadow-soft transition-all"
+            className="flex-1 h-20 pl-10 pr-40 rounded-none border border-border/60 bg-background hover:border-danish-red/30 focus:border-danish-red/50 focus:ring-4 focus:ring-danish-red/5 text-lg font-light placeholder:text-muted-foreground/40 shadow-soft transition-all"
             aria-label="Chat message input"
           />
           <div className="absolute right-3 top-3 bottom-3 flex gap-2">

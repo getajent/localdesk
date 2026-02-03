@@ -48,7 +48,21 @@
     --primary: 40 20% 98%;
     --primary-foreground: 220 40% 10%;
 
+    --secondary: 220 30% 12%;
+    --secondary-foreground: 40 20% 98%;
+
+    --muted: 220 30% 14%;
+    --muted-foreground: 40 10% 65%;
+
+    --accent: 220 30% 12%;
+    --accent-foreground: 40 20% 98%;
+
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 40 25% 98%;
+
     --border: 220 30% 12%;
+    --input: 220 30% 12%;
+    --ring: 40 20% 98%;
   }
 }
 
@@ -62,6 +76,10 @@
     font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
     /* Paper Texture Effect */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  .dark body {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
   }
 
   h1,
