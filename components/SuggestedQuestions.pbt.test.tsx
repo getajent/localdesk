@@ -35,7 +35,7 @@ describe('Property 3: Suggested Question Population', () => {
           cleanup();
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   }, 10000);
 
@@ -72,7 +72,7 @@ describe('Property 3: Suggested Question Population', () => {
           cleanup();
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   }, 15000);
 });

@@ -39,13 +39,13 @@ export function Header({ user, onAuthChange }: HeaderProps) {
 
   return (
     <>
-      <header className="w-full border-b border-slate-200 bg-white sticky top-0 z-50 shadow-sm">
+      <header className="w-full border-b border-slate-200 bg-white sticky top-0 z-50 shadow-soft-md">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+            <div className="text-xl sm:text-2xl font-bold text-slate-900 tracking-[-0.01em] leading-[1.2]">
               LocalDesk
-            </h1>
+            </div>
           </div>
 
           {/* Authentication Section */}
@@ -53,19 +53,19 @@ export function Header({ user, onAuthChange }: HeaderProps) {
             {user ? (
               // Authenticated user display
               <div className="flex items-center gap-2 sm:gap-3">
-                <Avatar className="h-8 w-8 ring-2 ring-slate-200 hover:ring-danish-red transition-all">
+                <Avatar className="h-8 w-8 ring-2 ring-slate-200 hover:ring-danish-red transition-all duration-200">
                   <AvatarFallback className="bg-slate-200 text-slate-700 text-sm font-medium">
                     {getUserInitials(user.email || 'U')}
                   </AvatarFallback>
                 </Avatar>
-                <span className="text-sm text-slate-700 hidden sm:inline truncate max-w-[150px] md:max-w-[200px]">
+                <span className="text-sm text-slate-700 hidden sm:inline truncate max-w-[150px] md:max-w-[200px] font-normal leading-[1.5]">
                   {user.email}
                 </span>
                 <Button
                   onClick={handleLogout}
                   variant="ghost"
                   size="sm"
-                  className="text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+                  className="text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors duration-200 min-h-[44px] min-w-[44px] focus:ring-2 focus:ring-danish-red focus:ring-offset-2 focus:outline-none"
                   aria-label="Log out"
                 >
                   <LogOut className="h-4 w-4" />
@@ -75,7 +75,7 @@ export function Header({ user, onAuthChange }: HeaderProps) {
               // Guest user - show login button
               <Button
                 onClick={handleLogin}
-                className="bg-danish-red hover:bg-[#A00A28] text-white shadow-sm hover:shadow-md transition-all focus:ring-danish-red"
+                className="bg-danish-red hover:bg-[#A00A28] text-white shadow-sm hover:shadow-md transition-all focus:ring-2 focus:ring-danish-red focus:ring-offset-2 focus:outline-none min-h-[44px] min-w-[44px]"
                 aria-label="Log in"
               >
                 <LogIn className="h-4 w-4 mr-2" />

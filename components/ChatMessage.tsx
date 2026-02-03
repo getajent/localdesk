@@ -33,12 +33,12 @@ export function ChatMessage({ role, content, timestamp }: ChatMessageProps) {
             : 'bg-slate-100 text-slate-900'
         )}
       >
-        <div className="break-words text-sm sm:text-base">
+        <div className="break-words text-sm sm:text-base leading-[1.6] font-normal">
           {isUser ? (
             <p className="whitespace-pre-wrap">{content}</p>
           ) : (
             <ReactMarkdown
-              className="prose prose-sm max-w-none prose-p:my-2 prose-ul:my-2 prose-ol:my-2 prose-headings:text-slate-900 prose-a:text-danish-red hover:prose-a:text-[#A00A28]"
+              className="prose prose-sm max-w-none prose-p:my-2 prose-p:leading-[1.6] prose-ul:my-2 prose-ol:my-2 prose-headings:text-slate-900 prose-headings:font-bold prose-a:text-danish-red hover:prose-a:text-[#A00A28]"
             >
               {content}
             </ReactMarkdown>
@@ -46,7 +46,7 @@ export function ChatMessage({ role, content, timestamp }: ChatMessageProps) {
         </div>
         <div
           className={cn(
-            'text-xs mt-1 sm:mt-2',
+            'text-xs mt-1 sm:mt-2 leading-[1.5] font-normal',
             isUser ? 'text-white/70' : 'text-gray-500'
           )}
         >

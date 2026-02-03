@@ -107,8 +107,8 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
         {isLoadingHistory ? (
           <div className="flex items-center justify-center h-full">
             <div className="flex flex-col items-center gap-2">
-              <Loader2 className="h-8 w-8 animate-spin text-slate-600" />
-              <p className="text-sm text-slate-600">Loading your chat history...</p>
+              <Loader2 className="h-8 w-8 animate-spin text-slate-700" />
+              <p className="text-sm text-slate-700 leading-[1.5] font-normal">Loading your chat history...</p>
             </div>
           </div>
         ) : messages.length === 0 && showSuggestions ? (
@@ -136,13 +136,13 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-slate-100 rounded-lg px-4 py-3">
-                  <Loader2 className="h-5 w-5 animate-spin text-slate-600" />
+                  <Loader2 className="h-5 w-5 animate-spin text-slate-700" />
                 </div>
               </div>
             )}
             {error && (
               <div className="flex justify-center">
-                <div className="bg-red-50 border border-red-200 text-red-800 rounded-lg px-4 py-3 text-sm">
+                <div className="bg-red-50 border border-red-200 text-red-800 rounded-lg px-4 py-3 text-sm leading-[1.5] font-normal">
                   Sorry, I encountered an error. Please try again.
                 </div>
               </div>
@@ -160,13 +160,13 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
             onChange={handleInputChange}
             placeholder="Ask about SKAT, visas, or housing..."
             disabled={isLoading}
-            className="flex-1 focus:ring-danish-red focus:border-danish-red"
+            className="flex-1 focus:ring-2 focus:ring-danish-red focus:border-danish-red focus:outline-none"
             aria-label="Chat message input"
           />
           <Button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="bg-danish-red hover:bg-[#A00A28] text-white shadow-sm hover:shadow-md transition-all focus:ring-danish-red"
+            className="bg-danish-red hover:bg-[#A00A28] text-white shadow-sm hover:shadow-md transition-all focus:ring-2 focus:ring-danish-red focus:ring-offset-2 focus:outline-none min-h-[44px] min-w-[44px]"
             aria-label="Send message"
           >
             {isLoading ? (

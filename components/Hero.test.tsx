@@ -48,11 +48,11 @@ describe('Hero Component - Unit Tests', () => {
       expect(ctaButton).toHaveClass('bg-danish-red');
     });
 
-    it('should have white background section', () => {
+    it('should have gradient background section', () => {
       const { container } = render(<Hero />);
       
       const section = container.querySelector('section');
-      expect(section).toHaveClass('bg-white');
+      expect(section).toHaveClass('bg-gradient-to-b', 'from-white', 'to-slate-50');
     });
   });
 
@@ -99,7 +99,7 @@ describe('Hero Component - Unit Tests', () => {
       const { container } = render(<Hero />);
       
       const section = container.querySelector('section');
-      expect(section).toHaveClass('bg-white');
+      expect(section).toHaveClass('py-12', 'sm:py-16', 'md:py-24', 'lg:py-32');
     });
 
     it('should center content with max-width constraint', () => {

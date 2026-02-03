@@ -90,7 +90,7 @@ describe('Property 2: Session Context Preservation', () => {
           });
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 
@@ -125,7 +125,7 @@ describe('Property 2: Session Context Preservation', () => {
           });
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 });

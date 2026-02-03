@@ -19,25 +19,27 @@ jest.mock('@/lib/supabase', () => ({
   },
 }));
 
-// Mock the ai/react module
-const mockHandleSubmit = jest.fn();
-const mockHandleInputChange = jest.fn();
+// Mock the @ai-sdk/react module
+const mockSendMessage = jest.fn();
 const mockSetMessages = jest.fn();
 
-jest.mock('ai/react', () => ({
+jest.mock('@ai-sdk/react', () => ({
   useChat: jest.fn(() => ({
     messages: [],
     input: '',
-    handleInputChange: mockHandleInputChange,
-    handleSubmit: mockHandleSubmit,
+    sendMessage: mockSendMessage,
     setMessages: mockSetMessages,
-    isLoading: false,
+    status: 'idle',
     error: null,
   })),
 }));
 
+jest.mock('ai', () => ({
+  DefaultChatTransport: jest.fn(),
+}));
+
 // Import after mocking
-import { useChat } from 'ai/react';
+import { useChat } from '@ai-sdk/react';
 import { getChatHistory, getMessages } from '@/lib/supabase';
 
 describe('ChatInterface', () => {
@@ -52,10 +54,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -69,10 +70,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -89,10 +89,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -107,13 +106,12 @@ describe('ChatInterface', () => {
     it('should hide SuggestedQuestions when messages exist', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [
-          { id: '1', role: 'user', content: 'Test message', createdAt: new Date() },
+          { id: '1', role: 'user', parts: [{ type: 'text', text: 'Test message' }], createdAt: new Date() },
         ],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -129,10 +127,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
       
@@ -141,7 +138,9 @@ describe('ChatInterface', () => {
       const questionButton = screen.getByText(/How do I register with SKAT/);
       await user.click(questionButton);
 
-      expect(mockHandleInputChange).toHaveBeenCalled();
+      // The input should be populated with the question
+      const input = screen.getByPlaceholderText(/Ask about SKAT, visas, or housing/) as HTMLInputElement;
+      expect(input.value).toContain('SKAT');
     });
   });
 
@@ -149,14 +148,13 @@ describe('ChatInterface', () => {
     it('should display user and assistant messages', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [
-          { id: '1', role: 'user', content: 'Hello', createdAt: new Date() },
-          { id: '2', role: 'assistant', content: 'Hi there!', createdAt: new Date() },
+          { id: '1', role: 'user', parts: [{ type: 'text', text: 'Hello' }], createdAt: new Date() },
+          { id: '2', role: 'assistant', parts: [{ type: 'text', text: 'Hi there!' }], createdAt: new Date() },
         ],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -169,15 +167,14 @@ describe('ChatInterface', () => {
     it('should display messages in order', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [
-          { id: '1', role: 'user', content: 'First message', createdAt: new Date() },
-          { id: '2', role: 'assistant', content: 'Second message', createdAt: new Date() },
-          { id: '3', role: 'user', content: 'Third message', createdAt: new Date() },
+          { id: '1', role: 'user', parts: [{ type: 'text', text: 'First message' }], createdAt: new Date() },
+          { id: '2', role: 'assistant', parts: [{ type: 'text', text: 'Second message' }], createdAt: new Date() },
+          { id: '3', role: 'user', parts: [{ type: 'text', text: 'Third message' }], createdAt: new Date() },
         ],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -189,27 +186,30 @@ describe('ChatInterface', () => {
   });
 
   describe('Message submission', () => {
-    it('should call handleSubmit when form is submitted with valid input', async () => {
+    it('should call sendMessage when form is submitted with valid input', async () => {
       const user = userEvent.setup();
+      const mockSend = jest.fn();
       
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
-        input: 'Test message',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        input: '',
+        sendMessage: mockSend,
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
       render(<ChatInterface userId={null} />);
 
-      const form = screen.getByRole('button', { name: /send message/i }).closest('form');
-      if (form) {
-        await user.click(screen.getByRole('button', { name: /send message/i }));
-      }
+      // Type into the input field
+      const input = screen.getByPlaceholderText(/Ask about SKAT, visas, or housing/);
+      await user.type(input, 'Test message');
 
-      expect(mockHandleSubmit).toHaveBeenCalled();
+      // Click send button
+      const sendButton = screen.getByRole('button', { name: /send message/i });
+      await user.click(sendButton);
+
+      expect(mockSend).toHaveBeenCalledWith({ text: 'Test message' });
     });
 
     it('should not submit when input is empty', async () => {
@@ -218,10 +218,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -233,16 +232,15 @@ describe('ChatInterface', () => {
   });
 
   describe('Loading state', () => {
-    it('should display loading indicator when isLoading is true', () => {
+    it('should display loading indicator when status is streaming', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [
-          { id: '1', role: 'user', content: 'Test', createdAt: new Date() },
+          { id: '1', role: 'user', parts: [{ type: 'text', text: 'Test' }], createdAt: new Date() },
         ],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: true,
+        status: 'streaming',
         error: null,
       });
 
@@ -256,10 +254,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: 'Test',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: true,
+        status: 'streaming',
         error: null,
       });
 
@@ -277,13 +274,12 @@ describe('ChatInterface', () => {
     it('should display error message when error occurs', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [
-          { id: '1', role: 'user', content: 'Test', createdAt: new Date() },
+          { id: '1', role: 'user', parts: [{ type: 'text', text: 'Test' }], createdAt: new Date() },
         ],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: new Error('API Error'),
       });
 
@@ -295,13 +291,12 @@ describe('ChatInterface', () => {
     it('should display user-friendly error message', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [
-          { id: '1', role: 'user', content: 'Test', createdAt: new Date() },
+          { id: '1', role: 'user', parts: [{ type: 'text', text: 'Test' }], createdAt: new Date() },
         ],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: new Error('Network failure'),
       });
 
@@ -319,10 +314,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -330,9 +324,7 @@ describe('ChatInterface', () => {
 
       expect(useChat).toHaveBeenCalledWith(
         expect.objectContaining({
-          body: {
-            userId: testUserId,
-          },
+          transport: expect.anything(),
         })
       );
     });
@@ -341,10 +333,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -352,9 +343,7 @@ describe('ChatInterface', () => {
 
       expect(useChat).toHaveBeenCalledWith(
         expect.objectContaining({
-          body: {
-            userId: undefined,
-          },
+          transport: expect.anything(),
         })
       );
     });
@@ -375,10 +364,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -389,8 +377,18 @@ describe('ChatInterface', () => {
         expect(getMessages).toHaveBeenCalledWith(mockChatId);
         expect(mockSetMessages).toHaveBeenCalledWith(
           expect.arrayContaining([
-            expect.objectContaining({ content: 'Previous question' }),
-            expect.objectContaining({ content: 'Previous answer' }),
+            expect.objectContaining({ 
+              role: 'user',
+              parts: expect.arrayContaining([
+                expect.objectContaining({ type: 'text', text: 'Previous question' })
+              ])
+            }),
+            expect.objectContaining({ 
+              role: 'assistant',
+              parts: expect.arrayContaining([
+                expect.objectContaining({ type: 'text', text: 'Previous answer' })
+              ])
+            }),
           ])
         );
       });
@@ -400,10 +398,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -430,10 +427,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -442,9 +438,24 @@ describe('ChatInterface', () => {
       await waitFor(() => {
         expect(mockSetMessages).toHaveBeenCalledWith(
           expect.arrayContaining([
-            expect.objectContaining({ content: 'First message', role: 'user' }),
-            expect.objectContaining({ content: 'Second message', role: 'assistant' }),
-            expect.objectContaining({ content: 'Third message', role: 'user' }),
+            expect.objectContaining({ 
+              role: 'user',
+              parts: expect.arrayContaining([
+                expect.objectContaining({ type: 'text', text: 'First message' })
+              ])
+            }),
+            expect.objectContaining({ 
+              role: 'assistant',
+              parts: expect.arrayContaining([
+                expect.objectContaining({ type: 'text', text: 'Second message' })
+              ])
+            }),
+            expect.objectContaining({ 
+              role: 'user',
+              parts: expect.arrayContaining([
+                expect.objectContaining({ type: 'text', text: 'Third message' })
+              ])
+            }),
           ])
         );
       });
@@ -456,14 +467,13 @@ describe('ChatInterface', () => {
       // Guest user (userId is null)
       (useChat as jest.Mock).mockReturnValue({
         messages: [
-          { id: '1', role: 'user', content: 'Guest message', createdAt: new Date() },
-          { id: '2', role: 'assistant', content: 'Guest response', createdAt: new Date() },
+          { id: '1', role: 'user', parts: [{ type: 'text', text: 'Guest message' }], createdAt: new Date() },
+          { id: '2', role: 'assistant', parts: [{ type: 'text', text: 'Guest response' }], createdAt: new Date() },
         ],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -479,10 +489,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -501,13 +510,12 @@ describe('ChatInterface', () => {
       // First render with messages
       (useChat as jest.Mock).mockReturnValue({
         messages: [
-          { id: '1', role: 'user', content: 'Guest message', createdAt: new Date() },
+          { id: '1', role: 'user', parts: [{ type: 'text', text: 'Guest message' }], createdAt: new Date() },
         ],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
 
@@ -523,10 +531,9 @@ describe('ChatInterface', () => {
       (useChat as jest.Mock).mockReturnValue({
         messages: [],
         input: '',
-        handleInputChange: mockHandleInputChange,
-        handleSubmit: mockHandleSubmit,
+        sendMessage: jest.fn(),
         setMessages: mockSetMessages,
-        isLoading: false,
+        status: 'idle',
         error: null,
       });
       

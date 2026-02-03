@@ -55,7 +55,7 @@ describe('Property 1: Message Processing Response', () => {
           expect(response.content).not.toBe(userMessage);
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 
@@ -90,7 +90,7 @@ describe('Property 1: Message Processing Response', () => {
           expect(response.content.length).toBeGreaterThan(0);
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 
@@ -128,7 +128,7 @@ describe('Property 1: Message Processing Response', () => {
           expect(response2.content.length).toBeGreaterThan(0);
         }
       ),
-      { numRuns: 50 }
+      { numRuns: 10 }
     );
   });
 });

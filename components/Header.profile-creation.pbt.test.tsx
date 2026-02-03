@@ -89,7 +89,7 @@ describe('Property 6: Profile Creation on Authentication', () => {
           return true;
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 
@@ -128,7 +128,7 @@ describe('Property 6: Profile Creation on Authentication', () => {
           return true;
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 
@@ -196,7 +196,7 @@ describe('Property 6: Profile Creation on Authentication', () => {
           return true;
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 });

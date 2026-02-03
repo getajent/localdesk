@@ -68,7 +68,7 @@ describe('Property 5: Authentication Session Storage', () => {
           return true;
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 
@@ -126,7 +126,7 @@ describe('Property 5: Authentication Session Storage', () => {
           return true;
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 });

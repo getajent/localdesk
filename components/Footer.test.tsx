@@ -10,7 +10,7 @@ describe('Footer Component - Unit Tests', () => {
       const copyright = screen.getByText(`© ${currentYear} LocalDesk. All rights reserved.`);
       
       expect(copyright).toBeInTheDocument();
-      expect(copyright).toHaveClass('text-slate-600', 'text-sm');
+      expect(copyright).toHaveClass('text-slate-700', 'text-sm');
     });
   });
 
@@ -53,20 +53,20 @@ describe('Footer Component - Unit Tests', () => {
   });
 
   describe('Styling', () => {
-    it('should style links with slate-600 text', () => {
+    it('should style links with slate-700 text', () => {
       render(<Footer />);
       
       const links = screen.getAllByRole('link');
       links.forEach(link => {
-        expect(link).toHaveClass('text-slate-600', 'text-sm');
+        expect(link).toHaveClass('text-slate-700', 'text-sm');
       });
     });
 
-    it('should have minimal design with proper spacing', () => {
+    it('should have gradient background and proper spacing', () => {
       const { container } = render(<Footer />);
       
       const footer = container.querySelector('footer');
-      expect(footer).toHaveClass('w-full', 'bg-white', 'border-t', 'border-slate-200', 'py-8');
+      expect(footer).toHaveClass('w-full', 'bg-gradient-to-b', 'from-neutral-50', 'to-white', 'border-t', 'border-slate-200');
     });
   });
 

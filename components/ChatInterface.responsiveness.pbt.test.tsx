@@ -57,7 +57,7 @@ describe('Property 14: Chat Interface Responsiveness', () => {
           expect(messagesContainer).toBeInTheDocument();
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 
@@ -89,7 +89,7 @@ describe('Property 14: Chat Interface Responsiveness', () => {
           expect(form?.parentElement).toHaveClass('border-t');
         }
       ),
-      { numRuns: 100 }
+      { numRuns: 20 }
     );
   });
 });

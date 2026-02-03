@@ -93,7 +93,7 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
       <Card className="w-full max-w-md relative">
         <button
           onClick={handleClose}
-          className="absolute right-4 top-4 text-slate-400 hover:text-slate-600"
+          className="absolute right-4 top-4 text-slate-400 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-danish-red focus:ring-offset-2 rounded-sm transition-colors"
           aria-label="Close"
         >
           <X className="h-5 w-5" />
@@ -121,6 +121,7 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
                 disabled={isLoading}
+                className="focus:ring-2 focus:ring-danish-red focus:border-danish-red focus:outline-none"
                 required
               />
             </div>
@@ -136,6 +137,7 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 disabled={isLoading}
+                className="focus:ring-2 focus:ring-danish-red focus:border-danish-red focus:outline-none"
                 required
               />
             </div>
@@ -148,13 +150,13 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
 
             <Button
               type="submit"
-              className="w-full bg-[#C60C30] hover:bg-[#A00A28] text-white"
+              className="w-full bg-[#C60C30] hover:bg-[#A00A28] text-white focus:ring-2 focus:ring-danish-red focus:ring-offset-2 focus:outline-none"
               disabled={isLoading}
             >
               {isLoading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Log In'}
             </Button>
 
-            <div className="text-center text-sm text-slate-600">
+            <div className="text-center text-sm text-slate-700">
               {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
               <button
                 type="button"
@@ -162,7 +164,7 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
                   setIsSignUp(!isSignUp);
                   setError(null);
                 }}
-                className="text-[#C60C30] hover:underline font-medium"
+                className="text-[#C60C30] hover:underline font-medium focus:outline-none focus:ring-2 focus:ring-danish-red focus:ring-offset-2 rounded-sm px-1"
                 disabled={isLoading}
               >
                 {isSignUp ? 'Log In' : 'Sign Up'}
