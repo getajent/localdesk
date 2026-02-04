@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "index-docs": "tsx scripts/index-documentation.ts",
+    "test-search": "tsx scripts/test-search.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.25",
@@ -19,6 +21,7 @@
     "ai": "^6.0.68",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.3",
     "lucide-react": "^0.468.0",
     "next": "^16.1.6",
     "openai": "^4.77.3",
@@ -47,6 +50,7 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

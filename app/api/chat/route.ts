@@ -1,17 +1,19 @@
 import { openai } from '@ai-sdk/openai';
 import { streamText } from 'ai';
 import { saveMessage } from '@/lib/supabase';
+import { searchDocuments } from '@/lib/embeddings';
 
 /**
  * Builds the system prompt with Expert Danish Consultant persona and knowledge base
  */
-function buildSystemPrompt(): string {
-  return `You are an expert Danish consultant specializing in helping expats navigate Danish bureaucracy.
+function buildSystemPrompt(relevantDocs?: string): string {
+  const basePrompt = `You are an expert Danish consultant specializing in helping expats navigate Danish bureaucracy.
 
 Your expertise covers:
 - SKAT (Danish Tax Authority): Registration, tax cards, annual returns
 - Visas and Permits: Work permits, residence permits, documentation
 - Housing: Rental market, contracts, tenant rights, finding apartments
+- Banking, healthcare, education, and all aspects of Danish life
 
 Guidelines:
 1. Provide accurate, actionable information about Danish procedures
@@ -21,6 +23,17 @@ Guidelines:
 5. If asked about unrelated topics, politely redirect to Danish bureaucracy matters
 
 Tone: Professional yet friendly, like a knowledgeable local helping a newcomer.`;
+
+  if (relevantDocs) {
+    return `${basePrompt}
+
+RELEVANT DOCUMENTATION:
+${relevantDocs}
+
+Use the above documentation to provide accurate, specific answers. Always prioritize information from the documentation when available.`;
+  }
+
+  return basePrompt;
 }
 
 /**
@@ -59,8 +72,22 @@ export async function POST(req: Request) {
 
     const userMessage = messages[messages.length - 1]?.content || messages[messages.length - 1]?.text || '';
 
-    // Build system prompt
-    const systemPrompt = buildSystemPrompt();
+    // Search for relevant documentation
+    let relevantDocs = '';
+    try {
+      const docs = await searchDocuments(userMessage, 0.7, 3);
+      if (docs.length > 0) {
+        relevantDocs = docs
+          .map((doc, i) => `[Document ${i + 1}: ${doc.metadata.title}]\n${doc.content}`)
+          .join('\n\n---\n\n');
+      }
+    } catch (error) {
+      console.error('Error searching documents:', error);
+      // Continue without docs if search fails
+    }
+
+    // Build system prompt with relevant documentation
+    const systemPrompt = buildSystemPrompt(relevantDocs);
 
     // Call OpenAI with streaming using AI SDK
     const result = streamText({
