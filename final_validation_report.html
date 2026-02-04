@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denmark Living Documentation - Validation Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 8px 8px 0 0; }
+        .header h1 { margin: 0; font-size: 2.5em; }
+        .header p { margin: 10px 0 0 0; opacity: 0.9; }
+        .status-badge { display: inline-block; padding: 8px 16px; border-radius: 20px; font-weight: bold; color: white; background: #fd7e14; }
+        .content { padding: 30px; }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+        .summary-card { background: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center; }
+        .summary-card h3 { margin: 0 0 10px 0; color: #495057; }
+        .summary-card .number { font-size: 2em; font-weight: bold; color: #007bff; }
+        .validator-section { margin: 30px 0; }
+        .validator-card { border: 1px solid #dee2e6; border-radius: 8px; margin: 15px 0; }
+        .validator-header { padding: 15px 20px; background: #f8f9fa; border-bottom: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center; }
+        .validator-content { padding: 20px; }
+        .status-success { color: #28a745; }
+        .status-error { color: #dc3545; }
+        .status-warning { color: #ffc107; }
+        .error-list { background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px; padding: 15px; margin: 10px 0; }
+        .warning-list { background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 15px; margin: 10px 0; }
+        .file-path { font-family: monospace; background: #e9ecef; padding: 2px 6px; border-radius: 3px; }
+        .recommendations { background: #d1ecf1; border: 1px solid #bee5eb; border-radius: 8px; padding: 20px; margin: 20px 0; }
+        .recommendations h3 { color: #0c5460; margin-top: 0; }
+        .footer { text-align: center; padding: 20px; color: #6c757d; border-top: 1px solid #dee2e6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Denmark Living Documentation</h1>
+            <p>Validation Report - 2026-02-04T01:35:53.796248</p>
+            <div style="margin-top: 15px;">
+                <span class="status-badge">ERRORS</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Validators</h3>
+                    <div class="number">10</div>
+                    <small>10 successful, 0 failed</small>
+                </div>
+                <div class="summary-card">
+                    <h3>Errors</h3>
+                    <div class="number" style="color: #dc3545;">738</div>
+                    <small>Critical issues found</small>
+                </div>
+                <div class="summary-card">
+                    <h3>Warnings</h3>
+                    <div class="number" style="color: #ffc107;">802</div>
+                    <small>Potential improvements</small>
+                </div>
+            </div>
+            
+            
+            <div class="validator-section">
+                <div class="validator-card">
+                    <div class="validator-header">
+                        <h3><span class="status-success">✓</span> Markdown Validation</h3>
+                        <small>0.24s</small>
+                    </div>
+                    <div class="validator-content">
+                        <p>Markdown format and structure validation</p>
+                        
+                <p><strong>Summary:</strong> 
+                72 files processed, 
+                0 errors, 
+                479 warnings</p>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="validator-section">
+                <div class="validator-card">
+                    <div class="validator-header">
+                        <h3><span class="status-success">✓</span> Metadata Validation</h3>
+                        <small>0.12s</small>
+                    </div>
+                    <div class="validator-content">
+                        <p>Frontmatter metadata validation</p>
+                        
+                <p><strong>Summary:</strong> 
+                72 files processed, 
+                57 errors, 
+                24 warnings</p>
+            <div class="error-list"><strong>Files with Issues:</strong><ul><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\index.md</span><ul><li>No frontmatter metadata found</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\README.md</span><ul><li>No frontmatter metadata found</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\digital-post.md</span><ul><li>No frontmatter metadata found</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\gp-registration.md</span><ul><li>No frontmatter metadata found</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\ics-centers.md</span><ul><li>No frontmatter metadata found</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\language-courses.md</span><ul><li>No frontmatter metadata found</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\overview.md</span><ul><li>No frontmatter metadata found</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\vehicle-import.md</span><ul><li>No frontmatter metadata found</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\before-moving\family-reunification.md</span><ul><li>No frontmatter metadata found</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\before-moving\overview.md</span><ul><li>No frontmatter metadata found</li></ul></li><li><em>... and 43 more files with issues</em></li></ul></div>
+                    </div>
+                </div>
+            </div>
+            <div class="validator-section">
+                <div class="validator-card">
+                    <div class="validator-header">
+                        <h3><span class="status-success">✓</span> Tokens Validation</h3>
+                        <small>0.31s</small>
+                    </div>
+                    <div class="validator-content">
+                        <p>Token count validation for RAG optimization</p>
+                        
+                <p><strong>Summary:</strong> 
+                72 files processed, 
+                0 errors, 
+                0 warnings</p>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="validator-section">
+                <div class="validator-card">
+                    <div class="validator-header">
+                        <h3><span class="status-success">✓</span> Links Validation</h3>
+                        <small>0.80s</small>
+                    </div>
+                    <div class="validator-content">
+                        <p>Cross-reference link validation</p>
+                        
+                <p><strong>Summary:</strong> 
+                72 files processed, 
+                0 errors, 
+                0 warnings</p>
+            <div class="error-list"><strong>Files with Issues:</strong><ul><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\bank-account.md</span></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\cpr-number.md</span></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\digital-post.md</span></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\mitid.md</span></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\overview.md</span></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\before-moving\work-permits.md</span></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\metadata\document-template.md</span></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\social-benefits\child-benefits.md</span></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\social-benefits\student-support.md</span></li></ul></div>
+                    </div>
+                </div>
+            </div>
+            <div class="validator-section">
+                <div class="validator-card">
+                    <div class="validator-header">
+                        <h3><span class="status-success">✓</span> Structure Validation</h3>
+                        <small>0.01s</small>
+                    </div>
+                    <div class="validator-content">
+                        <p>Directory structure validation</p>
+                        
+                <p><strong>Summary:</strong> 
+                70 files processed, 
+                0 errors, 
+                0 warnings</p>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="validator-section">
+                <div class="validator-card">
+                    <div class="validator-header">
+                        <h3><span class="status-success">✓</span> Procedures Validation</h3>
+                        <small>0.14s</small>
+                    </div>
+                    <div class="validator-content">
+                        <p>Procedural guide completeness validation</p>
+                        
+                <p><strong>Summary:</strong> 
+                72 files processed, 
+                153 errors, 
+                114 warnings</p>
+            <div class="error-list"><strong>Files with Issues:</strong><ul><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\bank-account.md</span><ul><li>Line 153: Step numbering issue - expected 1, found 7</li><li>Line 300: Step numbering issue - expected 1, found 2</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\cpr-number.md</span><ul><li>Line 102: Step numbering issue - expected 1, found 4</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\digital-post.md</span><ul><li>Missing required section: required_documents</li><li>Missing required section: processing_time</li><li>Missing required section: next_steps</li><li><em>... and 1 more errors</em></li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\gp-registration.md</span><ul><li>Missing required section: required_documents</li><li>Missing required section: processing_time</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\health-insurance.md</span><ul><li>Missing required section: required_documents</li><li>Line 101: Step numbering issue - expected 1, found 3</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\ics-centers.md</span><ul><li>Missing required section: next_steps</li><li>No numbered steps found - procedural guides should include step-by-step instructions</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\language-courses.md</span><ul><li>Missing required section: prerequisites</li><li>Missing required section: location</li><li>Missing required section: next_steps</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\mitid.md</span><ul><li>Missing required section: required_documents</li><li>Line 101: Step numbering issue - expected 1, found 4</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\vehicle-import.md</span><ul><li>Missing required section: next_steps</li><li>Line 52: Step numbering issue - expected 1, found 4</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\before-moving\cultural-preparation.md</span><ul><li>Missing required section: required_documents</li><li>Missing required section: next_steps</li></ul></li><li><em>... and 36 more files with issues</em></li></ul></div>
+                    </div>
+                </div>
+            </div>
+            <div class="validator-section">
+                <div class="validator-card">
+                    <div class="validator-header">
+                        <h3><span class="status-success">✓</span> Translations Validation</h3>
+                        <small>0.14s</small>
+                    </div>
+                    <div class="validator-content">
+                        <p>Danish term translation validation</p>
+                        
+                <p><strong>Summary:</strong> 
+                72 files processed, 
+                0 errors, 
+                0 warnings</p>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="validator-section">
+                <div class="validator-card">
+                    <div class="validator-header">
+                        <h3><span class="status-success">✓</span> Acronyms Validation</h3>
+                        <small>0.35s</small>
+                    </div>
+                    <div class="validator-content">
+                        <p>Acronym definition validation</p>
+                        
+                <p><strong>Summary:</strong> 
+                72 files processed, 
+                295 errors, 
+                147 warnings</p>
+            <div class="error-list"><strong>Files with Issues:</strong><ul><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\index.md</span><ul><li>Line 16: Acronym 'CPR' used without definition</li><li>Line 31: Acronym 'GP' used without definition</li><li>Line 31: Acronym 'ICS' used without definition</li><li><em>... and 3 more errors</em></li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\README.md</span><ul><li>Line 5: Acronym 'AI' used without definition</li><li>Line 115: Acronym 'FAQ' used without definition</li><li>Line 144: Acronym 'SKAT' used without definition</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\bank-account.md</span><ul><li>Line 6: Acronym 'EU' used without definition</li><li>Line 7: Acronym 'IBAN' used without definition</li><li>Line 25: Acronym 'CPR' used without definition</li><li><em>... and 7 more errors</em></li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\cpr-number.md</span><ul><li>Line 1: Acronym 'CPR' used without definition</li><li>Line 6: Acronym 'EU' used without definition</li><li>Line 7: Acronym 'ID' used without definition</li><li><em>... and 3 more errors</em></li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\digital-post.md</span><ul><li>Line 9: Acronym 'CPR' used without definition</li><li>Line 63: Acronym 'SMS' used without definition</li><li>Line 91: Acronym 'PDF' used without definition</li><li><em>... and 1 more errors</em></li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\gp-registration.md</span><ul><li>Line 1: Acronym 'GP' used without definition</li><li>Line 9: Acronym 'CPR' used without definition</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\health-insurance.md</span><ul><li>Line 6: Acronym 'EU' used without definition</li><li>Line 31: Acronym 'DKK' used without definition</li><li>Line 57: Acronym 'EEA' used without definition</li><li><em>... and 9 more errors</em></li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\ics-centers.md</span><ul><li>Line 23: Acronym 'CPR' used without definition</li><li>Line 112: Acronym 'EU' used without definition</li><li>Line 146: Acronym 'FAQ' used without definition</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\language-courses.md</span><ul><li>Line 14: Acronym 'CPR' used without definition</li><li>Line 62: Acronym 'EU' used without definition</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\mitid.md</span><ul><li>Line 6: Acronym 'EU' used without definition</li><li>Line 25: Acronym 'CPR' used without definition</li><li>Line 27: Acronym 'OR' used without definition</li><li><em>... and 4 more errors</em></li></ul></li><li><em>... and 53 more files with issues</em></li></ul></div>
+                    </div>
+                </div>
+            </div>
+            <div class="validator-section">
+                <div class="validator-card">
+                    <div class="validator-header">
+                        <h3><span class="status-success">✓</span> Terminology Validation</h3>
+                        <small>0.20s</small>
+                    </div>
+                    <div class="validator-content">
+                        <p>Terminology consistency validation</p>
+                        
+                <p><strong>Summary:</strong> 
+                72 files processed, 
+                0 errors, 
+                0 warnings</p>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="validator-section">
+                <div class="validator-card">
+                    <div class="validator-header">
+                        <h3><span class="status-success">✓</span> Citizenship Validation</h3>
+                        <small>0.22s</small>
+                    </div>
+                    <div class="validator-content">
+                        <p>EU/Non-EU citizenship distinction validation</p>
+                        
+                <p><strong>Summary:</strong> 
+                72 files processed, 
+                233 errors, 
+                38 warnings</p>
+            <div class="error-list"><strong>Files with Issues:</strong><ul><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\index.md</span><ul><li>Missing citizenship distinction for: Pre-arrival information including residence permits, work permits, housing search, study programs, f...</li><li>Missing citizenship distinction for: Essential registration procedures: CPR number, MitID, health insurance, GP registration, tax card, b...</li><li>Missing citizenship distinction for: See the [CPR Number guide](arrival-process/cpr-number.md) for complete information on eligibility, r...</li><li><em>... and 1 more errors</em></li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\bank-account.md</span><ul><li>Missing citizenship distinction for: 
+**Problem**: Bank refuses to open an account  
+**Solution**:
+- **Ask for specific reasons**: Banks ...</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\cpr-number.md</span><ul><li>Missing citizenship distinction for: 
+---
+title: "CPR Number - Civil Registration Number"
+category: "Arrival Process"
+audience: ["EU Citi...</li><li>Missing citizenship distinction for: ...</li><li>Missing citizenship distinction for: 
+Depending on your citizenship, you need appropriate documentation:
+...</li><li><em>... and 6 more errors</em></li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\digital-post.md</span><ul><li>Missing citizenship distinction for: 
+- **Tax documents**: Must respond within specified deadlines
+- **Legal notices**: Response times va...</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\gp-registration.md</span><ul><li>Missing citizenship distinction for: 
+> **Last Updated**: 2025-02-03  
+> **Official Source**: https://borger.dk/sundhed-og-sygdom/laegeva...</li><li>Missing citizenship distinction for: ...</li><li>Missing citizenship distinction for: 
+1. **Online Registration** (Recommended)
+   - Go to sundhed.dk
+   - Log in with **MitID**
+   - Navi...</li><li><em>... and 1 more errors</em></li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\health-insurance.md</span><ul><li>Missing citizenship distinction for: ...</li><li>Missing citizenship distinction for: 
+The health insurance card is issued automatically when you register for a CPR number. There is no s...</li><li>Missing citizenship distinction for: 
+The health insurance card is not an application-based process—it's automatically issued when you re...</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\ics-centers.md</span><ul><li>Missing citizenship distinction for: 
+ICS centers help with:
+- **CPR number application** guidance and support
+- **MitID registration** a...</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\language-courses.md</span><ul><li>Missing citizenship distinction for: ...</li><li>Missing citizenship distinction for: 
+**Eligible participants**:
+- **Refugees** and family reunification cases
+- **EU citizens** residing...</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\mitid.md</span><ul><li>Missing citizenship distinction for: 
+If you cannot get MitID, common reasons include:
+- **Invalid or expired documents**: Ensure passpor...</li></ul></li><li><span class="file-path">D:\Downloads\localdesk\docs\denmark-living\arrival-process\overview.md</span><ul><li>Missing citizenship distinction for: 
+> **Last Updated**: 2025-01-15  
+> **Official Source**: https://lifeindenmark.borger.dk/  
+> **Appl...</li><li>Missing citizenship distinction for: 1. **Apply for CPR number** (requires permanent address and 3-month stay proof)
+2. **Register for Mi...</li><li>Missing citizenship distinction for: ...</li><li><em>... and 5 more errors</em></li></ul></li><li><em>... and 46 more files with issues</em></li></ul></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recommendations"><h3>🔧 Actionable Recommendations</h3><ol><li><strong>HIGH Priority:</strong> 738 critical errors found<br><em>Action:</em> Review error details and fix issues before proceeding</li><li><strong>MEDIUM Priority:</strong> 48 files missing frontmatter metadata<br><em>Action:</em> Add required metadata fields (title, category, source_url, last_updated)</li><li><strong>MEDIUM Priority:</strong> 3 sections exceed 1000 token limit<br><em>Action:</em> Split large sections or condense content for better RAG performance</li><li><strong>MEDIUM Priority:</strong> 802 warnings found<br><em>Action:</em> Review warnings for potential improvements to documentation quality</li></ol></div>
+        </div>
+        
+        <div class="footer">
+            <p>Generated by Denmark Living Documentation System Validator</p>
+        </div>
+    </div>
+</body>
+</html>
