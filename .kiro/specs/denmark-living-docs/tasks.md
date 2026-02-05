@@ -143,7 +143,7 @@ This implementation plan focuses on creating the documentation content and valid
     - Include practical cycling tips for Denmark
     - _Requirements: 15.5_
 
-- [~] 8. Checkpoint - Review documentation completeness
+- [ ] 8. Checkpoint - Review documentation completeness
   - Ensure all high-priority documents are created
   - Verify source attribution is complete
   - Check that Danish terms have English translations
@@ -465,7 +465,7 @@ This implementation plan focuses on creating the documentation content and valid
     - Test link validator with valid/broken links
     - _Requirements: All_
 
-- [~] 16. Final checkpoint - Run complete validation
+- [ ] 16. Final checkpoint - Run complete validation
   - Run full validation suite against all documentation
   - Review and fix any violations
   - Verify all properties pass

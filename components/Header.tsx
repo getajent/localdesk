@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { User } from '@supabase/supabase-js';
 import { Button } from '@/components/ui/button';
-import { supabase } from '@/lib/supabase';
 import { AuthModal } from '@/components/AuthModal';
 import { Logo } from '@/components/Logo';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { useAuth } from '@/components/AuthProvider';
 
 export interface HeaderProps {
   user: User | null;
@@ -14,9 +14,12 @@ export interface HeaderProps {
 }
 
 export function Header({ user, onAuthChange }: HeaderProps) {
+  const { signOut, userSettings } = useAuth();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
+
+  const displayName = userSettings?.displayName || user?.email?.split('@')[0] || 'User';
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -50,14 +53,11 @@ export function Header({ user, onAuthChange }: HeaderProps) {
     setIsAuthModalOpen(true);
   };
 
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error('Logout error:', error);
-    } else {
-      onAuthChange?.();
-    }
-  };
+  const handleLogout = useCallback(async () => {
+    console.log('handleLogout called');
+    // Use signOut from context - it handles everything
+    await signOut();
+  }, [signOut]);
 
   const handleAuthSuccess = () => {
     onAuthChange?.();
@@ -96,7 +96,7 @@ export function Header({ user, onAuthChange }: HeaderProps) {
                   <div className="flex items-center gap-6">
                     <div className="flex flex-col items-end">
                       <span className="text-[10px] font-black tracking-widest text-foreground uppercase">
-                        {user.email?.split('@')[0]}
+                        {displayName}
                       </span>
                       <span className="text-[8px] font-bold text-emerald-500 uppercase tracking-widest">Verified User</span>
                     </div>

@@ -183,6 +183,14 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
               >
                 {isSignUp ? 'Already a member? Sign in' : 'New here? Create account'}
               </button>
+
+              <p className="text-[10px] text-muted-foreground/60 text-center mt-6 font-sans leading-tight max-w-[240px] mx-auto">
+                By continuing, you agree to our{' '}
+                <a href="/terms" className="underline hover:text-foreground transition-colors">Terms</a>
+                {' '}and{' '}
+                <a href="/privacy" className="underline hover:text-foreground transition-colors">Privacy Policy</a>
+                {' '}including cookie usage.
+              </p>
             </div>
           </form>
         </CardContent>

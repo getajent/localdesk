@@ -1,35 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
+import { createBrowserClient } from '@supabase/ssr';
+import { SupabaseClient } from '@supabase/supabase-js';
 
-/**
- * Validates that all required environment variables are present
- * @throws Error if any required environment variable is missing
- */
-export function validateEnvironmentVariables(): void {
-  const requiredEnvVars = [
-    'OPENAI_API_KEY',
-    'NEXT_PUBLIC_SUPABASE_URL',
-    'NEXT_PUBLIC_SUPABASE_ANON_KEY'
-  ];
-
-  const missingVars = requiredEnvVars.filter(varName => {
-    const value = varName.startsWith('NEXT_PUBLIC_')
-      ? process.env[varName]
-      : process.env[varName];
-    return !value || value.trim() === '';
-  });
-
-  if (missingVars.length > 0) {
-    throw new Error(
-      `Missing required environment variables: ${missingVars.join(', ')}. ` +
-      `Please check your .env.local file and ensure all variables are set.`
-    );
-  }
-}
-
-// Don't validate on module load - let Next.js load env vars first
-// validateEnvironmentVariables();
-
-// Simple direct initialization - env vars should be available in Next.js
+// Environment variables
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
@@ -37,11 +9,39 @@ if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error('Missing Supabase environment variables');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+/**
+ * Main Supabase browser client for use in client components.
+ */
+export const supabase = createBrowserClient(supabaseUrl, supabaseAnonKey);
 
 /**
- * Gets the current authenticated user session
- * @returns The current user or null if not authenticated
+ * Common settings interface
+ */
+export interface UserSettings {
+  displayName?: string;
+  residencyStatus?: 'eu_citizen' | 'non_eu_citizen' | 'unknown';
+  occupationStatus?: 'student' | 'employed' | 'self_employed' | 'job_seeker' | 'other';
+  hasArrived?: boolean;
+  roadmapModifications?: {
+    hiddenStepIds?: string[];
+    customSteps?: Array<{ id: string; title: string; description: string; status: 'completed' | 'current' | 'upcoming'; iconName?: string }>;
+  };
+  completedSteps?: string[];
+}
+
+/**
+ * Standard error handler for DB operations
+ */
+async function handleDbError(error: any, context: string) {
+  if (error) {
+    console.error(`[Supabase] Error in ${context}:`, error);
+    return error;
+  }
+  return null;
+}
+
+/**
+ * Gets the current authenticated user
  */
 export async function getCurrentUser() {
   try {
@@ -49,14 +49,13 @@ export async function getCurrentUser() {
     if (error) throw error;
     return user;
   } catch (error) {
-    console.error('Error getting current user:', error);
+    handleDbError(error, 'getCurrentUser');
     return null;
   }
 }
 
 /**
  * Gets the current session
- * @returns The current session or null if not authenticated
  */
 export async function getSession() {
   try {
@@ -64,21 +63,18 @@ export async function getSession() {
     if (error) throw error;
     return session;
   } catch (error) {
-    console.error('Error getting session:', error);
     return null;
   }
 }
 
 /**
  * Creates or retrieves a profile for a user
- * @param userId - The user's ID
- * @param userData - Optional user data to populate the profile
- * @returns The profile record or null on error
  */
-export async function ensureProfile(userId: string, userData?: { full_name?: string; metadata?: any }) {
+export async function ensureProfile(userId: string, userData?: { full_name?: string; metadata?: any }, client?: SupabaseClient) {
+  const sb = client || supabase;
   try {
     // Check if profile exists
-    const { data: existingProfile } = await supabase
+    const { data: existingProfile, error: selectError } = await sb
       .from('profiles')
       .select('*')
       .eq('user_id', userId)
@@ -88,104 +84,191 @@ export async function ensureProfile(userId: string, userData?: { full_name?: str
       return existingProfile;
     }
 
-    // Create profile if it doesn't exist
-    const { data: newProfile, error } = await supabase
-      .from('profiles')
-      .insert({
-        user_id: userId,
-        full_name: userData?.full_name || null,
-        metadata: userData?.metadata || {},
-      })
-      .select()
-      .single();
+    // Profile doesn't exist (PGRST116 = no rows), create it
+    if (selectError?.code === 'PGRST116' || !existingProfile) {
+      const { data: newProfile, error: insertError } = await sb
+        .from('profiles')
+        .insert({
+          user_id: userId,
+          full_name: userData?.full_name || null,
+          metadata: userData?.metadata || {},
+        })
+        .select()
+        .single();
 
-    if (error) throw error;
-    return newProfile;
+      if (insertError) {
+        // Handle race condition - profile might have been created by another request
+        if (insertError.code === '23505') {
+          const { data: retryProfile } = await sb
+            .from('profiles')
+            .select('*')
+            .eq('user_id', userId)
+            .single();
+          return retryProfile;
+        }
+        throw insertError;
+      }
+      return newProfile;
+    }
+
+    if (selectError) throw selectError;
+    return null;
   } catch (error) {
-    console.error('Error ensuring profile:', error);
+    handleDbError(error, 'ensureProfile');
     return null;
   }
 }
 
 /**
- * Database helper function to save a message pair (user + assistant)
- * @param userId - The authenticated user's ID
- * @param userMessage - The user's message content
- * @param assistantMessage - The assistant's response content
+ * Retrieves user settings from profile metadata
+ */
+export async function getUserSettings(userId: string, client?: SupabaseClient): Promise<UserSettings> {
+  const sb = client || supabase;
+  try {
+    const { data, error } = await sb
+      .from('profiles')
+      .select('metadata')
+      .eq('user_id', userId)
+      .single();
+
+    if (error) {
+      if (error.code === 'PGRST116') return {};
+      throw error;
+    }
+
+    return (data?.metadata as UserSettings) || {};
+  } catch (error) {
+    handleDbError(error, 'getUserSettings');
+    return {};
+  }
+}
+
+/**
+ * Updates user settings in profile metadata
+ */
+export async function updateUserSettings(
+  userId: string,
+  settings: Partial<UserSettings>,
+  client?: SupabaseClient
+): Promise<UserSettings | null> {
+
+  const sb = client || supabase;
+
+  try {
+    // Get existing settings
+    const { data: profile, error: selectError } = await sb
+      .from('profiles')
+      .select('metadata')
+      .eq('user_id', userId)
+      .single();
+
+    let existing: UserSettings = {};
+
+    if (selectError) {
+      if (selectError.code === 'PGRST116') {
+        // Profile doesn't exist, will be handled by the update if possible,
+        // but it's safer to ensure profile exists first.
+        await ensureProfile(userId, undefined, client);
+      } else {
+        throw selectError;
+      }
+    } else {
+      existing = (profile?.metadata as UserSettings) || {};
+    }
+
+    // Merge and update
+    const merged = { ...existing, ...settings };
+    const { data, error: updateError } = await sb
+      .from('profiles')
+      .update({ metadata: merged })
+      .eq('user_id', userId)
+      .select('metadata')
+      .single();
+
+    if (updateError) throw updateError;
+
+    return (data?.metadata as UserSettings) || null;
+  } catch (error) {
+    handleDbError(error, 'updateUserSettings');
+    return null;
+  }
+}
+
+/**
+ * Saves a message pair (user + assistant) to the database
  */
 export async function saveMessage(
   userId: string,
   userMessage: string,
-  assistantMessage: string
+  assistantMessage: string,
+  client?: SupabaseClient
 ): Promise<void> {
+  const sb = client || supabase;
   try {
     // Get or create chat session
-    const { data: chat } = await supabase
+    const { data: chat } = await sb
       .from('chats')
       .select('id')
       .eq('user_id', userId)
       .order('created_at', { ascending: false })
       .limit(1)
       .single();
-    
+
     let chatId = chat?.id;
-    
+
     if (!chatId) {
-      const { data: newChat } = await supabase
+      const { data: newChat } = await sb
         .from('chats')
         .insert({ user_id: userId })
         .select('id')
         .single();
       chatId = newChat!.id;
     }
-    
+
     // Insert both messages
-    await supabase.from('messages').insert([
+    await sb.from('messages').insert([
       { chat_id: chatId, role: 'user', content: userMessage },
       { chat_id: chatId, role: 'assistant', content: assistantMessage }
     ]);
   } catch (error) {
-    console.error('Database error:', error);
-    // Don't throw - message persistence failure shouldn't break chat
+    handleDbError(error, 'saveMessage');
   }
 }
 
 /**
  * Retrieves chat history for a user
- * @param userId - The authenticated user's ID
- * @returns Array of chat sessions ordered by most recent first
  */
 export async function getChatHistory(userId: string): Promise<any[]> {
   try {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from('chats')
       .select('*')
       .eq('user_id', userId)
       .order('created_at', { ascending: false });
-    
+
+    if (error) throw error;
     return data || [];
   } catch (error) {
-    console.error('Database error:', error);
+    handleDbError(error, 'getChatHistory');
     return [];
   }
 }
 
 /**
  * Retrieves all messages for a specific chat
- * @param chatId - The chat session ID
- * @returns Array of messages ordered chronologically
  */
 export async function getMessages(chatId: string): Promise<any[]> {
   try {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from('messages')
       .select('*')
       .eq('chat_id', chatId)
       .order('created_at', { ascending: true });
-    
+
+    if (error) throw error;
     return data || [];
   } catch (error) {
-    console.error('Database error:', error);
+    handleDbError(error, 'getMessages');
     return [];
   }
 }

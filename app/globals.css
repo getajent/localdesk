@@ -140,4 +140,18 @@
     @apply -translate-y-[2px] -translate-x-[2px] border-danish-red text-danish-red bg-secondary/50;
     box-shadow: 4px 4px 0 0 #C8102E;
   }
+
+  /* Custom Scrollbar for 2026 aesthetics */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-danish-red/40;
+  }
 }

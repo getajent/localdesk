@@ -3,13 +3,20 @@
 import { useEffect, useState } from 'react';
 import { ChatMessage } from '@/components/ChatMessage';
 import { SuggestedQuestions } from '@/components/SuggestedQuestions';
+import { ConfirmationModal } from '@/components/ConfirmationModal';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Send, Loader2, Sparkles } from 'lucide-react';
-import { getChatHistory, getMessages } from '@/lib/supabase';
+import { Send, Loader2, Sparkles, PlusCircle, Square, Maximize2, Minimize2 } from 'lucide-react';
+import { UserSettings } from '@/lib/supabase';
+import { useAuth } from '@/components/AuthProvider';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export interface ChatInterfaceProps {
   userId?: string | null;
+  userSettings?: UserSettings;
+  initialQuestion?: string;
+  isFullPage?: boolean;
+  onToggleFullPage?: () => void;
 }
 
 interface Message {
@@ -18,42 +25,30 @@ interface Message {
   content: string;
 }
 
-export function ChatInterface({ userId }: ChatInterfaceProps) {
+export function ChatInterface({ userId, userSettings, initialQuestion, isFullPage, onToggleFullPage }: ChatInterfaceProps) {
+  const { refreshSettings } = useAuth();
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [isLoadingHistory, setIsLoadingHistory] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [abortController, setAbortController] = useState<AbortController | null>(null);
 
   useEffect(() => {
-    async function loadChatHistory() {
-      if (!userId) return;
-
-      setIsLoadingHistory(true);
-      try {
-        const chats = await getChatHistory(userId);
-        if (chats.length > 0) {
-          const mostRecentChat = chats[0];
-          const historicalMessages = await getMessages(mostRecentChat.id);
-
-          const formattedMessages: Message[] = historicalMessages.map((msg: any) => ({
-            id: msg.id,
-            role: msg.role,
-            content: msg.content,
-          }));
-
-          setMessages(formattedMessages);
-        }
-      } catch (error) {
-        console.error('Error loading chat history:', error);
-      } finally {
-        setIsLoadingHistory(false);
-      }
-    }
-
-    loadChatHistory();
+    // Always reset to a fresh state when userId changes
+    // Skip history loading for now to avoid hanging issues
+    setMessages([]);
+    setShowSuggestions(true);
+    setIsLoadingHistory(false);
   }, [userId]);
+
+  useEffect(() => {
+    if (initialQuestion) {
+      setInput(initialQuestion);
+    }
+  }, [initialQuestion]);
 
   useEffect(() => {
     if (messages.length > 0 && showSuggestions) {
@@ -69,6 +64,14 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
     setInput(e.target.value);
   };
 
+  const stopGeneration = () => {
+    if (abortController) {
+      abortController.abort();
+      setAbortController(null);
+      setIsLoading(false);
+    }
+  };
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
@@ -77,6 +80,9 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
     setInput('');
     setIsLoading(true);
     setError(null);
+
+    const controller = new AbortController();
+    setAbortController(controller);
 
     // Add user message immediately
     const userMessage: Message = {
@@ -91,12 +97,14 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           messages: [...messages, userMessage].map(m => ({
             role: m.role,
             content: m.content
           })),
           userId: userId || undefined,
+          userSettings: userSettings || undefined,
         }),
       });
 
@@ -134,18 +142,52 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
           ];
         });
       }
-    } catch (err) {
-      console.error('Error sending message:', err);
-      setError(err as Error);
+    } catch (err: any) {
+      if (err.name === 'AbortError') {
+        console.log('Fetch aborted');
+      } else {
+        console.error('Error sending message:', err);
+        setError(err as Error);
+      }
     } finally {
       setIsLoading(false);
+      setAbortController(null);
+      // Refresh settings in case the assistant modified the roadmap
+      if (userId) {
+        refreshSettings();
+      }
     }
   };
 
+  const startNewSession = () => {
+    if (messages.length > 0) {
+      setIsConfirmModalOpen(true);
+      return;
+    }
+    handleConfirmNewSession();
+  };
+
+  const handleConfirmNewSession = () => {
+    setMessages([]);
+    setShowSuggestions(true);
+    setError(null);
+    setInput('');
+  };
+
   return (
-    <div id="chat-section" className="w-full max-w-5xl mx-auto flex flex-col h-[850px] border border-border/40 bg-card/70 backdrop-blur-2xl rounded-none shadow-soft-xl overflow-hidden mt-20 mb-32 transition-all duration-500 hover:shadow-hover-lg border-b-[6px] border-b-danish-red/10">
+    <div id="chat-section" className={`w-full mx-auto flex flex-col ${isFullPage ? 'h-full border-none m-0' : 'h-[850px] border mt-0 mb-12'} border-border/40 bg-card/70 backdrop-blur-2xl rounded-none shadow-soft-xl overflow-hidden transition-all duration-500 hover:shadow-hover-lg border-b-[6px] border-b-danish-red/10`}>
+      <ConfirmationModal
+        isOpen={isConfirmModalOpen}
+        onClose={() => setIsConfirmModalOpen(false)}
+        onConfirm={handleConfirmNewSession}
+        title="Start Fresh?"
+        description="This will clear your current conversation history. You can't undo this action."
+        confirmLabel="Clear Chat"
+        cancelLabel="Keep Chat"
+        variant="danger"
+      />
       {/* Header Info */}
-      <div className="border-b border-border/40 px-10 py-6 flex justify-between items-center bg-background/50 backdrop-blur-md">
+      <div className="border-b border-border/40 px-10 py-5 flex justify-between items-center bg-background/50 backdrop-blur-md">
         <div className="flex items-center gap-4">
           <div className="p-2 bg-danish-red/5">
             <Sparkles className="h-4 w-4 text-danish-red" />
@@ -159,8 +201,34 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
             </span>
           </div>
         </div>
-        <div className="flex items-center gap-8">
-          <div className="hidden sm:flex items-center gap-2">
+        <div className="flex items-center gap-6">
+          {isFullPage && (
+            <div className="flex items-center gap-3 pr-4 border-r border-border/40">
+              <span className="text-[10px] font-black tracking-[0.2em] text-muted-foreground/40 uppercase">Mode</span>
+              <ThemeToggle />
+            </div>
+          )}
+          {onToggleFullPage && (
+            <Button
+              onClick={onToggleFullPage}
+              variant="ghost"
+              className="flex items-center gap-2 h-9 px-4 rounded-none border border-border/40 hover:border-danish-red/40 hover:bg-danish-red/5 text-[10px] font-black tracking-[0.2em] uppercase transition-all"
+              title={isFullPage ? "Exit Full Screen" : "Full Screen Chat"}
+            >
+              {isFullPage ? <Minimize2 className="h-3 w-3 text-danish-red" /> : <Maximize2 className="h-3 w-3 text-danish-red" />}
+              <span className="hidden sm:inline">{isFullPage ? "Exit Full" : "Full Page"}</span>
+            </Button>
+          )}
+          <Button
+            onClick={startNewSession}
+            disabled={messages.length === 0}
+            variant="ghost"
+            className="hidden sm:flex items-center gap-2 h-9 px-4 rounded-none border border-border/40 hover:border-danish-red/40 hover:bg-danish-red/5 text-[10px] font-black tracking-[0.2em] uppercase transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:border-border/40"
+          >
+            <PlusCircle className={`h-3 w-3 ${messages.length === 0 ? 'text-muted-foreground/40' : 'text-danish-red'}`} />
+            <span>New Session</span>
+          </Button>
+          <div className="hidden lg:flex items-center gap-2">
             <div className="w-2 h-2 bg-emerald-500"></div>
             <span className="text-[10px] font-black tracking-[0.1em] text-emerald-600/80 uppercase">Systems: Online</span>
           </div>
@@ -173,7 +241,7 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-8 sm:p-12 space-y-12 scrollbar-thin scroll-smooth select-text">
+      <div className="flex-1 overflow-y-auto p-6 sm:p-10 space-y-10 scrollbar-thin scroll-smooth select-text">
         {isLoadingHistory ? (
           <div className="flex items-center justify-center h-full">
             <div className="flex flex-col items-center gap-6">
@@ -183,8 +251,8 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
           </div>
         ) : messages.length === 0 && showSuggestions ? (
           <div className="flex items-center justify-center h-full max-w-2xl mx-auto">
-            <div className="text-center space-y-12 w-full">
-              <div className="space-y-4">
+            <div className="text-center space-y-8 w-full">
+              <div className="space-y-3">
                 <span className="text-[10px] font-black tracking-[0.5em] text-danish-red uppercase block">How can we help?</span>
                 <h3 className="text-3xl font-serif font-light text-foreground tracking-tight">What would you like to know about living in Denmark?</h3>
               </div>
@@ -231,21 +299,31 @@ export function ChatInterface({ userId }: ChatInterfaceProps) {
             aria-label="Chat message input"
           />
           <div className="absolute right-3 top-3 bottom-3 flex gap-2">
-            <Button
-              type="submit"
-              disabled={isLoading || !input.trim()}
-              className="h-14 px-10 rounded-none bg-foreground text-background btn-trend transition-all duration-500 shadow-md active:scale-95 text-xs font-black tracking-[0.3em] uppercase group"
-              aria-label="Send message"
-            >
-              {isLoading ? (
-                <Loader2 className="h-5 w-5 animate-spin" />
-              ) : (
+            {isLoading ? (
+              <Button
+                type="button"
+                onClick={stopGeneration}
+                className="h-14 px-10 rounded-none bg-danish-red text-white hover:bg-danish-red/90 transition-all duration-300 shadow-md active:scale-95 text-xs font-black tracking-[0.3em] uppercase group"
+                aria-label="Stop generation"
+              >
+                <div className="flex items-center">
+                  <span className="relative z-10">Stop</span>
+                  <Square className="ml-3 h-3 w-3 fill-current relative z-10" />
+                </div>
+              </Button>
+            ) : (
+              <Button
+                type="submit"
+                disabled={isLoading || !input.trim()}
+                className="h-14 px-10 rounded-none bg-foreground text-background btn-trend transition-all duration-500 shadow-md active:scale-95 text-xs font-black tracking-[0.3em] uppercase group"
+                aria-label="Send message"
+              >
                 <div className="flex items-center">
                   <span className="relative z-10">Send</span>
                   <Send className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 relative z-10" />
                 </div>
-              )}
-            </Button>
+              </Button>
+            )}
           </div>
         </form>
         <div className="mt-4 text-center">
