@@ -23,6 +23,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "LocalDesk - Navigate Danish Bureaucracy with Confidence",
   description: "Get instant answers about SKAT, visas, and housing from your AI-powered Danish consultant",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export function generateStaticParams() {
@@ -38,7 +43,7 @@ export default async function LocaleLayout({
 }>) {
   // Await params in Next.js 15+
   const { locale } = await params;
-  
+
   // Validate locale parameter
   if (!routing.locales.includes(locale as any)) {
     notFound();
