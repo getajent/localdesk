@@ -1,0 +1,897 @@
+{
+  "Common": {
+    "nav": {
+      "home": "Hjem",
+      "services": "Tjenester",
+      "knowledge": "Viden",
+      "guidance": "Vejledning",
+      "backToHome": "Tilbage til Hjem"
+    },
+    "footer": {
+      "tagline": "Din AI-drevne guide til livet i Danmark. Få øjeblikkelige svar om skat, bolig, sundhed, immigration og mere.",
+      "location": "Placering",
+      "locationValue": "Danmark",
+      "contact": "Kontakt",
+      "contactEmail": "hello@localdesk.dk",
+      "resourcesTitle": "Ressourcer",
+      "resourceSkat": "SKAT (Skat)",
+      "resourceImmigration": "Udlændingestyrelsen",
+      "resourceBorger": "Borger.dk",
+      "resourceWork": "Arbejde i DK",
+      "servicesTitle": "Tjenester",
+      "serviceHealthcare": "Sundhed",
+      "serviceMitID": "MitID",
+      "serviceEBoks": "E-Boks",
+      "serviceCPH": "CPH Intl",
+      "legalTitle": "Juridisk",
+      "legal": "Juridisk",
+      "privacy": "Privatliv",
+      "terms": "Vilkår",
+      "connectTitle": "Forbind",
+      "contactLink": "Kontakt",
+      "copyright": "© {year} LocalDesk / AI Guide for Denmark",
+      "heritage": "Dansk Arv"
+    },
+    "auth": {
+      "signIn": "Log ind",
+      "signUp": "Tilmeld",
+      "signOut": "Log ud",
+      "memberAccess": "Medlemslogin",
+      "access": "Login",
+      "verifiedUser": "Verificeret Bruger"
+    },
+    "theme": {
+      "toggle": "Skift tema",
+      "light": "Lys",
+      "dark": "Mørk"
+    },
+    "backToHome": "Tilbage til Hjem",
+    "legal": "Juridisk",
+    "attention": "Opmærksomhed påkrævet"
+  },
+  "HomePage": {
+    "Hero": {
+      "established": "Etabl. 2026",
+      "advisor": "Personlig Rådgiver .01",
+      "heritage": "Dansk // Gæstfrihed",
+      "title": "Får",
+      "titleDenmark": "Danmark",
+      "titleFeelLikeHome": "til at føles som Hjem.",
+      "missionLabel": "Missionen",
+      "missionTitle": "En betænksom digital ledsager designet til at hjælpe dig med at finde dig til rette i Danmark med",
+      "missionTitleEmphasis": "sindsro",
+      "missionTitleEnd": "og absolut lethed.",
+      "description": "Vi forvandler komplekse danske regler til klare, enkle svar, så du kan fokusere på det, der betyder mest.",
+      "cta": "Start en Samtale",
+      "topicSkat": "Skat",
+      "topicVisas": "Visa",
+      "topicSiri": "Siri",
+      "topicHousing": "Bolig"
+    },
+    "ChatSection": {
+      "label": "Din Assistent",
+      "title": "Lad os tale,",
+      "subtitle": "vi er her for at hjælpe.",
+      "description": "Klare, enkle svar om skat, visa og bolig — på det sprog, der føles som hjemme."
+    },
+    "WelcomeBack": {
+      "label": "Velkommen Tilbage",
+      "titlePrefix": "Hej, ",
+      "description": "Indstil din profil, følg din rejse, og spørg om alt vedrørende livet i Danmark."
+    },
+    "Features": {
+      "sectionLabel": "Hvordan vi hjælper",
+      "title": "Bygget til",
+      "titleEmphasis": "den moderne",
+      "titleEnd": "udlænding.",
+      "madeFor": "Skabt til dig // 2026",
+      "feature1": {
+        "id": "01",
+        "category": "Ydeevne",
+        "title": "Hurtige Svar",
+        "description": "Find det, du har brug for på sekunder, uden lange ventetider eller forvirrende papirarbejde."
+      },
+      "feature2": {
+        "id": "02",
+        "category": "Viden",
+        "title": "Pålidelige Detaljer",
+        "description": "Dybdegående indsigt i SKAT, visa og boligforhold, skræddersyet til livet i Danmark."
+      },
+      "feature3": {
+        "id": "03",
+        "category": "Lethed",
+        "title": "Ingen Tilmelding Påkrævet",
+        "description": "Start med det samme. Vi værdsætter din tid, så der er ingen grund til at oprette en konto for at få hjælp."
+      },
+      "feature4": {
+        "id": "04",
+        "category": "Service",
+        "title": "Altid Klar",
+        "description": "Vi er her for dig 24/7 og hjælper dig med at føle dig hjemme i Danmark fra din allerførste dag."
+      }
+    }
+  },
+  "ServicesPage": {
+    "metadata": {
+      "title": "Tjenester | LocalDesk Danmark",
+      "description": "Ekspertvejledning og støtte til udlændinge, der bosætter sig i Danmark. Fra CPR-registrering til skattevejledning, boligsøgning og personlig rådgivning."
+    },
+    "Hero": {
+      "title": "Vores Tjenester",
+      "subtitle": "Ekspertvejledning til din rejse i Danmark",
+      "tailoredGuidance": "Skræddersyet // Vejledning",
+      "mainTitle": "Din vej <br></br> til at bosætte dig <br></br> <spanMuted>i Danmark.</spanMuted>",
+      "whatWeOffer": "Hvad vi tilbyder",
+      "offerLead": "Fra administrativ vejledning til personlig støtte – vi hjælper dig med at navigere i hvert trin af din <spanItalic>danske rejse</spanItalic>.",
+      "offerDescription": "Uanset om du har brug for hjælp til CPR-registrering, skattevejledning eller boligsøgning, er vores tjenester designet til at gøre din overgang jævn og stressfri."
+    },
+    "Grid": {
+      "label": "Vores Tjenester",
+      "title": "Omfattende støtte til dit <spanItalic>danske liv</spanItalic>"
+    },
+    "services": {
+      "consulting": {
+        "category": "Ekspertvejledning",
+        "title": "Personlig Rådgivning",
+        "description": "En-til-en vejledning skræddersyet til din specifikke situation i Danmark",
+        "features": {
+          "cpr": "Hjælp til registrering af CPR og MitID",
+          "tax": "Skattekort og SKAT vejledning",
+          "healthcare": "Navigation i sundhedssystemet",
+          "housing": "Strategier til boligsøgning",
+          "employment": "Gennemgang af ansættelseskontrakt"
+        }
+      },
+      "documents": {
+        "category": "Dokumentation",
+        "title": "Dokumenthjælp",
+        "description": "Hjælp til at forstå og udfylde danske administrative formularer",
+        "features": {
+          "residence": "Ansøgninger om opholdstilladelse",
+          "bank": "Vejledning til oprettelse af bankkonto",
+          "rental": "Gennemgang af lejekontrakt",
+          "taxReturn": "Hjælp til årsopgørelse",
+          "translation": "Oversættelse af officiel korrespondance"
+        }
+      },
+      "relocation": {
+        "category": "Flytning",
+        "title": "Flytningsstøtte",
+        "description": "Omfattende støtte til din flytning til Danmark",
+        "features": {
+          "planning": "Planlægning før ankomst",
+          "housing": "Hjælp til boligsøgning",
+          "utilities": "Koordinering af forsyningsselskaber",
+          "school": "Vejledning til skoleindskrivning",
+          "cultural": "Kulturel orientering"
+        }
+      },
+      "ongoing": {
+        "category": "Løbende Support",
+        "title": "Personlig Vejledning",
+        "description": "24/7 AI-drevet assistance til dine spørgsmål om Danmark",
+        "features": {
+          "instant": "Øjeblikkelige svar på Danmark-relaterede spørgsmål",
+          "upToDate": "Opdateret information om regler",
+          "personalized": "Personlige anbefalinger",
+          "multiLanguage": "Flersproget support",
+          "available": "Altid tilgængelig"
+        }
+      }
+    }
+  },
+  "GuidancePage": {
+    "metadata": {
+      "title": "Vejledning | LocalDesk Danmark",
+      "description": "Trin-for-trin guides til at navigere livet i Danmark. Fra din første uge til langsigtet bosættelse, følg vores gennemprøvede køreplaner for succes."
+    },
+    "Hero": {
+      "label": "Vejledning",
+      "stepByStep": "Trin-for-trin",
+      "practicalAdvice": "Praktisk // Rådgivning",
+      "title": "Naviger",
+      "titleWith": "med",
+      "titleConfidence": "Selvsikkerhed.",
+      "roadmapLabel": "Din Køreplan",
+      "description": "Klare, handlingsorienterede guides til hver fase af din",
+      "descriptionEmphasis": "danske rejse",
+      "subtitle": "Fra din første uge til langsigtet bosættelse, følg vores trinvise vejledninger for at navigere komplekse processer med lethed.",
+      "categories": {
+        "arrival": "Ankomst",
+        "setup": "Opsætning",
+        "housing": "Bolig",
+        "taxes": "Skat"
+      }
+    },
+    "Steps": {
+      "sectionLabel": "Trin-for-trin Guides",
+      "title": "Følg vores",
+      "titleEmphasis": "gennemprøvede",
+      "titleEnd": "køreplaner",
+      "relatedResources": "Relaterede Ressourcer"
+    },
+    "guides": {
+      "firstWeek": {
+        "title": "Din første uge i Danmark",
+        "description": "Væsentlige trin du bør tage umiddelbart efter ankomst",
+        "duration": "Uge 1",
+        "steps": {
+          "step1": {
+            "title": "Sikr midlertidig indkvartering",
+            "description": "Find et sted at bo, mens du leder efter permanent bolig",
+            "details": [
+              "Book hotel eller Airbnb for de første par dage",
+              "Overvej vandrerhjem eller korttidsleje",
+              "Deltag i Facebook-grupper for boligsøgning",
+              "Kontakt din arbejdsgiver om midlertidig bolig"
+            ]
+          },
+          "step2": {
+            "title": "Få et dansk SIM-kort",
+            "description": "Væsentligt for kommunikation og mange tjenester",
+            "details": [
+              "Besøg TDC, Telenor, 3 (Tre) eller Telia",
+              "Medbring pas til registrering",
+              "Vælg taletidskort (50-200 DKK) eller abonnement (100-500 DKK/måned)",
+              "Taletidskort er godt til midlertidige ophold, abonnement til længere sigt"
+            ]
+          },
+          "step3": {
+            "title": "Besøg International Citizen Service (ICS)",
+            "description": "Få vejledning om registreringsprocedurer",
+            "details": [
+              "Book tid online",
+              "Medbring pas og opholdstilladelse",
+              "Spørg om krav til CPR-registrering",
+              "Få information om næste skridt"
+            ]
+          },
+          "step4": {
+            "title": "Start boligsøgning",
+            "description": "Begynd at lede efter permanent indkvartering",
+            "details": [
+              "Registrer dig på Boligportal.dk",
+              "Skriv dig op på ventelister til boliger",
+              "Tjek Facebook-grupper",
+              "Kontakt ejendomsmæglere",
+              "Budget: 8.000-15.000 DKK/måned for 2-værelses i København (lavere i andre byer)"
+            ]
+          }
+        }
+      },
+      "essentialServices": {
+        "title": "Opsætning af væsentlige tjenester",
+        "description": "Gennemfør dine administrative registreringer",
+        "duration": "Måned 1-2",
+        "steps": {
+          "step1": {
+            "title": "Registrer dig til CPR-nummer",
+            "description": "Din nøgle til alle danske tjenester",
+            "details": [
+              "Kræver en permanent adresse",
+              "Book tid hos ICS eller Borgerservice",
+              "Medbring pas, opholdstilladelse, lejekontrakt",
+              "Modtag CPR-nummer samme dag",
+              "Sundhedskort ankommer efter 2-3 uger"
+            ]
+          },
+          "step2": {
+            "title": "Opsæt MitID",
+            "description": "Digital identitet til online tjenester",
+            "details": [
+              "Kræver CPR-nummer",
+              "Download MitID-appen",
+              "Registrer dig hos Borgerservice eller online",
+              "Væsentligt for bankforhold og offentlige tjenester"
+            ]
+          },
+          "step3": {
+            "title": "Åbn en bankkonto",
+            "description": "Nødvendigt for løn og betaling af regninger",
+            "details": [
+              "Kræver CPR-nummer og MitID",
+              "Medbring pas og adressebevis",
+              "Sammenlign banker: Danske Bank, Nordea, Jyske Bank",
+              "Opsæt NemKonto til udbetalinger fra det offentlige"
+            ]
+          },
+          "step4": {
+            "title": "Ansøg om skattekort",
+            "description": "Påkrævet før du starter arbejde",
+            "details": [
+              "Ansøg online via SKAT.dk",
+              "Kræver CPR-nummer og MitID",
+              "Vælg hovedkort til dit primære job",
+              "Arbejdsgiveren har brug for dine skattekortoplysninger"
+            ]
+          },
+          "step5": {
+            "title": "Tilmeld digital post",
+            "description": "Modtag officielle meddelelser",
+            "details": [
+              "Obligatorisk for de fleste beboere",
+              "Adgang via e-Boks eller borger.dk",
+              "Kræver MitID",
+              "Tjek regelmæssigt for vigtige meddelelser"
+            ]
+          }
+        }
+      },
+      "housingGuide": {
+        "title": "Find og sikr din bolig",
+        "description": "Naviger succesfuldt på det danske lejeboligmarked",
+        "duration": "Løbende",
+        "steps": {
+          "step1": {
+            "title": "Forstå boligtyper",
+            "description": "Lær om forskellige boligmuligheder",
+            "details": [
+              "Privat udlejning: Mere fleksibelt, højere omkostninger",
+              "Almene boliger: Lavere omkostninger, lange ventelister",
+              "Andelsbolig: Boligfællesskab, køb andel",
+              "Studiebolig: Kun for indskrevne studerende"
+            ]
+          },
+          "step2": {
+            "title": "Søg på flere platforme",
+            "description": "Søg bredt for at finde muligheder",
+            "details": [
+              "Boligportal.dk: Primær platform for lejeboliger",
+              "DBA.dk: Rubrikannoncer",
+              "Facebook-grupper: Lokale boligfællesskaber",
+              "Universitetsboligkontorer: For studerende",
+              "Ejendomsmæglere: Til high-end udlejning"
+            ]
+          },
+          "step3": {
+            "title": "Forbered økonomisk dokumentation",
+            "description": "Hav dokumenter klar til ansøgninger",
+            "details": [
+              "Ansættelseskontrakt eller jobtilbud",
+              "Kontoudtog (sidste 3 måneder)",
+              "Referencebreve fra tidligere udlejere",
+              "CPR-nummer og ID",
+              "Budget til depositum: 3-6 måneders husleje forud"
+            ]
+          },
+          "step4": {
+            "title": "Gennemgå lejekontrakt grundigt",
+            "description": "Forstå dine rettigheder og forpligtelser",
+            "details": [
+              "Tjek leje beløb og betalingsbetingelser",
+              "Bekræft depositum og forudbetalt leje",
+              "Forstå opsigelsesperioden (typisk 3 måneder)",
+              "Bemærk hvilke forsyninger der er inkluderet",
+              "Dokumenter stand ved indflytning"
+            ]
+          },
+          "step5": {
+            "title": "Opsæt forsyning og forsikring",
+            "description": "Færdiggør din boligopsætning",
+            "details": [
+              "Vælg elleverandør",
+              "Opsæt internetforbindelse",
+              "Få indboforsikring",
+              "Registrer adresse hos myndighederne",
+              "Opdater CPR-adresse hvis nødvendigt"
+            ]
+          }
+        }
+      },
+      "taxGuide": {
+        "title": "Forståelse for din skat",
+        "description": "Naviger sikkert i det danske skattesystem",
+        "duration": "Løbende",
+        "steps": {
+          "step1": {
+            "title": "Forstå skattestrukturen",
+            "description": "Lær hvordan dansk skat fungerer",
+            "details": [
+              "AM-bidrag: 8% arbejdsmarkedsbidrag",
+              "Kommuneskat: 22-27% (varierer efter kommune)",
+              "Bundskat: ~12,09%",
+              "Topskat: 15% på indkomst over ~588.900 DKK",
+              "Samlet effektiv trækprocent: 38-52% afhængig af indkomst"
+            ]
+          },
+          "step2": {
+            "title": "Få dit skattekort",
+            "description": "Opsæt kildeskat",
+            "details": [
+              "Ansøg via TastSelv på SKAT.dk med MitID",
+              "Hovedkort til dit primære job",
+              "Bikort til yderligere indkomst (~55% sats)",
+              "Arbejdsgiver bruger dette til at indeholde korrekt skat",
+              "Opdater hvis din situation ændrer sig"
+            ]
+          },
+          "step3": {
+            "title": "Kend dine fradrag",
+            "description": "Maksimer dine skattefordele",
+            "details": [
+              "Befordring: Transportomkostninger over 24 km hver vej",
+              "Pensionsbidrag: Til godkendte ordninger",
+              "Fagforeningsgebyrer: A-kasse og fagforeningsmedlemskab",
+              "Renter: Renteudgifter på realkreditlån (begrænset)",
+              "Veldædighedsbidrag: Til godkendte organisationer (minimum 500 DKK/år)"
+            ]
+          },
+          "step4": {
+            "title": "Gennemgå årsopgørelse",
+            "description": "Tjek din årsopgørelse",
+            "details": [
+              "Tilgængelig i marts hvert år",
+              "SKAT forbereder den automatisk",
+              "Gennemgå for nøjagtighed",
+              "Ret fejl inden tidsfristen (maj-juli)",
+              "Få overskydende skat tilbage eller betal restskat"
+            ]
+          }
+        }
+      },
+      "healthcareGuide": {
+        "title": "Navigering i sundhedsvæsenet",
+        "description": "Få adgang til lægehjælp i Danmark",
+        "duration": "Løbende",
+        "steps": {
+          "step1": {
+            "title": "Få sundhedskort",
+            "description": "Modtag dit sundhedskort",
+            "details": [
+              "Automatisk efter CPR-registrering",
+              "Det gule kort ankommer med posten efter 2-4 uger",
+              "Viser dit CPR-nummer og tildelte praktiserende læge",
+              "Medbring til alle lægebesøg",
+              "Gratis sundhedspleje for beboere"
+            ]
+          },
+          "step2": {
+            "title": "Registrer dig hos en egen læge",
+            "description": "Vælg din familielæge",
+            "details": [
+              "Læge tildeles automatisk med CPR",
+              "Kan skifte læge hvis det ønskes",
+              "Lægen er første kontaktpunkt ved helbredsproblemer",
+              "Gratis konsultationer",
+              "Lægen giver henvisninger til speciallæger"
+            ]
+          },
+          "step3": {
+            "title": "Forstå sundhedssystemet",
+            "description": "Lær hvordan du får adgang til tjenester",
+            "details": [
+              "Læge til ikke-akutte problemer",
+              "Nødsituationer: Ring 112",
+              "Uden for åbningstid: Ring 1813 (København) eller regionalt nummer",
+              "Apotek: Recept påkrævet for de fleste lægemidler",
+              "Tandlæge: Ikke dækket, privat forsikring anbefales"
+            ]
+          },
+          "step4": {
+            "title": "Få adgang til digitale sundhedstjenester",
+            "description": "Brug online sundhedsplatforme",
+            "details": [
+              "Sundhed.dk: Book tider, se journaler",
+              "Kræver MitID",
+              "E-Boks: Modtag sundhedskorrespondance",
+              "Min Læge app: Kontakt din læge",
+              "Forny recept online"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "KnowledgePage": {
+    "metadata": {
+      "title": "Vidensbase | LocalDesk Danmark",
+      "description": "Omfattende guides til livet i Danmark. Udforsk emner som ankomstproces, beskæftigelse, bolig, skat, sociale ydelser, væsentlige tjenester og praktisk liv."
+    },
+    "Hero": {
+      "title": "Vidensbase",
+      "subtitle": "Omfattende guides til livet i Danmark",
+      "resourceCenter": "Ressourcecenter",
+      "comprehensiveInfo": "Omfattende // Information",
+      "mainTitlePart1": "Alt",
+      "mainTitlePart2": "Hvad Du Skal",
+      "mainTitlePart3": "Vide.",
+      "description": "Fra ankomstprocedurer til dagligdag, udforsk detaljerede guides, der dækker alle aspekter af livet i Danmark.",
+      "searchPlaceholder": "Søg i artikler...",
+      "quickLinks": {
+        "arrival": "Ankomst",
+        "housing": "Bolig",
+        "taxes": "Skat",
+        "benefits": "Ydelser"
+      }
+    },
+    "Categories": {
+      "label": "Gennemse efter emne",
+      "title": "Udforsk vores",
+      "titleEmphasis": "omfattende",
+      "titleEnd": "vidensbase",
+      "topics": "Emner",
+      "moreTopics": "+{count} flere emner"
+    },
+    "categories": {
+      "arrival": {
+        "title": "Ankomstproces",
+        "description": "Væsentlige registreringer og procedurer ved ankomst",
+        "documentCount": "{count, plural, =1 {1 Dokument} other {# Dokumenter}}"
+      },
+      "employment": {
+        "title": "Beskæftigelse",
+        "description": "Arbejde i Danmark: kontrakter, rettigheder og arbejdskultur",
+        "documentCount": "{count, plural, =1 {1 Dokument} other {# Dokumenter}}"
+      },
+      "housing": {
+        "title": "Bolig",
+        "description": "Find, lej og vedligehold dit hjem i Danmark",
+        "documentCount": "{count, plural, =1 {1 Dokument} other {# Dokumenter}}"
+      },
+      "taxFinance": {
+        "title": "Skat & Finans",
+        "description": "Forstå dansk skat og styr din økonomi",
+        "documentCount": "{count, plural, =1 {1 Dokument} other {# Dokumenter}}"
+      },
+      "socialBenefits": {
+        "title": "Sociale Ydelser",
+        "description": "Sundhed, pension og sociale støttesystemer",
+        "documentCount": "{count, plural, =1 {1 Dokument} other {# Dokumenter}}"
+      },
+      "essentialServices": {
+        "title": "Væsentlige Tjenester",
+        "description": "Sundhed, bank, uddannelse og transport",
+        "documentCount": "{count, plural, =1 {1 Dokument} other {# Dokumenter}}"
+      },
+      "practicalLiving": {
+        "title": "Praktisk Liv",
+        "description": "Dagligdag, kultur og fællesskab i Danmark",
+        "documentCount": "{count, plural, =1 {1 Dokument} other {# Dokumenter}}"
+      }
+    }
+  },
+  "PrivacyPage": {
+    "metadata": {
+      "title": "Privacy Policy - LocalDesk",
+      "description": "Privacy policy and data protection information for LocalDesk"
+    },
+    "title": "Privatlivspolitik",
+    "lastUpdated": "Sidst opdateret: {date}",
+    "introduction": "Hos LocalDesk tager vi dit privatliv seriøst. Denne privatlivspolitik forklarer, hvordan vi indsamler, bruger, videregiver og beskytter dine oplysninger, når du bruger vores service. Vi er forpligtet til at beskytte dine personoplysninger i overensstemmelse med GDPR og dansk databeskyttelseslovgivning.",
+    "sections": {
+      "dataCollection": {
+        "title": "1. Information vi indsamler",
+        "personalInfo": {
+          "title": "Personlige oplysninger",
+          "intro": "Når du opretter en konto, indsamler vi:",
+          "items": {
+            "email": "E-mailadresse",
+            "displayName": "Visningsnavn (valgfrit)",
+            "profile": "Profiloplysninger (opholdsstatus, beskæftigelsesstatus)",
+            "credentials": "Autentificeringsoplysninger"
+          }
+        },
+        "usageInfo": {
+          "title": "Brugsoplysninger",
+          "intro": "Vi indsamler automatisk visse oplysninger, når du bruger vores service:",
+          "items": {
+            "chat": "Chatbeskeder og samtalehistorik",
+            "usage": "Funktionsbrug og interaktionsdata",
+            "device": "Enhedsoplysninger og browsertype",
+            "ip": "IP-adresse og lokationsdata",
+            "cookies": "Cookies og lignende sporingsteknologier"
+          }
+        }
+      },
+      "dataUse": {
+        "title": "2. Hvordan vi bruger dine oplysninger",
+        "intro": "Vi bruger de indsamlede oplysninger til at:",
+        "items": {
+          "provide": "Levere og vedligeholde vores AI-drevne assistentservice",
+          "personalize": "Personalisere din oplevelse og forbedre vores anbefalinger",
+          "process": "Behandle dine anmodninger og besvare dine henvendelser",
+          "notify": "Sende dig serviceopdateringer og vigtige meddelelser",
+          "analyze": "Analysere brugsmønstre for at forbedre vores service",
+          "prevent": "Opdage og forhindre svindel eller misbrug",
+          "comply": "Overholde juridiske forpligtelser"
+        }
+      },
+      "legalBasis": {
+        "title": "3. Retsgrundlag for behandling (GDPR)",
+        "intro": "Under GDPR behandler vi dine personoplysninger baseret på:",
+        "items": {
+          "consent": "Samtykke: Du har givet klart samtykke til, at vi behandler dine personoplysninger til specifikke formål",
+          "contract": "Kontrakt: Behandling er nødvendig for at opfylde vores kontrakt med dig (levering af tjenesten)",
+          "legal": "Juridisk forpligtelse: Behandling er nødvendig for at overholde loven",
+          "legitimate": "Legitime interesser: Behandling er nødvendig for vores legitime interesser (forbedring af vores service, forebyggelse af svig)"
+        }
+      },
+      "dataSharing": {
+        "title": "4. Datadeling og videregivelse",
+        "intro": "Vi sælger ikke dine personlige oplysninger. Vi kan dele dine data med:",
+        "serviceProviders": {
+          "title": "Tjenesteudbydere",
+          "items": {
+            "supabase": "Supabase (database og autentificering)",
+            "openai": "OpenAI (AI-behandling til chatsvar)",
+            "hosting": "Cloud hosting-udbydere"
+          }
+        },
+        "legal": {
+          "title": "Juridiske Krav",
+          "description": "Vi kan videregive dine oplysninger, hvis det kræves ved lov eller som svar på gyldige juridiske anmodninger."
+        }
+      },
+      "dataSecurity": {
+        "title": "5. Dataopbevaring og sikkerhed",
+        "intro": "Dine data opbevares sikkert ved hjælp af industristandard kryptering og sikkerhedsforanstaltninger. Vi bruger:",
+        "items": {
+          "encryption": "Krypteret datatransmission (HTTPS/TLS)",
+          "database": "Sikker databaseopbevaring med adgangskontrol",
+          "audits": "Regelmæssige sikkerhedsrevisioner og opdateringer",
+          "datacenters": "Datacentre placeret i EU (GDPR-kompatible)"
+        },
+        "disclaimer": "Imidlertid er ingen metode til transmission over internettet 100% sikker. Selvom vi bestræber os på at beskytte dine data, kan vi ikke garantere absolut sikkerhed."
+      },
+      "userRights": {
+        "title": "6. Dine rettigheder under GDPR",
+        "intro": "Som bruger i EU har du følgende rettigheder:",
+        "items": {
+          "access": "Ret til indsigt: Anmod om en kopi af dine personoplysninger",
+          "rectification": "Ret til berigtigelse: Ret ukorrekte eller ufuldstændige data",
+          "erasure": "Ret til sletning: Anmod om sletning af dine personoplysninger (\"ret til at blive glemt\")",
+          "restrict": "Ret til begrænsning af behandling: Begræns, hvordan vi bruger dine data",
+          "portability": "Ret til dataportabilitet: Modtag dine data i et struktureret, maskinlæsbart format",
+          "object": "Ret til indsigelse: Gør indsigelse mod behandling baseret på legitime interesser",
+          "withdraw": "Ret til at trække samtykke tilbage: Træk samtykke tilbage til enhver tid"
+        },
+        "contact": "For at udøve disse rettigheder, kontakt os på hello@localdesk.dk"
+      },
+      "cookies": {
+        "title": "7. Cookies og sporring",
+        "intro": "Vi bruger cookies og lignende teknologier til at:",
+        "items": {
+          "session": "Vedligeholde din session og holde dig logget ind",
+          "preferences": "Huske dine præferencer (tema, sprog)",
+          "analyze": "Analysere sidebrug og ydeevne",
+          "improve": "Forbedre brugeroplevelsen"
+        },
+        "control": "Du kan kontrollere cookies via dine browserindstillinger. Bemærk, at deaktivering af cookies kan påvirke funktionaliteten."
+      },
+      "dataRetention": {
+        "title": "8. Dataopbevaring",
+        "intro": "Vi opbevarer kun dine personoplysninger, så længe det er nødvendigt for at levere vores tjenester og overholde juridiske forpligtelser:",
+        "items": {
+          "account": "Kontodata: Opbevares mens din konto er aktiv",
+          "chat": "Chathistorik: Opbevares til serviceforbedring, medmindre du anmoder om sletning",
+          "logs": "Brugslogs: Typisk opbevaret i 90 dage",
+          "legal": "Juridiske optegnelser: Opbevares som krævet ved lov"
+        },
+        "deletion": "Når du sletter din konto, sletter eller anonymiserer vi dine personoplysninger inden for 30 dage, undtagen hvor vi er forpligtet til at opbevare dem ved lov."
+      },
+      "internationalTransfers": {
+        "title": "9. Internationale overførsler",
+        "intro": "Dine data opbevares primært inden for Den Europæiske Union. Hvis vi overfører data uden for EU, sikrer vi, at passende sikkerhedsforanstaltninger er på plads, såsom:",
+        "items": {
+          "scc": "Standardkontraktbestemmelser (SCC'er)",
+          "adequacy": "Tilstrækkelighedsafgørelser fra Europa-Kommissionen",
+          "other": "Andre juridisk godkendte overførselsmekanismer"
+        }
+      },
+      "childrenPrivacy": {
+        "title": "10. Børns privatliv",
+        "description": "Vores tjeneste er ikke beregnet til børn under 16 år. Vi indsamler ikke bevidst personlige oplysninger fra børn. Hvis du mener, at vi har indsamlet data fra et barn, bedes du kontakte os straks."
+      },
+      "policyChanges": {
+        "title": "11. Ændringer til denne politik",
+        "intro": "Vi kan opdatere denne privatlivspolitik fra tid til anden. Vi vil underrette dig om væsentlige ændringer ved at:",
+        "items": {
+          "posting": "Uploade den opdaterede politik på vores hjemmeside",
+          "date": "Opdatere datoen for \"Sidst opdateret\"",
+          "email": "Sende e-mail-notifikationer for væsentlige ændringer"
+        },
+        "acceptance": "Din fortsatte brug af tjenesten efter ændringer udgør accept af den opdaterede politik."
+      },
+      "contact": {
+        "title": "12. Kontakt os",
+        "intro": "Hvis du har spørgsmål til denne privatlivspolitik eller ønsker at udøve dine rettigheder, bedes du kontakte os:",
+        "company": "LocalDesk - Databeskyttelse",
+        "email": "E-mail: hello@localdesk.dk",
+        "location": "Placering: Danmark",
+        "complaint": "Du har også ret til at indgive en klage til Datatilsynet, hvis du mener, at vi ikke har håndteret dine data korrekt."
+      }
+    },
+    "cta": {
+      "title": "Dit Privatliv Betyder Noget",
+      "description": "Vi er forpligtet til at beskytte dine data og respektere dine privatlivsrettigheder. Hvis du har bekymringer eller spørgsmål, er vi her for at hjælpe.",
+      "readTerms": "Læs Servicevilkår",
+      "contactSupport": "Kontakt Support"
+    }
+  },
+  "TermsPage": {
+    "metadata": {
+      "title": "Terms of Service - LocalDesk",
+      "description": "Terms and conditions for using LocalDesk services"
+    },
+    "title": "Servicevilkår",
+    "lastUpdated": "Sidst opdateret: {date}",
+    "introduction": "Velkommen til LocalDesk. Ved at få adgang til eller bruge vores tjeneste accepterer du at være bundet af disse Servicevilkår. Læs dem venligst omhyggeligt, før du bruger vores platform.",
+    "sections": {
+      "acceptance": {
+        "title": "1. Accept af Vilkår",
+        "content": "Ved at oprette en konto eller bruge LocalDesk anerkender du, at du har læst, forstået og accepterer at være bundet af disse Servicevilkår og vores Privatlivspolitik. Hvis du ikke accepterer disse vilkår, må du ikke få adgang til eller bruge vores tjenester."
+      },
+      "serviceDescription": {
+        "title": "2. Servicebeskrivelse",
+        "content": "LocalDesk leverer en AI-drevet assistent til at hjælpe brugere med at navigere i det danske bureaukrati, herunder oplysninger om skat, visa, bolig og andre administrative forhold. Vores service er af informativ karakter og bør ikke betragtes som juridisk, finansiel eller professionel rådgivning. Konsulter altid kvalificerede fagfolk for specifik vejledning."
+      },
+      "userAccounts": {
+        "title": "3. Brugerkonti",
+        "intro": "For at få adgang til visse funktioner skal du oprette en konto. Du er ansvarlig for:",
+        "items": {
+          "confidentiality": "At opretholde fortroligheden af dine kontioplysninger",
+          "activities": "Alle aktiviteter, der foregår under din konto",
+          "unauthorized": "At underrette os straks om enhver uautoriseret adgang",
+          "accurate": "At give nøjagtige og aktuelle oplysninger"
+        }
+      },
+      "acceptableUse": {
+        "title": "4. Acceptabel Brug",
+        "intro": "Du accepterer ikke at:",
+        "items": {
+          "illegal": "Bruge tjenesten til noget ulovligt eller uautoriseret formål",
+          "access": "Forsøge at få uautoriseret adgang til vores systemer",
+          "interfere": "Forstyrre eller afbryde tjenesten eller servere",
+          "automated": "Bruge automatiserede systemer til at få adgang til tjenesten uden tilladelse",
+          "malicious": "Sende nogen skadelig kode eller skadeligt indhold",
+          "impersonate": "Udgivelse af nogen person eller enhed"
+        }
+      },
+      "intellectualProperty": {
+        "title": "5. Intellektuel Ejendom",
+        "content": "Alt indhold, funktioner og funktionalitet af LocalDesk, herunder men ikke begrænset til tekst, grafik, logoer og software, ejes af LocalDesk og er beskyttet af international ophavsret, varemærke og andre love om intellektuel ejendom. Du må ikke reproducere, distribuere, ændre eller skabe afledte værker uden vores udtrykkelige skriftlige tilladelse."
+      },
+      "dataPrivacy": {
+        "title": "6. Data og Privatliv",
+        "content": "Din brug af LocalDesk er også underlagt vores Privatlivspolitik. Vi indsamler og behandler personoplysninger i overensstemmelse med GDPR og dansk databeskyttelseslovgivning. Ved at bruge vores tjeneste giver du samtykke til indsamling og brug af oplysninger som beskrevet i vores Privatlivspolitik."
+      },
+      "disclaimerWarranties": {
+        "title": "7. Ansvarsfraskrivelse af Garantier",
+        "intro": "LocalDesk leveres \"som den er\" og \"som tilgængelig\" uden garantier af nogen art, hverken udtrykkelige eller underforståede. Vi garanterer ikke at:",
+        "items": {
+          "uninterrupted": "Tjenesten vil være uafbrudt eller fejlfri",
+          "accurate": "Alle oplysninger er nøjagtige eller fuldstændige",
+          "requirements": "Tjenesten vil opfylde dine specifikke krav",
+          "corrected": "Eventuelle fejl eller mangler vil blive rettet"
+        }
+      },
+      "limitationLiability": {
+        "title": "8. Ansvarsbegrænsning",
+        "content": "I det omfang loven tillader det, er LocalDesk ikke ansvarlig for indirekte, hændelige, særlige, følgeskader eller strafskader som følge af din brug eller manglende evne til at bruge tjenesten. Dette inkluderer, men er ikke begrænset til, skader for tab af fortjeneste, data eller andre immaterielle tab."
+      },
+      "termination": {
+        "title": "9. Opsigelse",
+        "intro": "Vi forbeholder os retten til at suspendere eller opsige din konto og adgang til tjenesten efter eget skøn uden varsel for adfærd, som vi mener:",
+        "items": {
+          "violates": "Overtræder disse Servicevilkår",
+          "harmful": "Er skadelig for andre brugere eller vores forretning",
+          "liability": "Udsætter os for juridisk ansvar"
+        },
+        "userTermination": "Du kan opsige din konto til enhver tid ved at kontakte os eller bruge funktionen til sletning af konto."
+      },
+      "changesTerms": {
+        "title": "10. Ændringer af Vilkår",
+        "intro": "Vi forbeholder os retten til at ændre disse Servicevilkår til enhver tid. Vi vil underrette brugere om væsentlige ændringer ved at:",
+        "items": {
+          "posting": "Uploade de opdaterede vilkår på vores hjemmeside",
+          "date": "Opdatere datoen for \"Sidst opdateret\"",
+          "email": "Sende e-mail-notifikationer for væsentlige ændringer"
+        },
+        "acceptance": "Din fortsatte brug af tjenesten efter ændringer udgør accept af de ændrede vilkår."
+      },
+      "governingLaw": {
+        "title": "11. Gældende Lov",
+        "content": "Disse Servicevilkår er underlagt og fortolkes i overensstemmelse med dansk lovgivning uden hensyn til dens lovvalgsregler. Enhver tvist, der opstår som følge af disse vilkår, er underlagt enekompetence ved domstolene i Danmark."
+      },
+      "contact": {
+        "title": "12. Contact Information",
+        "intro": "If you have any questions about these Terms of Service, please contact us at:",
+        "company": "LocalDesk",
+        "email": "Email: hello@localdesk.dk",
+        "location": "Location: Denmark"
+      }
+    },
+    "cta": {
+      "title": "Har du brug for hjælp?",
+      "description": "Har du spørgsmål om vores vilkår eller hvordan vi håndterer dine data? Vi er her for at hjælpe.",
+      "contactSupport": "Kontakt Support"
+    }
+  },
+  "ChatInterface": {
+    "header": {
+      "title": "Samtale",
+      "version": "V. 2.4.0 // Sikker",
+      "mode": "Tilstand",
+      "fullPage": "Fuld Side",
+      "exitFull": "Afslut Fuld",
+      "newSession": "Ny Session",
+      "systemsOnline": "Systemer: Online"
+    },
+    "placeholder": "Stil et spørgsmål...",
+    "send": "Send",
+    "stop": "Stop",
+    "thinking": "Tænker...",
+    "loading": "Gør klar...",
+    "error": "Noget gik galt // Tjek venligst din forbindelse og prøv igen.",
+    "welcome": {
+      "label": "Hvordan kan vi hjælpe?",
+      "title": "Hvad vil du vide om livet i Danmark?"
+    },
+    "message": {
+      "sent": "Sendt",
+      "verifiedAnswer": "Bekræftet svar"
+    },
+    "footer": {
+      "tagline": "Sikker & Privat // Skabt til din tryghed"
+    },
+    "confirmModal": {
+      "title": "Start på en frisk?",
+      "description": "Dette vil rydde din nuværende samtalehistorik. Du kan ikke fortryde denne handling.",
+      "confirm": "Ryd chat",
+      "cancel": "Behold chat"
+    }
+  },
+  "AuthModal": {
+    "signIn": {
+      "label": "Velkommen Tilbage",
+      "title": "Log ind",
+      "description": "Indtast dine oplysninger for at få adgang til dit personlige dashboard."
+    },
+    "signUp": {
+      "label": "Nyt Medlem",
+      "title": "Bliv Medlem",
+      "description": "Opret en konto for at gemme dine samtaler og præferencer."
+    },
+    "fields": {
+      "emailLabel": "E-mailadresse",
+      "emailPlaceholder": "name@example.com",
+      "passwordLabel": "Adgangskode",
+      "passwordPlaceholder": "••••••••"
+    },
+    "buttons": {
+      "signIn": "Log ind",
+      "signUp": "Opret Konto",
+      "processing": "Behandler...",
+      "switchToSignUp": "Ny her? Opret konto",
+      "switchToSignIn": "Allerede medlem? Log ind"
+    },
+    "errors": {
+      "invalidEmail": "Indtast venligst en gyldig e-mailadresse",
+      "passwordTooShort": "Adgangskoden skal være på mindst 6 tegn",
+      "authFailed": "Autentificering mislykkedes. Prøv venligst igen."
+    },
+    "legal": {
+      "agreement": "Ved at fortsætte accepterer du vores",
+      "terms": "Vilkår",
+      "and": "og",
+      "privacy": "Privatlivspolitik",
+      "cookies": "inklusive brug af cookies."
+    }
+  },
+  "SuggestedQuestions": {
+    "label": "Almindelige forespørgsler",
+    "questions": {
+      "q1": "Hvordan registrerer jeg mig hos SKAT som ny beboer?",
+      "q2": "Hvilke dokumenter skal jeg bruge til arbejdsvisum?",
+      "q3": "Hvordan finder jeg bolig i Danmark?"
+    }
+  },
+  "Pluralization": {
+    "messages": "{count, plural, =0 {Ingen beskeder} =1 {1 besked} other {# beskeder}}",
+    "documents": "{count, plural, =0 {Ingen dokumenter} =1 {1 dokument} other {# dokumenter}}",
+    "articles": "{count, plural, =0 {Ingen artikler} =1 {1 artikel} other {# artikler}}",
+    "items": "{count, plural, =0 {Ingen elementer} =1 {1 element} other {# elementer}}",
+    "results": "{count, plural, =0 {Ingen resultater fundet} =1 {1 resultat fundet} other {# resultater fundet}}",
+    "notifications": "{count, plural, =0 {Ingen nye notifikationer} =1 {1 ny notifikation} other {# nye notifikationer}}"
+  }
+}

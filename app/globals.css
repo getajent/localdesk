@@ -154,4 +154,36 @@
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-danish-red/40;
   }
+
+  /* Responsive text utilities */
+  @media (max-width: 640px) {
+    .text-responsive-xs {
+      font-size: clamp(0.75rem, 2vw, 0.875rem);
+    }
+    .text-responsive-sm {
+      font-size: clamp(0.875rem, 2.5vw, 1rem);
+    }
+    .text-responsive-base {
+      font-size: clamp(1rem, 3vw, 1.125rem);
+    }
+    .text-responsive-lg {
+      font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+    }
+  }
+
+  /* Touch-friendly tap targets */
+  @media (hover: none) and (pointer: coarse) {
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Improved focus visibility for keyboard navigation */
+  @media (prefers-reduced-motion: no-preference) {
+    *:focus-visible {
+      transition: outline-offset 0.2s ease;
+      outline-offset: 4px;
+    }
+  }
 }

@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { X, AlertCircle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export interface ConfirmationModalProps {
     isOpen: boolean;
@@ -32,6 +33,8 @@ export function ConfirmationModal({
         onClose();
     };
 
+    const t = useTranslations('Common');
+
     return (
         <div
             className="fixed inset-0 bg-background/90 backdrop-blur-sm flex items-center justify-center z-[100] p-4 motion-safe:animate-fade-in"
@@ -55,7 +58,7 @@ export function ConfirmationModal({
                             <AlertCircle className={`h-6 w-6 ${variant === 'danger' ? 'text-danish-red' : 'text-primary'}`} />
                         </div>
                         <span className={`text-[10px] font-black tracking-[0.4em] uppercase ${variant === 'danger' ? 'text-danish-red' : 'text-primary'}`}>
-                            Attention Required
+                            {t('attention')}
                         </span>
                         <CardTitle className="text-3xl font-serif font-light text-foreground">
                             {title}
@@ -77,8 +80,8 @@ export function ConfirmationModal({
                     <Button
                         onClick={handleConfirm}
                         className={`flex-1 h-14 rounded-none text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 active:scale-[0.99] ${variant === 'danger'
-                                ? 'bg-danish-red text-white hover:bg-danish-red/90'
-                                : 'bg-foreground text-background btn-trend'
+                            ? 'bg-danish-red text-white hover:bg-danish-red/90'
+                            : 'bg-foreground text-background btn-trend'
                             }`}
                     >
                         <span className="relative z-10">{confirmLabel}</span>

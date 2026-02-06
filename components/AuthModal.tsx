@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { supabase } from '@/lib/supabase';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,6 +15,7 @@ export interface AuthModalProps {
 }
 
 export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
+  const t = useTranslations('AuthModal');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSignUp, setIsSignUp] = useState(false);
@@ -24,11 +26,11 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
 
   const validateForm = (): boolean => {
     if (!email || !email.includes('@')) {
-      setError('Please enter a valid email address');
+      setError(t('errors.invalidEmail'));
       return false;
     }
     if (!password || password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError(t('errors.passwordTooShort'));
       return false;
     }
     return true;
@@ -74,7 +76,7 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
         }
       }
     } catch (err: any) {
-      setError(err.message || 'Authentication failed. Please try again.');
+      setError(err.message || t('errors.authFailed'));
     } finally {
       setIsLoading(false);
     }
@@ -108,16 +110,14 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
         <CardHeader className="p-10 pb-2 space-y-6 text-center border-b border-transparent">
           <div className="flex flex-col items-center justify-center space-y-4">
             <span className="text-[10px] font-black tracking-[0.4em] text-danish-red uppercase">
-              {isSignUp ? 'New Member' : 'Welcome Back'}
+              {isSignUp ? t('signUp.label') : t('signIn.label')}
             </span>
             <CardTitle className="text-4xl font-serif font-light text-foreground">
-              {isSignUp ? 'Join the Club' : 'Sign In'}
+              {isSignUp ? t('signUp.title') : t('signIn.title')}
             </CardTitle>
           </div>
           <p className="text-muted-foreground font-sans font-light leading-relaxed max-w-xs mx-auto">
-            {isSignUp
-              ? 'Create an account to save your conversations and preferences.'
-              : 'Enter your credentials to access your personal dashboard.'}
+            {isSignUp ? t('signUp.description') : t('signIn.description')}
           </p>
         </CardHeader>
 
@@ -125,14 +125,14 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label htmlFor="email" className="block text-[10px] font-black tracking-[0.2em] text-muted-foreground uppercase">
-                Email Address
+                {t('fields.emailLabel')}
               </label>
               <Input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="name@example.com"
+                placeholder={t('fields.emailPlaceholder')}
                 disabled={isLoading}
                 className="h-12 rounded-none border-border bg-transparent focus:border-danish-red focus:ring-0 text-base font-normal placeholder:text-muted-foreground/30 transition-colors"
                 required
@@ -141,14 +141,14 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
 
             <div className="space-y-2">
               <label htmlFor="password" className="block text-[10px] font-black tracking-[0.2em] text-muted-foreground uppercase">
-                Password
+                {t('fields.passwordLabel')}
               </label>
               <Input
                 id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder={t('fields.passwordPlaceholder')}
                 disabled={isLoading}
                 className="h-12 rounded-none border-border bg-transparent focus:border-danish-red focus:ring-0 text-base font-normal placeholder:text-muted-foreground/30 transition-colors"
                 required
@@ -167,7 +167,7 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
               disabled={isLoading}
             >
               <span className="relative z-10">
-                {isLoading ? 'Processing...' : isSignUp ? 'Create Account' : 'Sign In'}
+                {isLoading ? t('buttons.processing') : isSignUp ? t('buttons.signUp') : t('buttons.signIn')}
               </span>
             </Button>
 
@@ -181,15 +181,15 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
                 className="text-[10px] font-bold tracking-[0.2em] uppercase text-muted-foreground hover:text-danish-red transition-colors"
                 disabled={isLoading}
               >
-                {isSignUp ? 'Already a member? Sign in' : 'New here? Create account'}
+                {isSignUp ? t('buttons.switchToSignIn') : t('buttons.switchToSignUp')}
               </button>
 
               <p className="text-[10px] text-muted-foreground/60 text-center mt-6 font-sans leading-tight max-w-[240px] mx-auto">
-                By continuing, you agree to our{' '}
-                <a href="/terms" className="underline hover:text-foreground transition-colors">Terms</a>
-                {' '}and{' '}
-                <a href="/privacy" className="underline hover:text-foreground transition-colors">Privacy Policy</a>
-                {' '}including cookie usage.
+                {t('legal.agreement')}{' '}
+                <a href="/terms" className="underline hover:text-foreground transition-colors">{t('legal.terms')}</a>
+                {' '}{t('legal.and')}{' '}
+                <a href="/privacy" className="underline hover:text-foreground transition-colors">{t('legal.privacy')}</a>
+                {' '}{t('legal.cookies')}
               </p>
             </div>
           </form>

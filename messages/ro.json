@@ -1,0 +1,897 @@
+{
+  "Common": {
+    "nav": {
+      "home": "Acasă",
+      "services": "Servicii",
+      "knowledge": "Cunoștințe",
+      "guidance": "Ghid",
+      "backToHome": "Înapoi la Acasă"
+    },
+    "footer": {
+      "tagline": "Ghidul tău AI pentru viața în Danemarca. Primește răspunsuri instantanee despre taxe, locuințe, sănătate, imigrație și multe altele.",
+      "location": "Locație",
+      "locationValue": "Danemarca",
+      "contact": "Contact",
+      "contactEmail": "hello@localdesk.dk",
+      "resourcesTitle": "Resurse",
+      "resourceSkat": "SKAT (Taxe)",
+      "resourceImmigration": "Imigrație",
+      "resourceBorger": "Borger.dk",
+      "resourceWork": "Muncă în DK",
+      "servicesTitle": "Servicii",
+      "serviceHealthcare": "Sănătate",
+      "serviceMitID": "MitID",
+      "serviceEBoks": "E-Boks",
+      "serviceCPH": "CPH Intl",
+      "legalTitle": "Legal",
+      "legal": "Legal",
+      "privacy": "Confidențialitate",
+      "terms": "Termeni",
+      "connectTitle": "Conectare",
+      "contactLink": "Contact",
+      "copyright": "© {year} LocalDesk / AI Guide for Denmark",
+      "heritage": "Patrimoniu Danez"
+    },
+    "auth": {
+      "signIn": "Autentificare",
+      "signUp": "Înregistrare",
+      "signOut": "Ieșire",
+      "memberAccess": "Login membri",
+      "access": "Login",
+      "verifiedUser": "Utilizator verificat"
+    },
+    "theme": {
+      "toggle": "Schimbă tema",
+      "light": "Luminos",
+      "dark": "Întunecat"
+    },
+    "backToHome": "Înapoi la Acasă",
+    "legal": "Legal",
+    "attention": "Atenție necesară"
+  },
+  "HomePage": {
+    "Hero": {
+      "established": "Fondat 2026",
+      "advisor": "Consilier Personal .01",
+      "heritage": "Danez // Ospitalitate",
+      "title": "Facem ca",
+      "titleDenmark": "Danemarca",
+      "titleFeelLikeHome": "să devină acasă.",
+      "missionLabel": "Misiunea",
+      "missionTitle": "Un partener digital atent conceput pentru a vă ajuta să navigați prin viața în Danemarca cu",
+      "missionTitleEmphasis": "claritate",
+      "missionTitleEnd": "și ușurință absolută.",
+      "description": "Transformăm regulile daneze complexe în răspunsuri clare și simple, astfel încât să vă puteți concentra pe ceea ce contează cel mai mult.",
+      "cta": "Începe o conversație",
+      "topicSkat": "Skat",
+      "topicVisas": "Vize",
+      "topicSiri": "Siri",
+      "topicHousing": "Locuințe"
+    },
+    "ChatSection": {
+      "label": "Asistentul Tău",
+      "title": "Hai să vorbim,",
+      "subtitle": "suntem aici să ajutăm.",
+      "description": "Răspunsuri clare și simple despre taxe, vize și locuințe – în limba care te face să te simți ca acasă."
+    },
+    "WelcomeBack": {
+      "label": "Bine ai revenit",
+      "titlePrefix": "Salut, ",
+      "description": "Configurează-ți profilul, urmărește-ți călătoria și întreabă orice despre viața în Danemarca."
+    },
+    "Features": {
+      "sectionLabel": "Cum ajutăm",
+      "title": "Construit pentru",
+      "titleEmphasis": "expatriatul",
+      "titleEnd": "modern.",
+      "madeFor": "Creat pentru tine // 2026",
+      "feature1": {
+        "id": "01",
+        "category": "Performanță",
+        "title": "Răspunsuri rapide",
+        "description": "Găsiți ceea ce aveți nevoie în câteva secunde, fără timpi de așteptare sau birocrație confuză."
+      },
+      "feature2": {
+        "id": "02",
+        "category": "Cunoștințe",
+        "title": "Detalii de încredere",
+        "description": "Informații cercetate în profunzime despre SKAT, vize și locuințe, adaptate special pentru viața în Danemarca."
+      },
+      "feature3": {
+        "id": "03",
+        "category": "Ușurință",
+        "title": "Nu este necesară înregistrarea",
+        "description": "Începeți instantaneu. Vă prețuim timpul, așa că nu este nevoie să creați un cont pentru a obține ajutorul de care aveți nevoie."
+      },
+      "feature4": {
+        "id": "04",
+        "category": "Serviciu",
+        "title": "Mereu gata",
+        "description": "Suntem aici pentru tine 24/7, ajutându-te să te simți ca acasă în Danemarca încă din prima zi."
+      }
+    }
+  },
+  "ServicesPage": {
+    "metadata": {
+      "title": "Servicii | LocalDesk Danemarca",
+      "description": "Îndrumare expertă și suport pentru expatriații care se stabilesc în Danemarca. De la înregistrarea CPR la îndrumare fiscală, căutarea locuinței și consultanță personalizată."
+    },
+    "Hero": {
+      "title": "Serviciile Noastre",
+      "subtitle": "Îndrumare expertă pentru călătoria ta în Danemarca",
+      "tailoredGuidance": "Îndrumare // Personalizată",
+      "mainTitle": "Calea ta <br></br> spre stabilirea <br></br> <spanMuted>în Danemarca.</spanMuted>",
+      "whatWeOffer": "Ce oferim",
+      "offerLead": "De la îndrumare administrativă la suport personalizat, te ajutăm să navighezi fiecare pas al <spanItalic>călătoriei tale daneze</spanItalic>.",
+      "offerDescription": "Fie că ai nevoie de ajutor cu înregistrarea CPR, îndrumare fiscală sau găsirea unei locuințe, serviciile noastre sunt concepute pentru a face tranziția ta lină și fără stres."
+    },
+    "Grid": {
+      "label": "Serviciile Noastre",
+      "title": "Suport complet pentru <spanItalic>viața ta daneză</spanItalic>"
+    },
+    "services": {
+      "consulting": {
+        "category": "Îndrumare Expertă",
+        "title": "Consultanță Personală",
+        "description": "Ghidare unu-la-unu adaptată situației tale specifice în Danemarca",
+        "features": {
+          "cpr": "Asistență înregistrare CPR și MitID",
+          "tax": "Card fiscal și îndrumare SKAT",
+          "healthcare": "Navigare în sistemul de sănătate",
+          "housing": "Strategii de căutare a locuinței",
+          "employment": "Revizuirea contractului de muncă"
+        }
+      },
+      "documents": {
+        "category": "Documentație",
+        "title": "Asistență Documente",
+        "description": "Ajutor pentru înțelegerea și completarea formularelor administrative daneze",
+        "features": {
+          "residence": "Cereri permis de ședere",
+          "bank": "Îndrumare deschidere cont bancar",
+          "rental": "Revizuirea contractului de închiriere",
+          "taxReturn": "Asistență declarație fiscală",
+          "translation": "Traducerea corespondenței oficiale"
+        }
+      },
+      "relocation": {
+        "category": "Relocare",
+        "title": "Suport Relocare",
+        "description": "Suport complet pentru mutarea ta în Danemarca",
+        "features": {
+          "planning": "Planificare înainte de sosire",
+          "housing": "Asistență căutare locuință",
+          "utilities": "Coordonare utilități",
+          "school": "Îndrumare înscriere școlară",
+          "cultural": "Orientare culturală"
+        }
+      },
+      "ongoing": {
+        "category": "Suport Continuu",
+        "title": "Îndrumare Personalizată",
+        "description": "Asistență AI 24/7 pentru întrebările tale despre Danemarca",
+        "features": {
+          "instant": "Răspunsuri instantanee la întrebări legate de Danemarca",
+          "upToDate": "Informații actualizate despre reglementări",
+          "personalized": "Recomandări personalizate",
+          "multiLanguage": "Suport multilingv",
+          "available": "Întotdeauna disponibil"
+        }
+      }
+    }
+  },
+  "GuidancePage": {
+    "metadata": {
+      "title": "Ghid | LocalDesk Danemarca",
+      "description": "Ghiduri pas cu pas pentru navigarea vieții în Danemarca. De la prima săptămână până la stabilirea pe termen lung, urmați planurile noastre dovedite pentru succes."
+    },
+    "Hero": {
+      "label": "Ghid",
+      "stepByStep": "Pas cu Pas",
+      "practicalAdvice": "Practic // Sfaturi",
+      "title": "Navighează",
+      "titleWith": "cu",
+      "titleConfidence": "Încredere.",
+      "roadmapLabel": "Planul Tău",
+      "description": "Ghiduri clare și acționabile pentru fiecare etapă a",
+      "descriptionEmphasis": "călătoriei tale daneze",
+      "subtitle": "De la prima săptămână până la stabilirea pe termen lung, urmați ghidurile noastre pas cu pas pentru a naviga cu ușurință procese complexe.",
+      "categories": {
+        "arrival": "Sosire",
+        "setup": "Configurare",
+        "housing": "Locuință",
+        "taxes": "Taxe"
+      }
+    },
+    "Steps": {
+      "sectionLabel": "Ghiduri Pas cu Pas",
+      "title": "Urmați",
+      "titleEmphasis": "planurile noastre dovedite",
+      "titleEnd": "",
+      "relatedResources": "Resurse Conexe"
+    },
+    "guides": {
+      "firstWeek": {
+        "title": "Prima ta săptămână în Danemarca",
+        "description": "Etape esențiale de parcurs imediat după sosire",
+        "duration": "Săptămâna 1",
+        "steps": {
+          "step1": {
+            "title": "Asigură cazare temporară",
+            "description": "Găsește un loc unde să stai în timp ce cauți o locuință permanentă",
+            "details": [
+              "Rezervă un hotel sau Airbnb pentru primele zile",
+              "Ia în considerare pensiunile sau închirierile pe termen scurt",
+              "Alătură-te grupurilor de locuințe de pe Facebook",
+              "Contactează angajatorul pentru cazare temporară"
+            ]
+          },
+          "step2": {
+            "title": "Obține un card SIM danez",
+            "description": "Esențial pentru comunicare și multe servicii",
+            "details": [
+              "Vizitează TDC, Telenor, 3 (Tre) sau Telia",
+              "Adu pașaportul pentru înregistrare",
+              "Alege cartelă prepay (50-200 DKK) sau abonament (100-500 DKK/lună)",
+              "Prepay e bun pentru rezidenți temporari, abonamentul pentru termen lung"
+            ]
+          },
+          "step3": {
+            "title": "Vizitează International Citizen Service (ICS)",
+            "description": "Obține îndrumări privind procedurile de înregistrare",
+            "details": [
+              "Rezervă o programare online",
+              "Adu pașaportul și permisul de ședere",
+              "Întreabă despre cerințele de înregistrare CPR",
+              "Obține informații despre pașii următori"
+            ]
+          },
+          "step4": {
+            "title": "Începe căutarea unei locuințe",
+            "description": "Începe căutarea unei cazări permanente",
+            "details": [
+              "Înregistrează-te pe Boligportal.dk",
+              "Înscrie-te pe listele de așteptare pentru locuințe",
+              "Verifică grupurile de pe Facebook",
+              "Contactează agenții imobiliari",
+              "Buget: 8.000-15.000 DKK/lună pentru 1 cameră în Copenhaga (mai puțin în alte orașe)"
+            ]
+          }
+        }
+      },
+      "essentialServices": {
+        "title": "Configurarea serviciilor esențiale",
+        "description": "Finalizează înregistrările administrative",
+        "duration": "Luna 1-2",
+        "steps": {
+          "step1": {
+            "title": "Înregistrează-te pentru numărul CPR",
+            "description": "Cheia ta pentru accesarea tuturor serviciilor daneze",
+            "details": [
+              "Necesită o adresă permanentă",
+              "Rezervă o programare la ICS sau Borgerservice",
+              "Adu pașaportul, permisul de ședere, contractul de închiriere",
+              "Primești numărul CPR în aceeași zi",
+              "Cardul de sănătate sosește în 2-3 săptămâni"
+            ]
+          },
+          "step2": {
+            "title": "Configurează MitID",
+            "description": "Identitate digitală pentru servicii online",
+            "details": [
+              "Necesită numărul CPR",
+              "Descarcă aplicația MitID",
+              "Înregistrează-te la Borgerservice sau online",
+              "Esențial pentru servicii bancare și guvernamentale"
+            ]
+          },
+          "step3": {
+            "title": "Deschide un cont bancar",
+            "description": "Necesar pentru salariu și plata facturilor",
+            "details": [
+              "Necesită numărul CPR și MitID",
+              "Adu pașaportul și dovada adresei",
+              "Compară băncile: Danske Bank, Nordea, Jyske Bank",
+              "Configurează NemKonto pentru plăți guvernamentale"
+            ]
+          },
+          "step4": {
+            "title": "Solicită cardul de taxe",
+            "description": "Necesar înainte de a începe munca",
+            "details": [
+              "Aplică online via SKAT.dk",
+              "Necesită numărul CPR și MitID",
+              "Alege hovedkort (card principal) pentru jobul principal",
+              "Angajatorul are nevoie de informațiile tale fiscale"
+            ]
+          },
+          "step5": {
+            "title": "Înregistrează-te pentru Digital Post",
+            "description": "Primește comunicări oficiale",
+            "details": [
+              "Obligatoriu pentru majoritatea rezidenților",
+              "Acces via e-Boks sau borger.dk",
+              "Necesită MitID",
+              "Verifică regulat pentru notificări importante"
+            ]
+          }
+        }
+      },
+      "housingGuide": {
+        "title": "Găsirea și asigurarea unei locuințe",
+        "description": "Navighează cu succes pe piața de închirieri din Danemarca",
+        "duration": "În curs",
+        "steps": {
+          "step1": {
+            "title": "Înțelege tipurile de locuințe",
+            "description": "Află despre diferitele opțiuni de locuire",
+            "details": [
+              "Închiriere privată: Cea mai flexibilă, cost mai mare",
+              "Locuințe sociale: Cost mai mic, liste lungi de așteptare",
+              "Andelsbolig: Locuințe cooperatiste, cumpărare de acțiuni",
+              "Locuințe pentru studenți: Doar pentru studenți înmatriculați"
+            ]
+          },
+          "step2": {
+            "title": "Caută pe mai multe platforme",
+            "description": "Extinde căutarea pentru mai multe oportunități",
+            "details": [
+              "Boligportal.dk: Principala platformă de închirieri",
+              "DBA.dk: Anunțuri de mică publicitate",
+              "Grupuri Facebook: Comunități locale de locuințe",
+              "Birouri de locuințe universitare: Pentru studenți",
+              "Agenți imobiliari: Pentru închirieri de lux"
+            ]
+          },
+          "step3": {
+            "title": "Pregătește documentația financiară",
+            "description": "Ai documentele gata pentru cereri",
+            "details": [
+              "Contract de muncă sau ofertă de job",
+              "Extrase de cont (ultimele 3 luni)",
+              "Scrisori de recomandare de la foști proprietari",
+              "Număr CPR și act de identitate",
+              "Buget pentru depozit: 3-6 luni de chirie în avans"
+            ]
+          },
+          "step4": {
+            "title": "Revizuiește contractul de închiriere cu atenție",
+            "description": "Înțelege-ți drepturile și obligațiile",
+            "details": [
+              "Verifică suma chiriei și termenii de plată",
+              "Verifică depozitul și chiria plătită în avans",
+              "Înțelege perioada de preaviz (de obicei 3 luni)",
+              "Reține ce utilități sunt incluse",
+              "Documentează starea locuinței la mutare"
+            ]
+          },
+          "step5": {
+            "title": "Configurează utilitățile și asigurarea",
+            "description": "Finalizează configurarea locuinței",
+            "details": [
+              "Alege furnizorul de electricitate",
+              "Configurează serviciul de internet",
+              "Obține asigurarea locuinței (indboforsikring)",
+              "Înregistrează adresa la autorități",
+              "Actualizează adresa CPR dacă este necesar"
+            ]
+          }
+        }
+      },
+      "taxGuide": {
+        "title": "Înțelegerea taxelor tale",
+        "description": "Navighează sistemul fiscal danez cu încredere",
+        "duration": "În curs",
+        "steps": {
+          "step1": {
+            "title": "Înțelege structura taxelor",
+            "description": "Află cum funcționează taxele în Danemarca",
+            "details": [
+              "AM-bidrag: 8% contribuție la piața muncii",
+              "Taxa municipală: 22-27% (variază în funcție de municipalitate)",
+              "Taxa de bază: ~12.09%",
+              "Taxa de vârf: 15% pentru venituri peste ~588.900 DKK",
+              "Rata efectivă totală: 38-52% în funcție de venit"
+            ]
+          },
+          "step2": {
+            "title": "Obține cardul de taxe",
+            "description": "Configurează reținerea taxelor",
+            "details": [
+              "Aplică via TastSelv pe SKAT.dk cu MitID",
+              "Hovedkort pentru jobul principal",
+              "Bikort pentru venituri suplimentare (rată de ~55%)",
+              "Angajatorul folosește asta pentru reținerea corectă",
+              "Actualizează dacă se schimbă circumstanțele"
+            ]
+          },
+          "step3": {
+            "title": "Cunoaște-ți deducerile",
+            "description": "Maximizează-ți beneficiile fiscale",
+            "details": [
+              "Transport: Costuri de navetă peste 24 km pe sens",
+              "Contribuții pensie: Către scheme aprobate",
+              "Taxe sindicat: A-kasse și calitatea de membru",
+              "Dobândă: Dobânda ipotecară (limitată)",
+              "Donații caritabile: Către organizații aprobate (minim 500 DKK/an)"
+            ]
+          },
+          "step4": {
+            "title": "Revizuiește declarația fiscală anuală",
+            "description": "Verifică årsopgørelse",
+            "details": [
+              "Disponibilă în martie în fiecare an",
+              "SKAT pregătește automat",
+              "Revizuiește pentru acuratețe",
+              "Corectează erorile până la termenul limită (iunie-iulie)",
+              "Primește rambursare sau plătește taxe suplimentare"
+            ]
+          }
+        }
+      },
+      "healthcareGuide": {
+        "title": "Navigarea prin sistemul de sănătate",
+        "description": "Accesează serviciile medicale în Danemarca",
+        "duration": "În curs",
+        "steps": {
+          "step1": {
+            "title": "Obține cardul de asigurări de sănătate",
+            "description": "Primește sundhedskort",
+            "details": [
+              "Automat după înregistrarea CPR",
+              "Cardul galben sosește prin poștă în 2-4 săptămâni",
+              "Arată numărul CPR și medicul de familie desemnat",
+              "Adu-l la toate programările medicale",
+              "Sănătate gratuită pentru rezidenți"
+            ]
+          },
+          "step2": {
+            "title": "Înregistrează-te la medicul de familie",
+            "description": "Alege-ți medicul de familie",
+            "details": [
+              "Medicul de familie este desemnat automat cu CPR",
+              "Poți schimba medicul de familie dacă dorești",
+              "Medicul de familie e primul punct de contact pentru sănătate",
+              "Consultații gratuite",
+              "Medicul de familie oferă trimiteri către specialiști"
+            ]
+          },
+          "step3": {
+            "title": "Înțelege sistemul de sănătate",
+            "description": "Află cum să accesezi serviciile",
+            "details": [
+              "Medicul de familie pentru probleme non-urgente",
+              "Urgențe: Sună la 112",
+              "După program: Sună la 1813 (Copenhaga) sau numărul regional",
+              "Farmacie: Rețetă necesară pentru majoritatea medicamentelor",
+              "Stomatologie: Nu e acoperită, se recomandă asigurare privată"
+            ]
+          },
+          "step4": {
+            "title": "Accesează serviciile digitale de sănătate",
+            "description": "Folosește platformele de sănătate online",
+            "details": [
+              "Sundhed.dk: Fă programări, vizualizează dosarul",
+              "Necesită MitID",
+              "E-Boks: Primește corespondență de sănătate",
+              "Aplicația Min Læge: Contactează medicul de familie",
+              "Reînnoirea rețetelor online"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "KnowledgePage": {
+    "metadata": {
+      "title": "Baza de cunoștințe | LocalDesk Danemarca",
+      "description": "Ghiduri cuprinzătoare despre viața în Danemarca. Explorează subiecte precum procesul de sosire, angajarea, locuința, taxele, beneficiile sociale, serviciile esențiale și viața practică."
+    },
+    "Hero": {
+      "title": "Baza de cunoștințe",
+      "subtitle": "Ghiduri cuprinzătoare pentru viața în Danemarca",
+      "resourceCenter": "Centru de resurse",
+      "comprehensiveInfo": "Informații // Cuprinzătoare",
+      "mainTitlePart1": "Tot",
+      "mainTitlePart2": "Ce trebuie",
+      "mainTitlePart3": "Să știi.",
+      "description": "De la procedurile de sosire la viața de zi cu zi, explorează ghiduri detaliate care acoperă fiecare aspect al vieții în Danemarca.",
+      "searchPlaceholder": "Caută articole...",
+      "quickLinks": {
+        "arrival": "Sosire",
+        "housing": "Locuință",
+        "taxes": "Taxe",
+        "benefits": "Beneficii"
+      }
+    },
+    "Categories": {
+      "label": "Răsfoiește după subiect",
+      "title": "Explorează",
+      "titleEmphasis": "cuprinzătoarea noastră",
+      "titleEnd": "bază de cunoștințe",
+      "topics": "Subiecte",
+      "moreTopics": "+ încă {count} subiecte"
+    },
+    "categories": {
+      "arrival": {
+        "title": "Procesul de sosire",
+        "description": "Înregistrări și proceduri esențiale când sosiți prima dată",
+        "documentCount": "{count, plural, =1 {1 Document} few {# Documente} other {# de Documente}}"
+      },
+      "employment": {
+        "title": "Muncă și angajare",
+        "description": "Munca în Danemarca: contracte, drepturi și cultura la locul de muncă",
+        "documentCount": "{count, plural, =1 {1 Document} few {# Documente} other {# de Documente}}"
+      },
+      "housing": {
+        "title": "Locuință",
+        "description": "Găsirea, închirierea și întreținerea casei tale în Danemarca",
+        "documentCount": "{count, plural, =1 {1 Document} few {# Documente} other {# de Documente}}"
+      },
+      "taxFinance": {
+        "title": "Taxe și finanțe",
+        "description": "Înțelegerea impozitării daneze și gestionarea finanțelor tale",
+        "documentCount": "{count, plural, =1 {1 Document} few {# Documente} other {# de Documente}}"
+      },
+      "socialBenefits": {
+        "title": "Beneficii sociale",
+        "description": "Sănătate, pensii și sisteme de asistență socială",
+        "documentCount": "{count, plural, =1 {1 Document} few {# Documente} other {# de Documente}}"
+      },
+      "essentialServices": {
+        "title": "Servicii esențiale",
+        "description": "Sănătate, servicii bancare, educație și transport",
+        "documentCount": "{count, plural, =1 {1 Document} few {# Documente} other {# de Documente}}"
+      },
+      "practicalLiving": {
+        "title": "Viața practică",
+        "description": "Viața de zi cu zi, cultura și comunitatea în Danemarca",
+        "documentCount": "{count, plural, =1 {1 Document} few {# Documente} other {# de Documente}}"
+      }
+    }
+  },
+  "PrivacyPage": {
+    "metadata": {
+      "title": "Politica de Confidențialitate - LocalDesk",
+      "description": "Politica de confidențialitate și informații privind protecția datelor pentru LocalDesk"
+    },
+    "title": "Politica de confidențialitate",
+    "lastUpdated": "Ultima actualizare: {date}",
+    "introduction": "La LocalDesk, luăm în serios confidențialitatea dvs. Această Politică de Confidențialitate explică modul în care colectăm, utilizăm, dezvăluim și protejăm informațiile dvs. atunci când utilizați serviciul nostru. Ne angajăm să protejăm datele dvs. personale în conformitate cu GDPR și legile daneze privind protecția datelor.",
+    "sections": {
+      "dataCollection": {
+        "title": "1. Informații pe care le colectăm",
+        "personalInfo": {
+          "title": "Informații personale",
+          "intro": "Când vă creați un cont, colectăm:",
+          "items": {
+            "email": "Adresa de e-mail",
+            "displayName": "Numele afișat (opțional)",
+            "profile": "Informații despre profil (statutul de rezidență, statutul ocupațional)",
+            "credentials": "Acreditări de autentificare"
+          }
+        },
+        "usageInfo": {
+          "title": "Informații despre utilizare",
+          "intro": "Colectăm automat anumite informații atunci când utilizați serviciul nostru:",
+          "items": {
+            "chat": "Mesajele de chat și istoricul conversațiilor",
+            "usage": "Date despre utilizarea funcțiilor și interacțiuni",
+            "device": "Informații despre dispozitiv și tipul de browser",
+            "ip": "Adresa IP și datele de localizare",
+            "cookies": "Cookie-uri și tehnologii similare de urmărire"
+          }
+        }
+      },
+      "dataUse": {
+        "title": "2. Cum utilizăm informațiile dvs.",
+        "intro": "Utilizăm informațiile colectate pentru a:",
+        "items": {
+          "provide": "Furniza și menține serviciul nostru de asistent AI",
+          "personalize": "Personaliza experiența dvs. și îmbunătăți recomandările noastre",
+          "process": "Procesa cererile dvs. și răspunde la întrebările dvs.",
+          "notify": "Trimite actualizări de serviciu și notificări importante",
+          "analyze": "Analiza modelele de utilizare pentru a ne îmbunătăți serviciul",
+          "prevent": "Detecta și preveni frauda sau abuzul",
+          "comply": "Respecta obligațiile legale"
+        }
+      },
+      "legalBasis": {
+        "title": "3. Temeiul juridic pentru prelucrare (GDPR)",
+        "intro": "În conformitate cu GDPR, prelucrăm datele dvs. personale pe baza:",
+        "items": {
+          "consent": "Consimțământ: Ați dat consimțământul explicit pentru a prelucra datele dvs. personale în scopuri specifice",
+          "contract": "Contract: Prelucrarea este necesară pentru a îndeplini contractul nostru cu dvs. (furnizarea serviciului)",
+          "legal": "Obligație legală: Prelucrarea este necesară pentru a respecta legea",
+          "legitimate": "Interese legitime: Prelucrarea este necesară pentru interesele noastre legitime (îmbunătățirea serviciului, prevenirea fraudei)"
+        }
+      },
+      "dataSharing": {
+        "title": "4. Partajarea și dezvăluirea datelor",
+        "intro": "Nu vindem informațiile dvs. personale. Putem partaja datele dvs. cu:",
+        "serviceProviders": {
+          "title": "Furnizori de servicii",
+          "items": {
+            "supabase": "Supabase (bază de date și autentificare)",
+            "openai": "OpenAI (procesare AI pentru răspunsuri chat)",
+            "hosting": "Furnizori de găzduire cloud"
+          }
+        },
+        "legal": {
+          "title": "Cerințe legale",
+          "description": "Putem dezvălui informațiile dvs. dacă este cerut de lege sau ca răspuns la cereri legale valabile."
+        }
+      },
+      "dataSecurity": {
+        "title": "5. Stocarea și securitatea datelor",
+        "intro": "Datele dvs. sunt stocate în siguranță folosind metode de criptare standard în industrie și măsuri de securitate. Folosim:",
+        "items": {
+          "encryption": "Transmisie de date criptată (HTTPS/TLS)",
+          "database": "Stocare securizată a bazei de date cu controale de acces",
+          "audits": "Audituri regulate de securitate și actualizări",
+          "datacenters": "Centre de date situate în UE (conforme cu GDPR)"
+        },
+        "disclaimer": "Cu toate acestea, nicio metodă de transmisie prin internet nu este 100% sigură. Deși ne străduim să vă protejăm datele, nu putem garanta securitatea absolută."
+      },
+      "userRights": {
+        "title": "6. Drepturile dvs. conform GDPR",
+        "intro": "Ca utilizator în UE, aveți următoarele drepturi:",
+        "items": {
+          "access": "Dreptul la acces: Solicitați o copie a datelor dvs. personale",
+          "rectification": "Dreptul la rectificare: Corectați datele inexacte sau incomplete",
+          "erasure": "Dreptul la ștergere: Solicitați ștergerea datelor dvs. personale („dreptul de a fi uitat”)",
+          "restrict": "Dreptul la restricționarea prelucrării: Limitați modul în care utilizăm datele dvs.",
+          "portability": "Dreptul la portabilitatea datelor: Primiți datele într-un format structurat, care poate fi citit automat",
+          "object": "Dreptul la opoziție: Vă opuneți prelucrării bazate pe interese legitime",
+          "withdraw": "Dreptul de a retrage consimțământul: Retrageți consimțământul în orice moment"
+        },
+        "contact": "Pentru a exercita aceste drepturi, contactați-ne la hello@localdesk.dk"
+      },
+      "cookies": {
+        "title": "7. Cookie-uri și urmărire",
+        "intro": "Folosim cookie-uri și tehnologii similare pentru:",
+        "items": {
+          "session": "A menține sesiunea dvs. și a vă menține autentificat",
+          "preferences": "A reține preferințele dvs. (temă, limbă)",
+          "analyze": "A analiza utilizarea site-ului și performanța",
+          "improve": "A îmbunătăți experiența utilizatorului"
+        },
+        "control": "Puteți controla cookie-urile prin setările browserului dvs. Rețineți că dezactivarea cookie-urilor poate afecta funcționalitatea."
+      },
+      "dataRetention": {
+        "title": "8. Păstrarea datelor",
+        "intro": "Păstrăm datele dvs. personale doar atât timp cât este necesar pentru a furniza serviciile noastre și pentru a respecta obligațiile legale:",
+        "items": {
+          "account": "Datele contului: Păstrate cât timp contul dvs. este activ",
+          "chat": "Istoricul chat-ului: Păstrat pentru îmbunătățirea serviciului, cu excepția cazului în care solicitați ștergerea",
+          "logs": "Jurnale de utilizare: De obicei păstrate timp de 90 de zile",
+          "legal": "Înregistrări legale: Păstrate conform cerințelor legale"
+        },
+        "deletion": "Când vă ștergeți contul, vom șterge sau anonimiza datele dvs. personale în termen de 30 de zile, cu excepția cazului în care suntem obligați să le păstrăm prin lege."
+      },
+      "internationalTransfers": {
+        "title": "9. Transferuri internaționale de date",
+        "intro": "Datele dvs. sunt stocate în principal în Uniunea Europeană. Dacă transferăm date în afara UE, asigurăm măsuri de protecție adecvate, cum ar fi:",
+        "items": {
+          "scc": "Clauze Contractuale Standard (SCC)",
+          "adequacy": "Decizii de adecvare ale Comisiei Europene",
+          "other": "Alte mecanisme de transfer aprobate legal"
+        }
+      },
+      "childrenPrivacy": {
+        "title": "10. Confidențialitatea copiilor",
+        "description": "Serviciul nostru nu este destinat copiilor sub 16 ani. Nu colectăm cu bună știință informații personale de la copii. Dacă credeți că am colectat date de la un copil, vă rugăm să ne contactați imediat."
+      },
+      "policyChanges": {
+        "title": "11. Modificări ale acestei politici",
+        "intro": "Putem actualiza această Politică de Confidențialitate din când în când. Vă vom notifica despre modificările semnificative prin:",
+        "items": {
+          "posting": "Postarea politicii actualizate pe site-ul nostru",
+          "date": "Actualizarea datei „Ultima actualizare”",
+          "email": "Trimiterea de notificări prin e-mail pentru modificări materiale"
+        },
+        "acceptance": "Utilizarea continuă a serviciului după modificări constituie acceptarea politicii actualizate."
+      },
+      "contact": {
+        "title": "12. Contactați-ne",
+        "intro": "Dacă aveți întrebări despre această Politică de Confidențialitate sau doriți să vă exercitați drepturile, vă rugăm să ne contactați:",
+        "company": "LocalDesk - Protecția Datelor",
+        "email": "Email: hello@localdesk.dk",
+        "location": "Locație: Danemarca",
+        "complaint": "Aveți, de asemenea, dreptul de a depune o plângere la Agenția Daneză pentru Protecția Datelor (Datatilsynet) dacă considerați că nu am gestionat datele dvs. în mod corespunzător."
+      }
+    },
+    "cta": {
+      "title": "Confidențialitatea ta contează",
+      "description": "Ne angajăm să vă protejăm datele și să vă respectăm drepturile de confidențialitate. Dacă aveți nelămuriri sau întrebări, suntem aici să vă ajutăm.",
+      "readTerms": "Citiți Termenii de utilizare",
+      "contactSupport": "Contactați asistența"
+    }
+  },
+  "TermsPage": {
+    "metadata": {
+      "title": "Termeni și Condiții - LocalDesk",
+      "description": "Termenii și condițiile pentru utilizarea serviciilor LocalDesk"
+    },
+    "title": "Termeni și Condiții",
+    "lastUpdated": "Ultima actualizare: {date}",
+    "introduction": "Bine ați venit la LocalDesk. Prin accesarea sau utilizarea serviciului nostru, sunteți de acord să respectați acești Termeni și Condiții. Vă rugăm să îi citiți cu atenție înainte de a utiliza platforma noastră.",
+    "sections": {
+      "acceptance": {
+        "title": "1. Acceptarea termenilor",
+        "content": "Prin crearea unui cont sau utilizarea LocalDesk, confirmați că ați citit, înțeles și sunteți de acord să respectați acești Termeni și Condiții și Politica noastră de confidențialitate. Dacă nu sunteți de acord cu acești termeni, este posibil să nu accesați sau să utilizați serviciile noastre."
+      },
+      "serviceDescription": {
+        "title": "2. Descrierea serviciului",
+        "content": "LocalDesk oferă un asistent bazat pe AI pentru a ajuta utilizatorii să navigheze în birocrația daneză, inclusiv informații despre taxe, vize, locuințe și alte chestiuni administrative. Serviciul nostru este de natură informativă și nu trebuie considerat drept consultanță juridică, financiară sau profesională. Consultați întotdeauna profesioniști calificați pentru îndrumare specifică."
+      },
+      "userAccounts": {
+        "title": "3. Conturi de utilizator",
+        "intro": "Pentru a accesa anumite funcții, trebuie să creați un cont. Sunteți responsabil pentru:",
+        "items": {
+          "confidentiality": "Păstrarea confidențialității acreditărilor contului dumneavoastră",
+          "activities": "Toate activitățile care au loc în contul dumneavoastră",
+          "unauthorized": "Notificarea imediată a noastră cu privire la orice acces neautorizat",
+          "accurate": "Furnizarea de informații exacte și actuale"
+        }
+      },
+      "acceptableUse": {
+        "title": "4. Utilizare acceptabilă",
+        "intro": "Sunteți de acord să nu:",
+        "items": {
+          "illegal": "Utilizați serviciul în orice scop ilegal sau neautorizat",
+          "access": "Încercați să obțineți acces neautorizat la sistemele noastre",
+          "interfere": "Interfereați sau perturbați serviciul sau serverele",
+          "automated": "Utilizați sisteme automate pentru a accesa serviciul fără permisiune",
+          "malicious": "Transmiteți orice cod rău intenționat sau conținut dăunător",
+          "impersonate": "Vă dați drept orice persoană sau entitate"
+        }
+      },
+      "intellectualProperty": {
+        "title": "5. Proprietate intelectuală",
+        "content": "Tot conținutul, caracteristicile și funcționalitatea LocalDesk, inclusiv, dar fără a se limita la text, grafică, logo-uri și software, sunt deținute de LocalDesk și protejate de legile internaționale privind drepturile de autor, mărcile comerciale și alte drepturi de proprietate intelectuală. Nu puteți reproduce, distribui, modifica sau crea lucrări derivate fără permisiunea noastră scrisă expresă."
+      },
+      "dataPrivacy": {
+        "title": "6. Date și confidențialitate",
+        "content": "Utilizarea LocalDesk este, de asemenea, guvernată de Politica noastră de confidențialitate. Colectăm și prelucrăm date personale în conformitate cu GDPR și legile daneze de protecție a datelor. Prin utilizarea serviciului nostru, vă dați acordul pentru colectarea și utilizarea informațiilor așa cum este descris în Politica noastră de confidențialitate."
+      },
+      "disclaimerWarranties": {
+        "title": "7. Declinarea garanțiilor",
+        "intro": "LocalDesk este furnizat „ca atare” și „așa cum este disponibil” fără garanții de niciun fel, exprese sau implicite. Nu garantăm că:",
+        "items": {
+          "uninterrupted": "Serviciul va fi neîntrerupt sau fără erori",
+          "accurate": "Toate informațiile furnizate sunt corecte sau complete",
+          "requirements": "Serviciul va îndeplini cerințele dumneavoastră specifice",
+          "corrected": "Orice erori sau defecte vor fi corectate"
+        }
+      },
+      "limitationLiability": {
+        "title": "8. Limitarea răspunderii",
+        "content": "În măsura maximă permisă de lege, LocalDesk nu va fi răspunzător pentru nicio daună indirectă, incidentală, specială, consecutivă sau punitivă care rezultă din utilizarea sau incapacitatea de utilizare a serviciului. Aceasta include, dar nu se limitează la, daune pentru pierderea profiturilor, a datelor sau alte pierderi necorporale."
+      },
+      "termination": {
+        "title": "9. Reziliere",
+        "intro": "Ne rezervăm dreptul de a suspenda sau rezilia contul și accesul dumneavoastră la serviciu la discreția noastră exclusivă, fără notificare, pentru comportament pe care îl considerăm:",
+        "items": {
+          "violates": "Încalcă acești Termeni și Condiții",
+          "harmful": "Este dăunător altor utilizatori sau afacerii noastre",
+          "liability": "Ne expune la răspundere legală"
+        },
+        "userTermination": "Vă puteți anula contul în orice moment contactându-ne sau folosind funcția de ștergere a contului."
+      },
+      "changesTerms": {
+        "title": "10. Modificări ale termenilor",
+        "intro": "Ne rezervăm dreptul de a modifica acești Termeni și Condiții în orice moment. Vom notifica utilizatorii cu privire la orice modificări materiale prin:",
+        "items": {
+          "posting": "Postarea termenilor actualizați pe site-ul nostru",
+          "date": "Actualizarea datei „Ultima actualizare”",
+          "email": "Trimiterea notificărilor prin e-mail pentru modificări semnificative"
+        },
+        "acceptance": "Utilizarea continuă a serviciului după modificări constituie acceptarea termenilor modificați."
+      },
+      "governingLaw": {
+        "title": "11. Legea aplicabilă",
+        "content": "Acești Termeni și Condiții vor fi guvernați și interpretați în conformitate cu legile Danemarcei, fără a ține cont de dispozițiile sale privind conflictul de legi. Orice dispută care decurge din acești termeni va fi supusă jurisdicției exclusive a instanțelor din Danemarca."
+      },
+      "contact": {
+        "title": "12. Informații de contact",
+        "intro": "Dacă aveți întrebări despre acești Termeni și Condiții, vă rugăm să ne contactați la:",
+        "company": "LocalDesk",
+        "email": "Email: hello@localdesk.dk",
+        "location": "Locație: Danemarca"
+      }
+    },
+    "cta": {
+      "title": "Aveți nevoie de ajutor?",
+      "description": "Aveți întrebări despre condițiile noastre sau cum gestionăm datele dumneavoastră? Suntem aici să ajutăm.",
+      "contactSupport": "Contactați asistența"
+    }
+  },
+  "ChatInterface": {
+    "header": {
+      "title": "Conversație",
+      "version": "V. 2.4.0 // Securizat",
+      "mode": "Mod",
+      "fullPage": "Pagină completă",
+      "exitFull": "Ieși din complet",
+      "newSession": "Sesiune nouă",
+      "systemsOnline": "Sisteme: Online"
+    },
+    "placeholder": "Pune o întrebare...",
+    "send": "Trimite",
+    "stop": "Oprește",
+    "thinking": "Gândesc...",
+    "loading": "Pregătesc...",
+    "error": "Something went wrong // Please check your connection and try again.",
+    "welcome": {
+      "label": "Cum putem ajuta?",
+      "title": "Ce ați dori să știți despre viața în Danemarca?"
+    },
+    "message": {
+      "sent": "Trimis",
+      "verifiedAnswer": "Răspuns verificat"
+    },
+    "footer": {
+      "tagline": "Securizat și Privat // Construit pentru liniștea ta"
+    },
+    "confirmModal": {
+      "title": "Începe din nou?",
+      "description": "Aceasta va șterge istoricul conversației curente. Această acțiune nu poate fi anulată.",
+      "confirm": "Șterge conversația",
+      "cancel": "Păstrează conversația"
+    }
+  },
+  "AuthModal": {
+    "signIn": {
+      "label": "Bine ai revenit",
+      "title": "Autentificare",
+      "description": "Introduceți acreditările pentru a accesa tabloul de bord personal."
+    },
+    "signUp": {
+      "label": "Membru nou",
+      "title": "Alătură-te clubului",
+      "description": "Creați un cont pentru a salva conversațiile și preferințele."
+    },
+    "fields": {
+      "emailLabel": "Adresă de email",
+      "emailPlaceholder": "name@example.com",
+      "passwordLabel": "Parolă",
+      "passwordPlaceholder": "••••••••"
+    },
+    "buttons": {
+      "signIn": "Autentificare",
+      "signUp": "Creează cont",
+      "processing": "Procesare...",
+      "switchToSignUp": "Nou aici? Creează cont",
+      "switchToSignIn": "Deja membru? Autentifică-te"
+    },
+    "errors": {
+      "invalidEmail": "Vă rugăm să introduceți o adresă de email validă",
+      "passwordTooShort": "Parola trebuie să aibă cel puțin 6 caractere",
+      "authFailed": "Autentificarea a eșuat. Vă rugăm să încercați din nou."
+    },
+    "legal": {
+      "agreement": "Continuând, ești de acord cu",
+      "terms": "Termeni",
+      "and": "și",
+      "privacy": "Politica de confidențialitate",
+      "cookies": "inclusiv utilizarea cookie-urilor."
+    }
+  },
+  "SuggestedQuestions": {
+    "label": "Întrebări frecvente",
+    "questions": {
+      "q1": "Cum mă înregistrez la SKAT ca nou rezident?",
+      "q2": "Ce documente sunt necesare pentru o viză de muncă?",
+      "q3": "Cum pot găsi o locuință în Danemarca?"
+    }
+  },
+  "Pluralization": {
+    "messages": "{count, plural, =0 {Niciun mesaj} =1 {1 mesaj} few {# mesaje} other {# mesaje}}",
+    "documents": "{count, plural, =0 {Niciun document} =1 {1 document} few {# documente} other {# documente}}",
+    "articles": "{count, plural, =0 {Niciun articol} =1 {1 articol} few {# articole} other {# articole}}",
+    "items": "{count, plural, =0 {Niciun element} =1 {1 element} few {# elemente} other {# elemente}}",
+    "results": "{count, plural, =0 {Niciun rezultat găsit} =1 {1 rezultat găsit} few {# rezultate găsite} other {# rezultate găsite}}",
+    "notifications": "{count, plural, =0 {Nicio notificare nouă} =1 {1 notificare nouă} few {# notificări noi} other {# notificări noi}}"
+  }
+}

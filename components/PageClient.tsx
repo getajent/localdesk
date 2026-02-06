@@ -12,6 +12,7 @@ import { RoadmapProgress } from '@/components/RoadmapProgress';
 import { DashboardTabs } from '@/components/DashboardTabs';
 import { AuthProvider, useAuth } from '@/components/AuthProvider';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 type TabId = 'chat' | 'settings';
 
@@ -19,7 +20,10 @@ function LoggedInView() {
   const { user, userSettings, signOut, refreshSettings } = useAuth();
   const [activeTab, setActiveTab] = useState<TabId>('chat');
   const [chatInitialQuestion, setChatInitialQuestion] = useState<string>('');
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const t = useTranslations('HomePage.WelcomeBack');
+  // Use ref to track header visibility to avoid re-rendering Header on scroll
+  const isHeaderVisibleRef = useRef(true);
+  const [sidebarHeight, setSidebarHeight] = useState('calc(100vh - 97px)');
   const [isFullPageChat, setIsFullPageChat] = useState(false);
   const lastScrollY = useRef(0);
 
@@ -27,25 +31,34 @@ function LoggedInView() {
   const contentRef = useRef<HTMLDivElement>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  // Track header visibility for sidebar height only (doesn't re-render Header)
   useEffect(() => {
-    const controlHeader = () => {
+    const updateSidebarHeight = () => {
       if (typeof window !== 'undefined') {
         const currentScrollY = window.scrollY;
+        const wasVisible = isHeaderVisibleRef.current;
+
         if (currentScrollY < 100) {
-          setIsHeaderVisible(true);
+          isHeaderVisibleRef.current = true;
         } else {
           if (currentScrollY > lastScrollY.current) {
-            setIsHeaderVisible(false);
+            isHeaderVisibleRef.current = false;
           } else {
-            setIsHeaderVisible(true);
+            isHeaderVisibleRef.current = true;
           }
         }
+
+        // Only update sidebar height state when visibility actually changes
+        if (wasVisible !== isHeaderVisibleRef.current) {
+          setSidebarHeight(isHeaderVisibleRef.current ? 'calc(100vh - 97px)' : '100vh');
+        }
+
         lastScrollY.current = currentScrollY;
       }
     };
 
-    window.addEventListener('scroll', controlHeader);
-    return () => window.removeEventListener('scroll', controlHeader);
+    window.addEventListener('scroll', updateSidebarHeight, { passive: true });
+    return () => window.removeEventListener('scroll', updateSidebarHeight);
   }, []);
 
   const handleTabChange = (tabId: string) => {
@@ -73,62 +86,62 @@ function LoggedInView() {
 
   return (
     <div className={`min-h-screen bg-background flex flex-col ${isFullPageChat ? 'h-screen overflow-hidden' : ''}`}>
-      {!isFullPageChat && <Header user={user} onAuthChange={signOut} />}
+      {!isFullPageChat && <Header onAuthChange={signOut} />}
 
       <main className={`flex-1 ${isFullPageChat ? 'relative h-screen' : ''}`}>
         {/* Main Content Area - Aligned with Header Grid */}
-        <div className={isFullPageChat ? 'absolute inset-0 z-10 bg-background' : 'container mx-auto px-4 sm:px-6 lg:px-12 pt-6 pb-12'}>
+        <div className={isFullPageChat ? 'absolute inset-0 z-10 bg-background' : 'container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 pt-4 sm:pt-5 md:pt-6 pb-8 sm:pb-10 md:pb-12'}>
           <div className={isFullPageChat ? 'h-full flex flex-col' : 'max-w-7xl mx-auto'}>
             {!isFullPageChat && (
               <>
                 {/* Welcome Section */}
-                <div className="mb-8 space-y-3">
-                  <span className="px-3 py-1 rounded-full bg-secondary text-primary text-[10px] font-bold tracking-widest uppercase border border-primary/5">
-                    Welcome Back
+                <div className="mb-6 sm:mb-7 md:mb-8 space-y-2 sm:space-y-2.5 md:space-y-3">
+                  <span className="inline-block px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-secondary text-primary text-[9px] sm:text-[10px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase border border-primary/5">
+                    {t('label')}
                   </span>
-                  <h1 className="font-serif text-4xl sm:text-5xl font-medium text-foreground tracking-tight">
-                    Hello, <span className="text-muted-foreground/60 italic">{userSettings?.displayName || user?.email?.split('@')[0]}</span>
+                  <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground tracking-tight">
+                    {t('titlePrefix')}<span className="text-muted-foreground/60 italic">{userSettings?.displayName || user?.email?.split('@')[0]}</span>
                   </h1>
-                  <p className="text-muted-foreground text-lg font-light max-w-xl">
-                    Set your profile, track your journey, and ask anything about living in Denmark.
+                  <p className="text-muted-foreground text-sm sm:text-base md:text-lg font-light max-w-xl">
+                    {t('description')}
                   </p>
                 </div>
 
                 {/* Tab Navigation */}
-                <div className="mb-6">
+                <div className="mb-4 sm:mb-5 md:mb-6">
                   <DashboardTabs activeTab={activeTab} onTabChange={handleTabChange} />
                 </div>
               </>
             )}
 
-            {/* Roadmap Sidebar */}
-            <aside className="fixed left-0 bottom-0 h-screen z-40 flex items-end pointer-events-none">
+            {/* Roadmap Sidebar - Hidden on mobile/tablet */}
+            <aside className="hidden lg:flex fixed left-0 bottom-0 h-screen z-40 items-end pointer-events-none">
               <div
                 className={`
-                  w-[520px] bg-background/95 backdrop-blur-2xl border-r border-t border-border/40 
+                  w-[420px] xl:w-[520px] bg-background/95 backdrop-blur-2xl border-r border-t border-border/40 
                   transition-all duration-500 ease-in-out cursor-default
-                  -translate-x-[calc(100%-48px)] hover:translate-x-0 
+                  -translate-x-[calc(100%-40px)] xl:-translate-x-[calc(100%-48px)] hover:translate-x-0 
                   pointer-events-auto flex group
-                  ${isFullPageChat ? 'h-screen' : (isHeaderVisible ? 'h-[calc(100vh-97px)]' : 'h-screen')}
+                  ${isFullPageChat ? 'h-screen' : `h-[${sidebarHeight}]`}
                 `}
               >
-                <div className="flex-1 h-full overflow-y-auto custom-scrollbar px-14 py-20 space-y-12">
+                <div className="flex-1 h-full overflow-y-auto custom-scrollbar px-8 xl:px-14 py-12 xl:py-20 space-y-8 xl:space-y-12">
                   <RoadmapProgress onStepClick={handleStepClick} />
 
                   {/* Roadmap Tips */}
-                  <div className="p-8 border border-border/40 bg-card/50 backdrop-blur-xl space-y-4">
+                  <div className="p-6 xl:p-8 border border-border/40 bg-card/50 backdrop-blur-xl space-y-3 xl:space-y-4">
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-danish-red" />
-                      <h3 className="text-[10px] font-black tracking-[0.2em] text-foreground uppercase">
+                      <h3 className="text-[9px] xl:text-[10px] font-black tracking-[0.2em] text-foreground uppercase">
                         Expert Advice
                       </h3>
                     </div>
-                    <ul className="space-y-4 text-[11px] font-bold tracking-wider text-muted-foreground/80 uppercase">
-                      <li className="flex items-start gap-4">
+                    <ul className="space-y-3 xl:space-y-4 text-[10px] xl:text-[11px] font-bold tracking-wider text-muted-foreground/80 uppercase">
+                      <li className="flex items-start gap-3 xl:gap-4">
                         <span className="text-danish-red mt-0.5 opacity-50">•</span>
                         <span>Click any step for detailed help</span>
                       </li>
-                      <li className="flex items-start gap-4">
+                      <li className="flex items-start gap-3 xl:gap-4">
                         <span className="text-danish-red mt-0.5 opacity-50">•</span>
                         <span>Notify Assistant upon completion</span>
                       </li>
@@ -137,13 +150,13 @@ function LoggedInView() {
                 </div>
 
                 {/* Vertical Label / Handle */}
-                <div className="w-12 h-full bg-secondary/20 backdrop-blur-md flex flex-col items-center justify-center border-l border-border/10 cursor-pointer group-hover:bg-danish-red transition-all duration-700 ease-in-out">
-                  <div className="flex items-center gap-4 [writing-mode:vertical-lr] rotate-180">
-                    <span className="text-[9px] font-black tracking-[0.5em] text-muted-foreground/60 group-hover:text-white/80 uppercase transition-colors">
+                <div className="w-10 xl:w-12 h-full bg-secondary/20 backdrop-blur-md flex flex-col items-center justify-center border-l border-border/10 cursor-pointer group-hover:bg-danish-red transition-all duration-700 ease-in-out">
+                  <div className="flex items-center gap-3 xl:gap-4 [writing-mode:vertical-lr] rotate-180">
+                    <span className="text-[8px] xl:text-[9px] font-black tracking-[0.4em] xl:tracking-[0.5em] text-muted-foreground/60 group-hover:text-white/80 uppercase transition-colors">
                       Relocation
                     </span>
-                    <div className="h-16 w-[1px] bg-border group-hover:bg-white/20 transition-colors" />
-                    <span className="text-[10px] font-black tracking-[0.3em] text-danish-red group-hover:text-white uppercase transition-colors">
+                    <div className="h-12 xl:h-16 w-[1px] bg-border group-hover:bg-white/20 transition-colors" />
+                    <span className="text-[9px] xl:text-[10px] font-black tracking-[0.25em] xl:tracking-[0.3em] text-danish-red group-hover:text-white uppercase transition-colors">
                       Journey
                     </span>
                   </div>
@@ -161,8 +174,8 @@ function LoggedInView() {
               `}
             >
               {/* Chat Tab */}
-              <div className={`space-y-8 ${activeTab === 'chat' ? 'block animate-in fade-in slide-in-from-bottom-2 duration-300' : 'hidden'} ${isFullPageChat ? 'h-full' : ''}`}>
-                <div className={`${isFullPageChat ? 'h-full w-full' : 'max-w-4xl mx-auto space-y-12'}`}>
+              <div className={`space-y-6 sm:space-y-7 md:space-y-8 ${activeTab === 'chat' ? 'block animate-in fade-in slide-in-from-bottom-2 duration-300' : 'hidden'} ${isFullPageChat ? 'h-full' : ''}`}>
+                <div className={`${isFullPageChat ? 'h-full w-full' : 'max-w-4xl mx-auto space-y-8 sm:space-y-10 md:space-y-12'}`}>
                   <ChatInterface
                     userId={user?.id}
                     userSettings={userSettings}
@@ -194,6 +207,7 @@ function LoggedOutView() {
   const { user, refreshUser } = useAuth();
   const [isChatVisible, setIsChatVisible] = useState(false);
   const chatSectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('HomePage.ChatSection');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -222,7 +236,7 @@ function LoggedOutView() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <Header user={user} onAuthChange={refreshUser} />
+      <Header onAuthChange={refreshUser} />
 
       {/* Main Content */}
       <main className="flex-1">
@@ -236,21 +250,21 @@ function LoggedOutView() {
         <section
           id="chat-section"
           ref={chatSectionRef}
-          className={`w-full bg-background py-24 sm:py-32 border-t border-border/40 transition-all duration-1000 ${isChatVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
+          className={`w-full bg-background py-16 sm:py-20 md:py-24 lg:py-32 border-t border-border/40 transition-all duration-1000 ${isChatVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-12">
-            <div className="max-w-7xl mx-auto flex flex-col items-start space-y-12 sm:space-y-16">
-              <div className="space-y-6 max-w-4xl">
-                <span className="px-3 py-1 rounded-full bg-secondary text-primary text-[10px] font-bold tracking-widest uppercase border border-primary/5">
-                  Your Assistant
+          <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+            <div className="max-w-7xl mx-auto flex flex-col items-start space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-16">
+              <div className="space-y-4 sm:space-y-5 md:space-y-6 max-w-4xl">
+                <span className="inline-block px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-secondary text-primary text-[9px] sm:text-[10px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase border border-primary/5">
+                  {t('label')}
                 </span>
-                <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl font-medium text-foreground tracking-tight leading-tight">
-                  Let's talk,<br />
-                  <span className="text-muted-foreground/60 italic">we're here to help.</span>
+                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-foreground tracking-tight leading-tight">
+                  {t('title')}<br />
+                  <span className="text-muted-foreground/60 italic">{t('subtitle')}</span>
                 </h2>
-                <p className="text-muted-foreground text-xl sm:text-2xl leading-relaxed font-sans font-light max-w-2xl">
-                  Clear, simple answers about taxes, visas, and housing — in the language that feels like home.
+                <p className="text-muted-foreground text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-sans font-light max-w-2xl">
+                  {t('description')}
                 </p>
               </div>
               <div className="w-full">

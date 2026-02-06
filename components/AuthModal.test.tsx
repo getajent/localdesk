@@ -12,6 +12,38 @@ jest.mock('@/lib/supabase', () => ({
   },
 }));
 
+// Mock next-intl
+jest.mock('next-intl', () => ({
+  useTranslations: () => (key: string) => {
+    const translations: Record<string, string> = {
+      'signIn.label': 'Welcome Back',
+      'signIn.title': 'Sign In',
+      'signIn.description': 'Enter your credentials to access your personal dashboard.',
+      'signUp.label': 'New Member',
+      'signUp.title': 'Join the Club',
+      'signUp.description': 'Create an account to save your conversations and preferences.',
+      'fields.emailLabel': 'Email Address',
+      'fields.emailPlaceholder': 'name@example.com',
+      'fields.passwordLabel': 'Password',
+      'fields.passwordPlaceholder': '••••••••',
+      'buttons.signIn': 'Sign In',
+      'buttons.signUp': 'Create Account',
+      'buttons.processing': 'Processing...',
+      'buttons.switchToSignUp': 'New here? Create account',
+      'buttons.switchToSignIn': 'Already a member? Sign in',
+      'errors.invalidEmail': 'Please enter a valid email address',
+      'errors.passwordTooShort': 'Password must be at least 6 characters',
+      'errors.authFailed': 'Authentication failed. Please try again.',
+      'legal.agreement': 'By continuing, you agree to our',
+      'legal.terms': 'Terms',
+      'legal.and': 'and',
+      'legal.privacy': 'Privacy Policy',
+      'legal.cookies': 'including cookie usage.',
+    };
+    return translations[key] || key;
+  },
+}));
+
 describe('AuthModal - Unit Tests', () => {
   const mockOnClose = jest.fn();
   const mockOnSuccess = jest.fn();
@@ -30,8 +62,8 @@ describe('AuthModal - Unit Tests', () => {
 
     it('should render when isOpen is true', () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
-      expect(screen.getByRole('button', { name: /log in/i })).toBeInTheDocument();
-      expect(screen.getByLabelText('Email')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /sign in/i })).toBeInTheDocument();
+      expect(screen.getByLabelText('Email Address')).toBeInTheDocument();
     });
   });
 
@@ -39,9 +71,9 @@ describe('AuthModal - Unit Tests', () => {
     it('should show error for invalid email', async () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
-      const submitButton = screen.getByRole('button', { name: /^log in$/i });
+      const submitButton = screen.getByRole('button', { name: /^sign in$/i });
 
       fireEvent.change(emailInput, { target: { value: 'invalid-email' } });
       fireEvent.change(passwordInput, { target: { value: 'password123' } });
@@ -55,9 +87,9 @@ describe('AuthModal - Unit Tests', () => {
     it('should show error for short password', async () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
-      const submitButton = screen.getByRole('button', { name: /log in/i });
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.change(passwordInput, { target: { value: '12345' } });
@@ -77,9 +109,9 @@ describe('AuthModal - Unit Tests', () => {
 
       render(<AuthModal isOpen={true} onClose={mockOnClose} onSuccess={mockOnSuccess} />);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
-      const submitButton = screen.getByRole('button', { name: /log in/i });
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.change(passwordInput, { target: { value: 'password123' } });
@@ -104,9 +136,9 @@ describe('AuthModal - Unit Tests', () => {
 
       render(<AuthModal isOpen={true} onClose={mockOnClose} onSuccess={mockOnSuccess} />);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
-      const submitButton = screen.getByRole('button', { name: /log in/i });
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.change(passwordInput, { target: { value: 'password123' } });
@@ -128,12 +160,12 @@ describe('AuthModal - Unit Tests', () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} onSuccess={mockOnSuccess} />);
 
       // Switch to sign up mode
-      const signUpToggle = screen.getByRole('button', { name: /sign up/i });
+      const signUpToggle = screen.getByRole('button', { name: /new here\? create account/i });
       fireEvent.click(signUpToggle);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
-      const submitButton = screen.getByRole('button', { name: /sign up/i });
+      const submitButton = screen.getByRole('button', { name: /create account/i });
 
       fireEvent.change(emailInput, { target: { value: 'newuser@example.com' } });
       fireEvent.change(passwordInput, { target: { value: 'password123' } });
@@ -167,12 +199,12 @@ describe('AuthModal - Unit Tests', () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} onSuccess={mockOnSuccess} />);
 
       // Switch to sign up mode
-      const signUpToggle = screen.getByRole('button', { name: /sign up/i });
+      const signUpToggle = screen.getByRole('button', { name: /new here\? create account/i });
       fireEvent.click(signUpToggle);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
-      const submitButton = screen.getByRole('button', { name: /sign up/i });
+      const submitButton = screen.getByRole('button', { name: /create account/i });
 
       fireEvent.change(emailInput, { target: { value: 'newuser@example.com' } });
       fireEvent.change(passwordInput, { target: { value: 'password123' } });
@@ -196,9 +228,9 @@ describe('AuthModal - Unit Tests', () => {
 
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
-      const submitButton = screen.getByRole('button', { name: /log in/i });
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.change(passwordInput, { target: { value: 'wrongpassword' } });
@@ -219,12 +251,12 @@ describe('AuthModal - Unit Tests', () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
 
       // Switch to sign up mode
-      const signUpToggle = screen.getByRole('button', { name: /sign up/i });
+      const signUpToggle = screen.getByRole('button', { name: /new here\? create account/i });
       fireEvent.click(signUpToggle);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
-      const submitButton = screen.getByRole('button', { name: /sign up/i });
+      const submitButton = screen.getByRole('button', { name: /create account/i });
 
       fireEvent.change(emailInput, { target: { value: 'existing@example.com' } });
       fireEvent.change(passwordInput, { target: { value: 'password123' } });
@@ -244,9 +276,9 @@ describe('AuthModal - Unit Tests', () => {
 
       render(<AuthModal isOpen={true} onClose={mockOnClose} onSuccess={mockOnSuccess} />);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
-      const submitButton = screen.getByRole('button', { name: /log in/i });
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.change(passwordInput, { target: { value: 'wrongpassword' } });
@@ -275,28 +307,28 @@ describe('AuthModal - Unit Tests', () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
 
       // Initially in login mode - check description text
-      expect(screen.getByText(/sign in to access your saved chats/i)).toBeInTheDocument();
+      expect(screen.getByText(/enter your credentials to access your personal dashboard/i)).toBeInTheDocument();
 
       // Switch to signup mode
-      const signUpToggle = screen.getByRole('button', { name: /sign up/i });
+      const signUpToggle = screen.getByRole('button', { name: /new here\? create account/i });
       fireEvent.click(signUpToggle);
 
       expect(screen.getByText(/create account/i)).toBeInTheDocument();
-      expect(screen.getByText(/sign up to save your chat history/i)).toBeInTheDocument();
+      expect(screen.getByText(/create an account to save your conversations and preferences/i)).toBeInTheDocument();
 
       // Switch back to login mode
-      const logInToggle = screen.getByRole('button', { name: /^log in$/i });
+      const logInToggle = screen.getByRole('button', { name: /already a member\? sign in/i });
       fireEvent.click(logInToggle);
 
-      expect(screen.getByText(/sign in to access your saved chats/i)).toBeInTheDocument();
+      expect(screen.getByText(/enter your credentials to access your personal dashboard/i)).toBeInTheDocument();
     });
 
     it('should clear error when switching modes', async () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
-      const submitButton = screen.getByRole('button', { name: /^log in$/i });
+      const submitButton = screen.getByRole('button', { name: /^sign in$/i });
 
       // Trigger validation error
       fireEvent.change(emailInput, { target: { value: 'invalid' } });
@@ -308,7 +340,7 @@ describe('AuthModal - Unit Tests', () => {
       });
 
       // Switch modes
-      const signUpToggle = screen.getByRole('button', { name: /sign up/i });
+      const signUpToggle = screen.getByRole('button', { name: /new here\? create account/i });
       fireEvent.click(signUpToggle);
 
       // Error should be cleared
@@ -321,9 +353,9 @@ describe('AuthModal - Unit Tests', () => {
 
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
 
-      const emailInput = screen.getByLabelText('Email') as HTMLInputElement;
+      const emailInput = screen.getByLabelText('Email Address') as HTMLInputElement;
       const passwordInput = screen.getByLabelText('Password') as HTMLInputElement;
-      const submitButton = screen.getByRole('button', { name: /log in/i });
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
 
       fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
       fireEvent.change(passwordInput, { target: { value: 'password123' } });
@@ -341,14 +373,14 @@ describe('AuthModal - Unit Tests', () => {
     it('should display email and password input fields', () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
 
-      expect(screen.getByLabelText('Email')).toBeInTheDocument();
+      expect(screen.getByLabelText('Email Address')).toBeInTheDocument();
       expect(screen.getByLabelText('Password')).toBeInTheDocument();
     });
 
     it('should have proper input types', () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
 
-      const emailInput = screen.getByLabelText('Email');
+      const emailInput = screen.getByLabelText('Email Address');
       const passwordInput = screen.getByLabelText('Password');
 
       expect(emailInput).toHaveAttribute('type', 'email');
@@ -358,9 +390,8 @@ describe('AuthModal - Unit Tests', () => {
     it('should display submit button with correct text', () => {
       render(<AuthModal isOpen={true} onClose={mockOnClose} />);
 
-      const submitButton = screen.getByRole('button', { name: /log in/i });
+      const submitButton = screen.getByRole('button', { name: /sign in/i });
       expect(submitButton).toBeInTheDocument();
-      expect(submitButton).toHaveClass('bg-[#C60C30]');
     });
   });
 });

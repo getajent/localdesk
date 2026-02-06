@@ -13,6 +13,9 @@ const customJestConfig = {
     '^@/(.*)$': '<rootDir>/$1',
     '^react-markdown$': '<rootDir>/__mocks__/react-markdown.tsx',
   },
+  transformIgnorePatterns: [
+    'node_modules/(?!(next-intl)/)',
+  ],
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

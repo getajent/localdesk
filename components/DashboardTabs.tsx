@@ -47,7 +47,7 @@ export function DashboardTabs({ activeTab, onTabChange }: DashboardTabsProps) {
                             ref={(el) => { tabRefs.current[tab.id] = el; }}
                             onClick={() => onTabChange(tab.id)}
                             className={`
-                relative flex-1 flex items-center justify-center gap-2 px-6 py-4
+                relative flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-6 py-3 sm:py-3.5 md:py-4
                 transition-all duration-300 ease-out
                 ${isActive
                                     ? 'text-danish-red'
@@ -57,9 +57,9 @@ export function DashboardTabs({ activeTab, onTabChange }: DashboardTabsProps) {
                             aria-selected={isActive}
                             role="tab"
                         >
-                            <Icon className={`h-4 w-4 transition-transform duration-300 ${isActive ? 'scale-110' : ''}`} />
+                            <Icon className={`h-3.5 w-3.5 sm:h-4 sm:w-4 transition-transform duration-300 ${isActive ? 'scale-110' : ''}`} />
                             <span className={`
-                text-[10px] font-black tracking-[0.2em] uppercase
+                text-[9px] sm:text-[10px] font-black tracking-[0.15em] sm:tracking-[0.2em] uppercase
                 transition-all duration-300
                 ${isActive ? 'opacity-100' : 'opacity-70'}
               `}>
@@ -72,7 +72,7 @@ export function DashboardTabs({ activeTab, onTabChange }: DashboardTabsProps) {
 
             {/* Animated Indicator */}
             <div
-                className="absolute bottom-0 h-[3px] bg-danish-red transition-all duration-300 ease-out"
+                className="absolute bottom-0 h-[2px] sm:h-[3px] bg-danish-red transition-all duration-300 ease-out"
                 style={{
                     left: indicatorStyle.left,
                     width: indicatorStyle.width,

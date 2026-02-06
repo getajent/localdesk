@@ -18,6 +18,14 @@ global.IntersectionObserver = class IntersectionObserver {
   unobserve() {}
 };
 
+// Mock next-intl
+jest.mock('next-intl', () => ({
+  useTranslations: () => (key) => key,
+  useLocale: () => 'en',
+  useMessages: () => ({}),
+  NextIntlClientProvider: ({ children }) => children,
+}));
+
 // Mock environment variables for tests
 process.env.OPENAI_API_KEY = 'test-api-key'
 process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co'

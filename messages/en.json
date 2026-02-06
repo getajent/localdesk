@@ -1,0 +1,897 @@
+{
+  "Common": {
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "knowledge": "Knowledge",
+      "guidance": "Guidance",
+      "backToHome": "Back to Home"
+    },
+    "footer": {
+      "tagline": "Your AI-powered guide to navigating life in Denmark. Get instant answers about taxes, housing, healthcare, immigration, and more.",
+      "location": "Location",
+      "locationValue": "Denmark",
+      "contact": "Contact",
+      "contactEmail": "hello@localdesk.dk",
+      "resourcesTitle": "Resources",
+      "resourceSkat": "SKAT (Tax)",
+      "resourceImmigration": "Immigration",
+      "resourceBorger": "Borger.dk",
+      "resourceWork": "Work in DK",
+      "servicesTitle": "Services",
+      "serviceHealthcare": "Healthcare",
+      "serviceMitID": "MitID",
+      "serviceEBoks": "E-Boks",
+      "serviceCPH": "CPH Intl",
+      "legalTitle": "Legal",
+      "legal": "Legal",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "connectTitle": "Connect",
+      "contactLink": "Contact",
+      "copyright": "© {year} LocalDesk / AI Guide for Denmark",
+      "heritage": "Denmark Heritage"
+    },
+    "auth": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up",
+      "signOut": "Sign Out",
+      "memberAccess": "Member Login",
+      "access": "Login",
+      "verifiedUser": "Verified User"
+    },
+    "theme": {
+      "toggle": "Toggle theme",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "backToHome": "Back to Home",
+    "legal": "Legal",
+    "attention": "Attention Required"
+  },
+  "HomePage": {
+    "Hero": {
+      "established": "Est. 2026",
+      "advisor": "Personal Advisor .01",
+      "heritage": "Danish // Hospitality",
+      "title": "Making",
+      "titleDenmark": "Denmark",
+      "titleFeelLikeHome": "feel like Home.",
+      "missionLabel": "The Mission",
+      "missionTitle": "A thoughtful digital companion designed to help you navigate life in Denmark with",
+      "missionTitleEmphasis": "clarity",
+      "missionTitleEnd": "and absolute ease.",
+      "description": "We turn complex Danish rules into clear, simple answers so you can focus on what matters most.",
+      "cta": "Start a Conversation",
+      "topicSkat": "Skat",
+      "topicVisas": "Visas",
+      "topicSiri": "Siri",
+      "topicHousing": "Housing"
+    },
+    "ChatSection": {
+      "label": "Your Assistant",
+      "title": "Let's talk,",
+      "subtitle": "we're here to help.",
+      "description": "Clear, simple answers about taxes, visas, and housing — in the language that feels like home."
+    },
+    "WelcomeBack": {
+      "label": "Welcome Back",
+      "titlePrefix": "Hello, ",
+      "description": "Set your profile, track your journey, and ask anything about living in Denmark."
+    },
+    "Features": {
+      "sectionLabel": "How we help",
+      "title": "Built for",
+      "titleEmphasis": "the modern",
+      "titleEnd": "expat.",
+      "madeFor": "Made for you // 2026",
+      "feature1": {
+        "id": "01",
+        "category": "Performance",
+        "title": "Swift Answers",
+        "description": "Find what you need in seconds, without the long waits or confusing paperwork."
+      },
+      "feature2": {
+        "id": "02",
+        "category": "Knowledge",
+        "title": "Trusted Details",
+        "description": "Deeply researched insights on SKAT, visas, and housing, tailored specifically for life in Denmark."
+      },
+      "feature3": {
+        "id": "03",
+        "category": "Ease",
+        "title": "No Sign-up Required",
+        "description": "Start right away. We value your time, so there's no need to create an account to get the help you need."
+      },
+      "feature4": {
+        "id": "04",
+        "category": "Service",
+        "title": "Always Ready",
+        "description": "We're here for you 24/7, helping you feel at home in Denmark from your very first day."
+      }
+    }
+  },
+  "ServicesPage": {
+    "metadata": {
+      "title": "Services | LocalDesk Denmark",
+      "description": "Expert guidance and support for expats settling in Denmark. From CPR registration to tax guidance, housing search, and personalized consulting."
+    },
+    "Hero": {
+      "title": "Our Services",
+      "subtitle": "Expert guidance for your journey in Denmark",
+      "tailoredGuidance": "Tailored // Guidance",
+      "mainTitle": "Your Path <br></br> to Settling <br></br> <spanMuted>in Denmark.</spanMuted>",
+      "whatWeOffer": "What We Offer",
+      "offerLead": "From administrative guidance to personalized support, we help you navigate every step of your <spanItalic>Danish journey</spanItalic>.",
+      "offerDescription": "Whether you need help with CPR registration, tax guidance, or finding housing, our services are designed to make your transition smooth and stress-free."
+    },
+    "Grid": {
+      "label": "Our Services",
+      "title": "Comprehensive support for your <spanItalic>Danish life</spanItalic>"
+    },
+    "services": {
+      "consulting": {
+        "category": "Expert Guidance",
+        "title": "Personal Consulting",
+        "description": "One-on-one guidance tailored to your specific situation in Denmark",
+        "features": {
+          "cpr": "CPR and MitID registration assistance",
+          "tax": "Tax card and SKAT guidance",
+          "healthcare": "Healthcare system navigation",
+          "housing": "Housing search strategies",
+          "employment": "Employment contract review"
+        }
+      },
+      "documents": {
+        "category": "Documentation",
+        "title": "Document Assistance",
+        "description": "Help with understanding and completing Danish administrative forms",
+        "features": {
+          "residence": "Residence permit applications",
+          "bank": "Bank account setup guidance",
+          "rental": "Rental contract review",
+          "taxReturn": "Tax return assistance",
+          "translation": "Official correspondence translation"
+        }
+      },
+      "relocation": {
+        "category": "Relocation",
+        "title": "Relocation Support",
+        "description": "Comprehensive support for your move to Denmark",
+        "features": {
+          "planning": "Pre-arrival planning",
+          "housing": "Housing search assistance",
+          "utilities": "Utility setup coordination",
+          "school": "School enrollment guidance",
+          "cultural": "Cultural orientation"
+        }
+      },
+      "ongoing": {
+        "category": "Ongoing Support",
+        "title": "Personalized Guidance",
+        "description": "24/7 AI-powered assistance for your questions about Denmark",
+        "features": {
+          "instant": "Instant answers to Denmark-related questions",
+          "upToDate": "Up-to-date information on regulations",
+          "personalized": "Personalized recommendations",
+          "multiLanguage": "Multi-language support",
+          "available": "Always available"
+        }
+      }
+    }
+  },
+  "GuidancePage": {
+    "metadata": {
+      "title": "Guidance | LocalDesk Denmark",
+      "description": "Step-by-step guides for navigating life in Denmark. From your first week to long-term settlement, follow our proven roadmaps for success."
+    },
+    "Hero": {
+      "label": "Guidance",
+      "stepByStep": "Step-by-Step",
+      "practicalAdvice": "Practical // Advice",
+      "title": "Navigate",
+      "titleWith": "with",
+      "titleConfidence": "Confidence.",
+      "roadmapLabel": "Your Roadmap",
+      "description": "Clear, actionable guides for every stage of your",
+      "descriptionEmphasis": "Danish journey",
+      "subtitle": "From your first week to long-term settlement, follow our step-by-step guides to navigate complex processes with ease.",
+      "categories": {
+        "arrival": "Arrival",
+        "setup": "Setup",
+        "housing": "Housing",
+        "taxes": "Taxes"
+      }
+    },
+    "Steps": {
+      "sectionLabel": "Step-by-Step Guides",
+      "title": "Follow our",
+      "titleEmphasis": "proven",
+      "titleEnd": "roadmaps",
+      "relatedResources": "Related Resources"
+    },
+    "guides": {
+      "firstWeek": {
+        "title": "Your First Week in Denmark",
+        "description": "Essential steps to take immediately upon arrival",
+        "duration": "Week 1",
+        "steps": {
+          "step1": {
+            "title": "Secure Temporary Accommodation",
+            "description": "Find a place to stay while you search for permanent housing",
+            "details": [
+              "Book hotel or Airbnb for first few days",
+              "Consider hostels or short-term rentals",
+              "Join Facebook housing groups",
+              "Contact your employer about temporary housing"
+            ]
+          },
+          "step2": {
+            "title": "Get a Danish SIM Card",
+            "description": "Essential for communication and many services",
+            "details": [
+              "Visit TDC, Telenor, 3 (Tre), or Telia",
+              "Bring passport for registration",
+              "Choose prepaid (50-200 DKK) or postpaid (100-500 DKK/month)",
+              "Prepaid good for temporary residents, postpaid for long-term"
+            ]
+          },
+          "step3": {
+            "title": "Visit International Citizen Service (ICS)",
+            "description": "Get guidance on registration procedures",
+            "details": [
+              "Book appointment online",
+              "Bring passport and residence permit",
+              "Ask about CPR registration requirements",
+              "Get information on next steps"
+            ]
+          },
+          "step4": {
+            "title": "Start Housing Search",
+            "description": "Begin looking for permanent accommodation",
+            "details": [
+              "Register on Boligportal.dk",
+              "Join housing waiting lists",
+              "Check Facebook groups",
+              "Contact real estate agents",
+              "Budget: 8,000-15,000 DKK/month for 1-bedroom in Copenhagen (lower in other cities)"
+            ]
+          }
+        }
+      },
+      "essentialServices": {
+        "title": "Setting Up Essential Services",
+        "description": "Complete your administrative registrations",
+        "duration": "Month 1-2",
+        "steps": {
+          "step1": {
+            "title": "Register for CPR Number",
+            "description": "Your key to accessing all Danish services",
+            "details": [
+              "Requires permanent address",
+              "Book appointment at ICS or Borgerservice",
+              "Bring passport, residence permit, rental contract",
+              "Receive CPR number same day",
+              "Health card arrives in 2-3 weeks"
+            ]
+          },
+          "step2": {
+            "title": "Set Up MitID",
+            "description": "Digital identity for online services",
+            "details": [
+              "Requires CPR number",
+              "Download MitID app",
+              "Register at Borgerservice or online",
+              "Essential for banking and government services"
+            ]
+          },
+          "step3": {
+            "title": "Open Bank Account",
+            "description": "Necessary for salary and bill payments",
+            "details": [
+              "Requires CPR number and MitID",
+              "Bring passport and proof of address",
+              "Compare banks: Danske Bank, Nordea, Jyske Bank",
+              "Set up NemKonto for government payments"
+            ]
+          },
+          "step4": {
+            "title": "Apply for Tax Card",
+            "description": "Required before starting work",
+            "details": [
+              "Apply online via SKAT.dk",
+              "Requires CPR number and MitID",
+              "Choose hovedkort (main card) for primary job",
+              "Employer needs your tax card information"
+            ]
+          },
+          "step5": {
+            "title": "Register for Digital Post",
+            "description": "Receive official communications",
+            "details": [
+              "Mandatory for most residents",
+              "Access via e-Boks or borger.dk",
+              "Requires MitID",
+              "Check regularly for important notices"
+            ]
+          }
+        }
+      },
+      "housingGuide": {
+        "title": "Finding and Securing Housing",
+        "description": "Navigate the Danish rental market successfully",
+        "duration": "Ongoing",
+        "steps": {
+          "step1": {
+            "title": "Understand Housing Types",
+            "description": "Learn about different housing options",
+            "details": [
+              "Private rental: Most flexible, higher cost",
+              "Social housing: Lower cost, long waiting lists",
+              "Andelsbolig: Cooperative housing, buy shares",
+              "Student housing: For enrolled students only"
+            ]
+          },
+          "step2": {
+            "title": "Search on Multiple Platforms",
+            "description": "Cast a wide net for opportunities",
+            "details": [
+              "Boligportal.dk: Main rental platform",
+              "DBA.dk: Classified ads",
+              "Facebook groups: Local housing communities",
+              "University housing offices: For students",
+              "Real estate agents: For higher-end rentals"
+            ]
+          },
+          "step3": {
+            "title": "Prepare Financial Documentation",
+            "description": "Have documents ready for applications",
+            "details": [
+              "Employment contract or job offer",
+              "Bank statements (last 3 months)",
+              "Reference letters from previous landlords",
+              "CPR number and ID",
+              "Budget for deposit: 3-6 months rent upfront"
+            ]
+          },
+          "step4": {
+            "title": "Review Rental Contract Carefully",
+            "description": "Understand your rights and obligations",
+            "details": [
+              "Check rent amount and payment terms",
+              "Verify deposit and prepaid rent",
+              "Understand notice period (typically 3 months)",
+              "Note what utilities are included",
+              "Document condition at move-in"
+            ]
+          },
+          "step5": {
+            "title": "Set Up Utilities and Insurance",
+            "description": "Complete your housing setup",
+            "details": [
+              "Choose electricity provider",
+              "Set up internet service",
+              "Get tenant insurance (indboforsikring)",
+              "Register address with authorities",
+              "Update CPR address if needed"
+            ]
+          }
+        }
+      },
+      "taxGuide": {
+        "title": "Understanding Your Taxes",
+        "description": "Navigate the Danish tax system with confidence",
+        "duration": "Ongoing",
+        "steps": {
+          "step1": {
+            "title": "Understand Tax Structure",
+            "description": "Learn how Danish taxes work",
+            "details": [
+              "AM-bidrag: 8% labor market contribution",
+              "Municipal tax: 22-27% (varies by municipality)",
+              "Bottom tax: ~12.09%",
+              "Top tax: 15% on income above ~588,900 DKK",
+              "Total effective rate: 38-52% depending on income"
+            ]
+          },
+          "step2": {
+            "title": "Get Your Tax Card",
+            "description": "Set up tax withholding",
+            "details": [
+              "Apply via TastSelv on SKAT.dk with MitID",
+              "Hovedkort for main job",
+              "Bikort for additional income (~55% rate)",
+              "Employer uses this to withhold correct tax",
+              "Update if circumstances change"
+            ]
+          },
+          "step3": {
+            "title": "Know Your Deductions",
+            "description": "Maximize your tax benefits",
+            "details": [
+              "Transport: Commuting costs over 24 km each way",
+              "Pension contributions: To approved schemes",
+              "Union fees: A-kasse and union membership",
+              "Interest: Mortgage interest (limited)",
+              "Charitable donations: To approved organizations (minimum 500 DKK/year)"
+            ]
+          },
+          "step4": {
+            "title": "Review Annual Tax Return",
+            "description": "Check your årsopgørelse",
+            "details": [
+              "Available in May each year",
+              "SKAT prepares automatically",
+              "Review for accuracy",
+              "Correct errors by deadline (June-July)",
+              "Receive refund or pay additional tax"
+            ]
+          }
+        }
+      },
+      "healthcareGuide": {
+        "title": "Navigating Healthcare",
+        "description": "Access medical services in Denmark",
+        "duration": "Ongoing",
+        "steps": {
+          "step1": {
+            "title": "Get Health Insurance Card",
+            "description": "Receive your sundhedskort",
+            "details": [
+              "Automatic after CPR registration",
+              "Yellow card arrives by mail in 2-4 weeks",
+              "Shows your CPR number and assigned GP",
+              "Bring to all medical appointments",
+              "Free healthcare for residents"
+            ]
+          },
+          "step2": {
+            "title": "Register with GP",
+            "description": "Choose your family doctor",
+            "details": [
+              "GP assigned automatically with CPR",
+              "Can change GP if desired",
+              "GP is first point of contact for health issues",
+              "Free consultations",
+              "GP provides referrals to specialists"
+            ]
+          },
+          "step3": {
+            "title": "Understand Healthcare System",
+            "description": "Learn how to access services",
+            "details": [
+              "GP for non-emergency issues",
+              "Emergency: Call 112",
+              "After-hours: Call 1813 (Copenhagen) or regional number",
+              "Pharmacy: Prescription required for most medications",
+              "Dental: Not covered, private insurance recommended"
+            ]
+          },
+          "step4": {
+            "title": "Access Digital Health Services",
+            "description": "Use online health platforms",
+            "details": [
+              "Sundhed.dk: Book appointments, view records",
+              "Requires MitID",
+              "E-Boks: Receive health correspondence",
+              "Min Læge app: Contact your GP",
+              "Prescription renewal online"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "KnowledgePage": {
+    "metadata": {
+      "title": "Knowledge Base | LocalDesk Denmark",
+      "description": "Comprehensive guides about living in Denmark. Explore topics including arrival process, employment, housing, taxes, social benefits, essential services, and practical living."
+    },
+    "Hero": {
+      "title": "Knowledge Base",
+      "subtitle": "Comprehensive guides for living in Denmark",
+      "resourceCenter": "Resource Center",
+      "comprehensiveInfo": "Comprehensive // Information",
+      "mainTitlePart1": "Everything",
+      "mainTitlePart2": "You Need",
+      "mainTitlePart3": "to Know.",
+      "description": "From arrival procedures to daily living, explore detailed guides covering every aspect of life in Denmark.",
+      "searchPlaceholder": "Search articles...",
+      "quickLinks": {
+        "arrival": "Arrival",
+        "housing": "Housing",
+        "taxes": "Taxes",
+        "benefits": "Benefits"
+      }
+    },
+    "Categories": {
+      "label": "Browse by Topic",
+      "title": "Explore our",
+      "titleEmphasis": "comprehensive",
+      "titleEnd": "knowledge base",
+      "topics": "Topics",
+      "moreTopics": "+{count} more topics"
+    },
+    "categories": {
+      "arrival": {
+        "title": "Arrival Process",
+        "description": "Essential registrations and procedures when you first arrive",
+        "documentCount": "{count, plural, =1 {1 Document} other {# Documents}}"
+      },
+      "employment": {
+        "title": "Employment",
+        "description": "Working in Denmark: contracts, rights, and workplace culture",
+        "documentCount": "{count, plural, =1 {1 Document} other {# Documents}}"
+      },
+      "housing": {
+        "title": "Housing",
+        "description": "Finding, renting, and maintaining your home in Denmark",
+        "documentCount": "{count, plural, =1 {1 Document} other {# Documents}}"
+      },
+      "taxFinance": {
+        "title": "Tax & Finance",
+        "description": "Understanding Danish taxation and managing your finances",
+        "documentCount": "{count, plural, =1 {1 Document} other {# Documents}}"
+      },
+      "socialBenefits": {
+        "title": "Social Benefits",
+        "description": "Healthcare, pensions, and social support systems",
+        "documentCount": "{count, plural, =1 {1 Document} other {# Documents}}"
+      },
+      "essentialServices": {
+        "title": "Essential Services",
+        "description": "Healthcare, banking, education, and transportation",
+        "documentCount": "{count, plural, =1 {1 Document} other {# Documents}}"
+      },
+      "practicalLiving": {
+        "title": "Practical Living",
+        "description": "Daily life, culture, and community in Denmark",
+        "documentCount": "{count, plural, =1 {1 Document} other {# Documents}}"
+      }
+    }
+  },
+  "PrivacyPage": {
+    "metadata": {
+      "title": "Privacy Policy - LocalDesk",
+      "description": "Privacy policy and data protection information for LocalDesk"
+    },
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: {date}",
+    "introduction": "At LocalDesk, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our service. We are committed to protecting your personal data in accordance with GDPR and Danish data protection laws.",
+    "sections": {
+      "dataCollection": {
+        "title": "1. Information We Collect",
+        "personalInfo": {
+          "title": "Personal Information",
+          "intro": "When you create an account, we collect:",
+          "items": {
+            "email": "Email address",
+            "displayName": "Display name (optional)",
+            "profile": "Profile information (residency status, occupation status)",
+            "credentials": "Authentication credentials"
+          }
+        },
+        "usageInfo": {
+          "title": "Usage Information",
+          "intro": "We automatically collect certain information when you use our service:",
+          "items": {
+            "chat": "Chat messages and conversation history",
+            "usage": "Feature usage and interaction data",
+            "device": "Device information and browser type",
+            "ip": "IP address and location data",
+            "cookies": "Cookies and similar tracking technologies"
+          }
+        }
+      },
+      "dataUse": {
+        "title": "2. How We Use Your Information",
+        "intro": "We use the collected information to:",
+        "items": {
+          "provide": "Provide and maintain our AI-powered assistant service",
+          "personalize": "Personalize your experience and improve our recommendations",
+          "process": "Process your requests and respond to your inquiries",
+          "notify": "Send you service updates and important notifications",
+          "analyze": "Analyze usage patterns to improve our service",
+          "prevent": "Detect and prevent fraud or abuse",
+          "comply": "Comply with legal obligations"
+        }
+      },
+      "legalBasis": {
+        "title": "3. Legal Basis for Processing (GDPR)",
+        "intro": "Under GDPR, we process your personal data based on:",
+        "items": {
+          "consent": "Consent: You have given clear consent for us to process your personal data for specific purposes",
+          "contract": "Contract: Processing is necessary to fulfill our contract with you (providing the service)",
+          "legal": "Legal obligation: Processing is necessary to comply with the law",
+          "legitimate": "Legitimate interests: Processing is necessary for our legitimate interests (improving our service, preventing fraud)"
+        }
+      },
+      "dataSharing": {
+        "title": "4. Data Sharing and Disclosure",
+        "intro": "We do not sell your personal information. We may share your data with:",
+        "serviceProviders": {
+          "title": "Service Providers",
+          "items": {
+            "supabase": "Supabase (database and authentication)",
+            "openai": "OpenAI (AI processing for chat responses)",
+            "hosting": "Cloud hosting providers"
+          }
+        },
+        "legal": {
+          "title": "Legal Requirements",
+          "description": "We may disclose your information if required by law or in response to valid legal requests."
+        }
+      },
+      "dataSecurity": {
+        "title": "5. Data Storage and Security",
+        "intro": "Your data is stored securely using industry-standard encryption and security measures. We use:",
+        "items": {
+          "encryption": "Encrypted data transmission (HTTPS/TLS)",
+          "database": "Secure database storage with access controls",
+          "audits": "Regular security audits and updates",
+          "datacenters": "Data centers located in the EU (GDPR compliant)"
+        },
+        "disclaimer": "However, no method of transmission over the internet is 100% secure. While we strive to protect your data, we cannot guarantee absolute security."
+      },
+      "userRights": {
+        "title": "6. Your Rights Under GDPR",
+        "intro": "As a user in the EU, you have the following rights:",
+        "items": {
+          "access": "Right to Access: Request a copy of your personal data",
+          "rectification": "Right to Rectification: Correct inaccurate or incomplete data",
+          "erasure": "Right to Erasure: Request deletion of your personal data (\"right to be forgotten\")",
+          "restrict": "Right to Restrict Processing: Limit how we use your data",
+          "portability": "Right to Data Portability: Receive your data in a structured, machine-readable format",
+          "object": "Right to Object: Object to processing based on legitimate interests",
+          "withdraw": "Right to Withdraw Consent: Withdraw consent at any time"
+        },
+        "contact": "To exercise these rights, contact us at hello@localdesk.dk"
+      },
+      "cookies": {
+        "title": "7. Cookies and Tracking",
+        "intro": "We use cookies and similar technologies to:",
+        "items": {
+          "session": "Maintain your session and keep you logged in",
+          "preferences": "Remember your preferences (theme, language)",
+          "analyze": "Analyze site usage and performance",
+          "improve": "Improve user experience"
+        },
+        "control": "You can control cookies through your browser settings. Note that disabling cookies may affect functionality."
+      },
+      "dataRetention": {
+        "title": "8. Data Retention",
+        "intro": "We retain your personal data only as long as necessary to provide our services and comply with legal obligations:",
+        "items": {
+          "account": "Account data: Retained while your account is active",
+          "chat": "Chat history: Retained for service improvement unless you request deletion",
+          "logs": "Usage logs: Typically retained for 90 days",
+          "legal": "Legal records: Retained as required by law"
+        },
+        "deletion": "When you delete your account, we will delete or anonymize your personal data within 30 days, except where we are required to retain it by law."
+      },
+      "internationalTransfers": {
+        "title": "9. International Data Transfers",
+        "intro": "Your data is primarily stored within the European Union. If we transfer data outside the EU, we ensure appropriate safeguards are in place, such as:",
+        "items": {
+          "scc": "Standard Contractual Clauses (SCCs)",
+          "adequacy": "Adequacy decisions by the European Commission",
+          "other": "Other legally approved transfer mechanisms"
+        }
+      },
+      "childrenPrivacy": {
+        "title": "10. Children's Privacy",
+        "description": "Our service is not intended for children under 16 years of age. We do not knowingly collect personal information from children. If you believe we have collected data from a child, please contact us immediately."
+      },
+      "policyChanges": {
+        "title": "11. Changes to This Policy",
+        "intro": "We may update this Privacy Policy from time to time. We will notify you of significant changes by:",
+        "items": {
+          "posting": "Posting the updated policy on our website",
+          "date": "Updating the \"Last updated\" date",
+          "email": "Sending email notifications for material changes"
+        },
+        "acceptance": "Your continued use of the service after changes constitutes acceptance of the updated policy."
+      },
+      "contact": {
+        "title": "12. Contact Us",
+        "intro": "If you have questions about this Privacy Policy or wish to exercise your rights, please contact us:",
+        "company": "LocalDesk - Data Protection",
+        "email": "Email: hello@localdesk.dk",
+        "location": "Location: Denmark",
+        "complaint": "You also have the right to lodge a complaint with the Danish Data Protection Agency (Datatilsynet) if you believe we have not handled your data appropriately."
+      }
+    },
+    "cta": {
+      "title": "Your Privacy Matters",
+      "description": "We're committed to protecting your data and respecting your privacy rights. If you have any concerns or questions, we're here to help.",
+      "readTerms": "Read Terms of Service",
+      "contactSupport": "Contact Support"
+    }
+  },
+  "TermsPage": {
+    "metadata": {
+      "title": "Terms of Service - LocalDesk",
+      "description": "Terms and conditions for using LocalDesk services"
+    },
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: {date}",
+    "introduction": "Welcome to LocalDesk. By accessing or using our service, you agree to be bound by these Terms of Service. Please read them carefully before using our platform.",
+    "sections": {
+      "acceptance": {
+        "title": "1. Acceptance of Terms",
+        "content": "By creating an account or using LocalDesk, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, you may not access or use our services."
+      },
+      "serviceDescription": {
+        "title": "2. Service Description",
+        "content": "LocalDesk provides an AI-powered assistant to help users navigate Danish bureaucracy, including information about taxes, visas, housing, and other administrative matters. Our service is informational in nature and should not be considered as legal, financial, or professional advice. Always consult with qualified professionals for specific guidance."
+      },
+      "userAccounts": {
+        "title": "3. User Accounts",
+        "intro": "To access certain features, you must create an account. You are responsible for:",
+        "items": {
+          "confidentiality": "Maintaining the confidentiality of your account credentials",
+          "activities": "All activities that occur under your account",
+          "unauthorized": "Notifying us immediately of any unauthorized access",
+          "accurate": "Providing accurate and current information"
+        }
+      },
+      "acceptableUse": {
+        "title": "4. Acceptable Use",
+        "intro": "You agree not to:",
+        "items": {
+          "illegal": "Use the service for any illegal or unauthorized purpose",
+          "access": "Attempt to gain unauthorized access to our systems",
+          "interfere": "Interfere with or disrupt the service or servers",
+          "automated": "Use automated systems to access the service without permission",
+          "malicious": "Transmit any malicious code or harmful content",
+          "impersonate": "Impersonate any person or entity"
+        }
+      },
+      "intellectualProperty": {
+        "title": "5. Intellectual Property",
+        "content": "All content, features, and functionality of LocalDesk, including but not limited to text, graphics, logos, and software, are owned by LocalDesk and protected by international copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, modify, or create derivative works without our express written permission."
+      },
+      "dataPrivacy": {
+        "title": "6. Data and Privacy",
+        "content": "Your use of LocalDesk is also governed by our Privacy Policy. We collect and process personal data in accordance with GDPR and Danish data protection laws. By using our service, you consent to the collection and use of information as described in our Privacy Policy."
+      },
+      "disclaimerWarranties": {
+        "title": "7. Disclaimer of Warranties",
+        "intro": "LocalDesk is provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. We do not guarantee that:",
+        "items": {
+          "uninterrupted": "The service will be uninterrupted or error-free",
+          "accurate": "All information provided is accurate or complete",
+          "requirements": "The service will meet your specific requirements",
+          "corrected": "Any errors or defects will be corrected"
+        }
+      },
+      "limitationLiability": {
+        "title": "8. Limitation of Liability",
+        "content": "To the maximum extent permitted by law, LocalDesk shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the service. This includes, but is not limited to, damages for loss of profits, data, or other intangible losses."
+      },
+      "termination": {
+        "title": "9. Termination",
+        "intro": "We reserve the right to suspend or terminate your account and access to the service at our sole discretion, without notice, for conduct that we believe:",
+        "items": {
+          "violates": "Violates these Terms of Service",
+          "harmful": "Is harmful to other users or our business",
+          "liability": "Exposes us to legal liability"
+        },
+        "userTermination": "You may terminate your account at any time by contacting us or using the account deletion feature."
+      },
+      "changesTerms": {
+        "title": "10. Changes to Terms",
+        "intro": "We reserve the right to modify these Terms of Service at any time. We will notify users of any material changes by:",
+        "items": {
+          "posting": "Posting the updated terms on our website",
+          "date": "Updating the \"Last updated\" date",
+          "email": "Sending email notifications for significant changes"
+        },
+        "acceptance": "Your continued use of the service after changes constitutes acceptance of the modified terms."
+      },
+      "governingLaw": {
+        "title": "11. Governing Law",
+        "content": "These Terms of Service shall be governed by and construed in accordance with the laws of Denmark, without regard to its conflict of law provisions. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts of Denmark."
+      },
+      "contact": {
+        "title": "12. Contact Information",
+        "intro": "If you have any questions about these Terms of Service, please contact us at:",
+        "company": "LocalDesk",
+        "email": "Email: hello@localdesk.dk",
+        "location": "Location: Denmark"
+      }
+    },
+    "cta": {
+      "title": "Need Help?",
+      "description": "Have questions about our terms or how we handle your data? We're here to help.",
+      "contactSupport": "Contact Support"
+    }
+  },
+  "ChatInterface": {
+    "header": {
+      "title": "Conversation",
+      "version": "V. 2.4.0 // Secure",
+      "mode": "Mode",
+      "fullPage": "Full Page",
+      "exitFull": "Exit Full",
+      "newSession": "New Session",
+      "systemsOnline": "Systems: Online"
+    },
+    "placeholder": "Ask a question...",
+    "send": "Send",
+    "stop": "Stop",
+    "thinking": "Thinking...",
+    "loading": "Getting ready...",
+    "error": "Something went wrong // Please check your connection and try again.",
+    "welcome": {
+      "label": "How can we help?",
+      "title": "What would you like to know about living in Denmark?"
+    },
+    "message": {
+      "sent": "Sent",
+      "verifiedAnswer": "Verified Answer"
+    },
+    "footer": {
+      "tagline": "Secure & Private // Built for your peace of mind"
+    },
+    "confirmModal": {
+      "title": "Start Fresh?",
+      "description": "This will clear your current conversation history. You can't undo this action.",
+      "confirm": "Clear Chat",
+      "cancel": "Keep Chat"
+    }
+  },
+  "AuthModal": {
+    "signIn": {
+      "label": "Welcome Back",
+      "title": "Sign In",
+      "description": "Enter your credentials to access your personal dashboard."
+    },
+    "signUp": {
+      "label": "New Member",
+      "title": "Join the Club",
+      "description": "Create an account to save your conversations and preferences."
+    },
+    "fields": {
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "name@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••"
+    },
+    "buttons": {
+      "signIn": "Sign In",
+      "signUp": "Create Account",
+      "processing": "Processing...",
+      "switchToSignUp": "New here? Create account",
+      "switchToSignIn": "Already a member? Sign in"
+    },
+    "errors": {
+      "invalidEmail": "Please enter a valid email address",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "authFailed": "Authentication failed. Please try again."
+    },
+    "legal": {
+      "agreement": "By continuing, you agree to our",
+      "terms": "Terms",
+      "and": "and",
+      "privacy": "Privacy Policy",
+      "cookies": "including cookie usage."
+    }
+  },
+  "SuggestedQuestions": {
+    "label": "Common Inquiries",
+    "questions": {
+      "q1": "How do I register with SKAT as a new resident?",
+      "q2": "What documents do I need for a work visa?",
+      "q3": "How can I find housing in Denmark?"
+    }
+  },
+  "Pluralization": {
+    "messages": "{count, plural, =0 {No messages} =1 {1 message} other {# messages}}",
+    "documents": "{count, plural, =0 {No documents} =1 {1 document} other {# documents}}",
+    "articles": "{count, plural, =0 {No articles} =1 {1 article} other {# articles}}",
+    "items": "{count, plural, =0 {No items} =1 {1 item} other {# items}}",
+    "results": "{count, plural, =0 {No results found} =1 {1 result found} other {# results found}}",
+    "notifications": "{count, plural, =0 {No new notifications} =1 {1 new notification} other {# new notifications}}"
+  }
+}
