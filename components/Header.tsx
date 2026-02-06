@@ -12,10 +12,12 @@ import { useAuth } from '@/components/AuthProvider';
 
 export interface HeaderProps {
   onAuthChange?: () => void;
+  user?: User | null;
 }
 
-const HeaderComponent = ({ onAuthChange }: HeaderProps) => {
-  const { user, signOut, userSettings } = useAuth();
+const HeaderComponent = ({ onAuthChange, user: userProp }: HeaderProps) => {
+  const { user: authUser, signOut, userSettings } = useAuth();
+  const user = userProp !== undefined ? userProp : authUser;
   const t = useTranslations('Common');
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -102,7 +104,7 @@ const HeaderComponent = ({ onAuthChange }: HeaderProps) => {
               <Logo />
             </div>
 
-            <div className="hidden lg:flex items-center gap-8 xl:gap-12">
+            <div className="hidden lg:flex items-center ml-auto gap-8 xl:gap-12">
               <nav className="flex items-center gap-6 xl:gap-8">
                 {[
                   { label: t('nav.services'), href: '/services' },
@@ -124,8 +126,8 @@ const HeaderComponent = ({ onAuthChange }: HeaderProps) => {
               {/* Language Switcher */}
               <LanguageSwitcher />
               {/* Authentication Section */}
-              <div className="flex items-center gap-3 xl:gap-4">
-                {user ? (
+              {user && (
+                <div className="flex items-center gap-3 xl:gap-4">
                   <div className="flex items-center gap-4 xl:gap-6">
                     <div className="flex flex-col items-end">
                       <span className="text-[9px] xl:text-[10px] font-black tracking-widest text-foreground uppercase truncate max-w-[120px]">
@@ -142,29 +144,23 @@ const HeaderComponent = ({ onAuthChange }: HeaderProps) => {
                       {t('auth.signOut')}
                     </Button>
                   </div>
-                ) : (
-                  <Button
-                    onClick={handleLogin}
-                    className="bg-foreground text-background btn-trend rounded-none h-10 xl:h-11 px-6 xl:px-8 text-[9px] xl:text-[10px] font-black uppercase tracking-[0.15em] xl:tracking-[0.2em] transition-all active:scale-95 shadow-sm"
-                    aria-label="Log in"
-                  >
-                    <span className="relative z-10">{t('auth.memberAccess')}</span>
-                  </Button>
-                )}
-              </div>
+                </div>
+              )}
             </div>
 
             {/* Mobile & Tablet Auth & Theme */}
-            <div className="lg:hidden flex items-center gap-2 sm:gap-3">
+            <div className="lg:hidden flex items-center ml-auto gap-2 sm:gap-3">
               <ThemeToggle />
               <LanguageSwitcher />
-              <Button
-                onClick={user ? handleLogout : handleLogin}
-                variant="ghost"
-                className="h-8 sm:h-9 px-3 sm:px-4 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] border border-border rounded-none hover:border-danish-red/40 hover:bg-danish-red/5 transition-all"
-              >
-                {user ? t('auth.signOut') : t('auth.access')}
-              </Button>
+              {user && (
+                <Button
+                  onClick={handleLogout}
+                  variant="ghost"
+                  className="h-8 sm:h-9 px-3 sm:px-4 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] border border-border rounded-none hover:border-danish-red/40 hover:bg-danish-red/5 transition-all"
+                >
+                  {t('auth.signOut')}
+                </Button>
+              )}
             </div>
           </div>
         </div>

@@ -24,7 +24,7 @@ export default async function ServicesPage() {
 
   return (
     <AuthProvider initialUser={user}>
-      <Header user={user} />
+      <Header />
       <main>
         <ServicesHero />
         <ServicesGrid services={SERVICES_DATA} />
