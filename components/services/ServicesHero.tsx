@@ -57,12 +57,15 @@ export function ServicesHero() {
 
             <div className="lg:col-span-5 flex flex-col space-y-6 sm:space-y-8 items-start lg:items-end w-full">
               <div className="space-y-4 sm:space-y-6 w-full lg:max-w-xs">
-                <p className="text-sm sm:text-base text-muted-foreground font-sans font-light leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground font-sans font-light leading-relaxed lg:text-right">
                   {t('offerDescription')}
                 </p>
               </div>
+            </div>
 
-              <div className="flex flex-wrap gap-x-4 sm:gap-x-8 gap-y-3 sm:gap-y-4 text-[9px] font-black tracking-[0.3em] sm:tracking-[0.4em] text-muted-foreground/30 uppercase w-full justify-start lg:justify-end">
+            {/* Service Categories Row - Full width for better alignment */}
+            <div className="lg:col-span-12 mt-8 sm:mt-12 pt-8 sm:pt-10 border-t border-border/10">
+              <div className="flex flex-wrap gap-x-6 sm:gap-x-12 gap-y-4 text-[9px] font-black tracking-[0.3em] sm:tracking-[0.4em] text-muted-foreground/30 uppercase w-full justify-start lg:justify-between">
                 <button
                   className="hover:text-danish-red transition-colors cursor-pointer min-h-[44px] flex items-center bg-transparent border-0 p-0 focus-visible:text-danish-red focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-danish-red focus-visible:ring-offset-2"
                   aria-label="View consulting services"
