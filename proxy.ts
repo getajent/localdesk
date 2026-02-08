@@ -9,7 +9,7 @@ const intlMiddleware = createIntlMiddleware(routing);
 export async function proxy(request: NextRequest) {
     // First, handle i18n routing
     const intlResponse = intlMiddleware(request);
-    
+
     // Use intl response as base, or create new response
     let response = intlResponse || NextResponse.next({
         request,
@@ -55,6 +55,6 @@ export const config = {
          * - public folder
          * - _vercel (Vercel internals)
          */
-        '/((?!api|_next/static|_next/image|favicon.ico|_vercel|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|robots\\.txt|sitemap\\.xml|_vercel|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
     ],
 }
