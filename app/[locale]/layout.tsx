@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Manrope } from "next/font/google";
+import Script from 'next/script';
 import "../globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { CookieConsent } from "@/components/CookieConsent";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -57,6 +59,34 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
+      <head>
+        <Script id="google-consent-mode" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            
+            // Get saved consent or default to denied
+            const savedConsent = localStorage.getItem('cookie-consent');
+            
+            gtag('consent', 'default', {
+              'ad_storage': savedConsent === 'accepted' ? 'granted' : 'denied',
+              'ad_user_data': savedConsent === 'accepted' ? 'granted' : 'denied',
+              'ad_personalization': savedConsent === 'accepted' ? 'granted' : 'denied',
+              'analytics_storage': savedConsent === 'accepted' ? 'granted' : 'denied'
+            });
+          `}
+        </Script>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17724668039"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            gtag('js', new Date());
+            gtag('config', 'AW-17724668039');
+          `}
+        </Script>
+      </head>
       <body className={`${manrope.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground selection:bg-danish-red/20`} suppressHydrationWarning>
         <script
           dangerouslySetInnerHTML={{
@@ -74,6 +104,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             {children}
+            <CookieConsent />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

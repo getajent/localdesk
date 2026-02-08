@@ -893,5 +893,12 @@
     "items": "{count, plural, =0 {Ingen elementer} =1 {1 element} other {# elementer}}",
     "results": "{count, plural, =0 {Ingen resultater fundet} =1 {1 resultat fundet} other {# resultater fundet}}",
     "notifications": "{count, plural, =0 {Ingen nye notifikationer} =1 {1 ny notifikation} other {# nye notifikationer}}"
+  },
+  "CookieConsent": {
+    "title": "Privatlivspræferencer",
+    "description": "Vi bruger cookies til at forbedre din oplevelse og analysere vores trafik. Specifikt bruger vi Google Ads til at nå ud til expats som dig. Accepterer du vores brug af cookies?",
+    "accept": "Accepter alle",
+    "decline": "Afvis",
+    "privacyPolicy": "Privatlivspolitik"
   }
 }

@@ -893,5 +893,12 @@
     "items": "{count, plural, =0 {Niciun element} =1 {1 element} few {# elemente} other {# elemente}}",
     "results": "{count, plural, =0 {Niciun rezultat găsit} =1 {1 rezultat găsit} few {# rezultate găsite} other {# rezultate găsite}}",
     "notifications": "{count, plural, =0 {Nicio notificare nouă} =1 {1 notificare nouă} few {# notificări noi} other {# notificări noi}}"
+  },
+  "CookieConsent": {
+    "title": "Preferințe de Confidențialitate",
+    "description": "Folosim cookie-uri pentru a vă îmbunătăți experiența și pentru a ne analiza traficul. Mai exact, folosim Google Ads pentru a ajunge la expatriați ca tine. Ești de acord cu utilizarea modulelor cookie?",
+    "accept": "Acceptă tot",
+    "decline": "Refuză",
+    "privacyPolicy": "Politica de confidențialitate"
   }
 }

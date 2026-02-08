@@ -893,5 +893,12 @@
     "items": "{count, plural, =0 {Keine Elemente} =1 {1 Element} other {# Elemente}}",
     "results": "{count, plural, =0 {Keine Ergebnisse gefunden} =1 {1 Ergebnis gefunden} other {# Ergebnisse gefunden}}",
     "notifications": "{count, plural, =0 {Keine neuen Benachrichtigungen} =1 {1 neue Benachrichtigung} other {# neue Benachrichtigungen}}"
+  },
+  "CookieConsent": {
+    "title": "Privatsphäre-Einstellungen",
+    "description": "Wir verwenden Cookies, um Ihr Erlebnis zu verbessern und unseren Datenverkehr zu analysieren. Insbesondere nutzen wir Google Ads, um Expats wie Sie zu erreichen. Stimmen Sie der Verwendung von Cookies zu?",
+    "accept": "Alle akzeptieren",
+    "decline": "Ablehnen",
+    "privacyPolicy": "Datenschutzrichtlinie"
   }
 }

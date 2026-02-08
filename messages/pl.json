@@ -893,5 +893,12 @@
     "items": "{count, plural, =0 {Brak elementów} =1 {1 element} few {# elementy} many {# elementów} other {# elementów}}",
     "results": "{count, plural, =0 {Nie znaleziono wyników} =1 {Znaleziono 1 wynik} few {Znaleziono # wyniki} many {Znaleziono # wyników} other {Znaleziono # wyników}}",
     "notifications": "{count, plural, =0 {Brak nowych powiadomień} =1 {1 nowe powiadomienie} few {# nowe powiadomienia} many {# nowych powiadomień} other {# nowych powiadomień}}"
+  },
+  "CookieConsent": {
+    "title": "Preferencje Prywatności",
+    "description": "Używamy plików cookie, aby poprawić komfort korzystania z serwisu i analizować nasz ruch. W szczególności używamy Google Ads, aby dotrzeć do ekspatów takich jak Ty. Czy zgadzasz się na używanie przez nas plików cookie?",
+    "accept": "Zaakceptuj wszystko",
+    "decline": "Odrzuć",
+    "privacyPolicy": "Polityka prywatności"
   }
 }
