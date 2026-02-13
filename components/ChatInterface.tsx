@@ -297,7 +297,7 @@ export function ChatInterface({ userId, userSettings, initialQuestion, isFullPag
             onChange={handleInputChange}
             placeholder={t('placeholder')}
             disabled={isLoading}
-            className="flex-1 h-14 sm:h-16 md:h-18 lg:h-20 pl-4 sm:pl-6 md:pl-8 lg:pl-10 pr-24 sm:pr-32 md:pr-36 lg:pr-40 rounded-none border border-border/60 bg-background hover:border-danish-red/30 focus:border-danish-red/50 focus:ring-2 sm:focus:ring-4 focus:ring-danish-red/5 text-sm sm:text-base md:text-lg font-light placeholder:text-muted-foreground/40 shadow-soft transition-all"
+            className="flex-1 h-14 sm:h-16 md:h-18 lg:h-20 pl-4 sm:pl-6 md:pl-8 lg:pl-10 pr-24 sm:pr-32 md:pr-36 lg:pr-40 rounded-none border border-border/60 bg-background hover:border-danish-red/30 focus:border-danish-red/50 focus:ring-2 sm:focus:ring-4 focus:ring-danish-red/5 focus-visible:ring-danish-red/5 focus-visible:ring-offset-0 text-sm sm:text-base md:text-lg font-light placeholder:text-muted-foreground/40 shadow-soft transition-all"
             aria-label="Chat message input"
           />
           <div className="absolute right-2 sm:right-3 top-2 sm:top-3 bottom-2 sm:bottom-3 flex gap-1 sm:gap-2">
